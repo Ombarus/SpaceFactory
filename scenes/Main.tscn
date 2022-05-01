@@ -1,0 +1,224 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=1]
+[ext_resource path="res://data/private/environment/skybox/panorama_image.png" type="Texture" id=2]
+[ext_resource path="res://scripts/UI/PlaceMinerBtn.gd" type="Script" id=3]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=4]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/UI/ConfirmDiagHUD.gd" type="Script" id=6]
+[ext_resource path="res://scripts/UI/PlaceSmelterBtn.gd" type="Script" id=7]
+[ext_resource path="res://scripts/UI/PlaceFloorBtn.gd" type="Script" id=9]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.0313726, 0.921569, 1, 1 )
+emission_enabled = true
+emission = Color( 0.14, 1.55, 1.3, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="CylinderMesh" id=4]
+material = SubResource( 3 )
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.0
+radial_segments = 9
+
+[sub_resource type="SpatialMaterial" id=5]
+emission_enabled = true
+emission = Color( 64.25, 0, 0, 1 )
+emission_energy = 2.12
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SphereMesh" id=6]
+material = SubResource( 5 )
+
+[sub_resource type="PanoramaSky" id=2]
+panorama = ExtResource( 2 )
+
+[sub_resource type="Environment" id=1]
+background_mode = 2
+background_sky = SubResource( 2 )
+ambient_light_color = Color( 0.337255, 0.337255, 0.337255, 1 )
+ambient_light_energy = 1.5
+ambient_light_sky_contribution = 0.82
+tonemap_mode = 3
+glow_enabled = true
+glow_intensity = 0.86
+glow_strength = 1.61
+glow_bloom = 0.16
+
+[node name="Main" type="Node"]
+
+[node name="Level" type="Spatial" parent="."]
+
+[node name="Asteroid" parent="Level" instance=ExtResource( 1 )]
+transform = Transform( 0.973066, 0, -0.230525, 0, 1, 0, 0.230525, 0, 0.973066, -10.1802, -3.16468, -18.439 )
+
+[node name="Dynamic" type="Spatial" parent="."]
+
+[node name="Player" parent="Dynamic" instance=ExtResource( 5 )]
+script = ExtResource( 4 )
+inv_line = NodePath("../../UI/SafeArea/HUD/HBoxContainer/Exemple")
+
+[node name="Camera" type="Camera" parent="Dynamic/Player"]
+transform = Transform( 1, 0, 0, 0, 0.995401, 0.0957937, 0, -0.0957937, 0.995401, 0, 2.38645, 6.5088 )
+near = 0.2
+far = 10000.0
+
+[node name="PlaceRay" type="MeshInstance" parent="Dynamic/Player"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="s" type="MeshInstance" parent="Dynamic"]
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="e" type="MeshInstance" parent="Dynamic"]
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="SafeArea" type="Control" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HUD" type="Control" parent="UI/SafeArea"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/SafeArea/HUD"]
+anchor_bottom = 1.0
+margin_left = 34.0
+margin_right = 144.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/SafeArea/HUD/VBoxContainer"]
+margin_right = 110.0
+margin_bottom = 472.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlaceMinerBtn" type="Button" parent="UI/SafeArea/HUD/VBoxContainer"]
+margin_top = 476.0
+margin_right = 110.0
+margin_bottom = 516.0
+rect_min_size = Vector2( 70, 40 )
+toggle_mode = true
+text = "Miner"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlaceSmelterBtn" type="Button" parent="UI/SafeArea/HUD/VBoxContainer"]
+margin_top = 520.0
+margin_right = 110.0
+margin_bottom = 560.0
+rect_min_size = Vector2( 70, 40 )
+toggle_mode = true
+text = "Smelter"
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlaceFloorBtn" type="Button" parent="UI/SafeArea/HUD/VBoxContainer"]
+margin_top = 564.0
+margin_right = 110.0
+margin_bottom = 604.0
+rect_min_size = Vector2( 70, 40 )
+toggle_mode = true
+text = "Floor"
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer2" type="MarginContainer" parent="UI/SafeArea/HUD/VBoxContainer"]
+margin_top = 608.0
+margin_right = 110.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/SafeArea/HUD"]
+anchor_right = 1.0
+rect_min_size = Vector2( 0, 50 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exemple" type="Label" parent="UI/SafeArea/HUD/HBoxContainer"]
+margin_top = 18.0
+margin_right = 150.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 150, 0 )
+
+[node name="Confirm" type="Control" parent="UI/SafeArea"]
+visible = false
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_right = 205.0
+rect_min_size = Vector2( 150, 0 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/SafeArea/Confirm"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/SafeArea/Confirm/VBoxContainer"]
+margin_right = 173.0
+margin_bottom = 484.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Ok" type="Button" parent="UI/SafeArea/Confirm/VBoxContainer"]
+margin_top = 488.0
+margin_right = 173.0
+margin_bottom = 538.0
+rect_min_size = Vector2( 0, 50 )
+text = "Ok"
+
+[node name="Cancel" type="Button" parent="UI/SafeArea/Confirm/VBoxContainer"]
+margin_top = 542.0
+margin_right = 173.0
+margin_bottom = 592.0
+rect_min_size = Vector2( 0, 50 )
+text = "Cancel"
+
+[node name="MarginContainer2" type="MarginContainer" parent="UI/SafeArea/Confirm/VBoxContainer"]
+margin_top = 596.0
+margin_right = 173.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/PlaceMinerBtn" to="UI/SafeArea/HUD/VBoxContainer/PlaceMinerBtn" method="_on_PlaceMinerBtn_toggled"]
+[connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/PlaceSmelterBtn" to="UI/SafeArea/HUD/VBoxContainer/PlaceSmelterBtn" method="_on_PlaceSmelterBtn_toggled"]
+[connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/PlaceFloorBtn" to="UI/SafeArea/HUD/VBoxContainer/PlaceFloorBtn" method="_on_PlaceSmelterBtn_toggled"]
+[connection signal="pressed" from="UI/SafeArea/Confirm/VBoxContainer/Ok" to="UI/SafeArea/Confirm" method="_on_Ok_pressed"]
+[connection signal="pressed" from="UI/SafeArea/Confirm/VBoxContainer/Cancel" to="UI/SafeArea/Confirm" method="_on_Cancel_pressed"]

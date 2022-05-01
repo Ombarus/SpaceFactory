@@ -1,0 +1,14 @@
+.import
+android
+*tmp*
+/logs.txt
+/secret
+/data/private
+*.png~
+*~
+*.exe
+*.apk
+*.aab
+/data/src/spyros
+*.x86_64
+*-autosave*
