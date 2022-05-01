@@ -38,7 +38,7 @@ func OnPlaceToggle_Callback(name : String) -> void:
 
 func OnDoPlacement_Callback() -> void:
 	if placing_obj != null:
-		placing_obj.collision_layer = 1
+		toggle_collider(placing_obj, false)
 		placing_obj = null
 		placing_name = ""
 		
@@ -58,13 +58,19 @@ func update_inventory_display():
 		line.text = key + " : " + str(inventory[key])
 		line.add_to_group("inventory")
 
+func toggle_collider(obj : Node, disabled : bool) -> void:
+	for c in obj.get_children():
+		if c is CollisionShape:
+			c.disabled = disabled
+		toggle_collider(c, disabled)
+
 func _physics_process(delta: float) -> void:
 	if Input.is_mouse_button_pressed(1):
 		var cur_mouse_pos : Vector2 = get_viewport().get_mouse_position()
 		var mouse_offset_x : float = last_mouse_pos.x - cur_mouse_pos.x
 		var mouse_offset_y : float = last_mouse_pos.y - cur_mouse_pos.y
-		self.rotate(self.global_transform.basis.y, mouse_offset_x / 100.0)
-		self.rotate(self.global_transform.basis.x, mouse_offset_y / 100.0)
+		self.rotate(self.global_transform.basis.y.normalized(), mouse_offset_x / 100.0)
+		self.rotate(self.global_transform.basis.x.normalized(), mouse_offset_y / 100.0)
 	last_mouse_pos = get_viewport().get_mouse_position()
 	
 	var dir := Vector3.ZERO
@@ -79,16 +85,21 @@ func _physics_process(delta: float) -> void:
 			if placing_obj == null:
 				placing_obj = placing_instance[placing_name].instance()
 				$"..".add_child(placing_obj)
+				toggle_collider(placing_obj, true)
 			placing_obj.visible = true
 			
 			var space_state : PhysicsDirectSpaceState = get_world().direct_space_state
 			var start_point : Vector3 = self.translation - (self.global_transform.basis.z.normalized() * 2.0)
 			var end_point : Vector3 = start_point - (self.global_transform.basis.z.normalized() * 1000.0)
-			var result : Dictionary = space_state.intersect_ray(start_point, end_point, [self], 4)
+			var result : Dictionary = space_state.intersect_ray(start_point, end_point, [], 4, true, true)
 			$"../s".translation = start_point
 			$"../e".translation = end_point
 			if not result.empty():
+				dir = result["collider"].transform.origin.normalized()
+				placing_obj.transform = result["collider"].global_transform
+				placing_obj.translate(dir * 5.0)
 				print(result["collider"].name)
+				return
 			placing_obj.transform = self.transform
 			placing_obj.translation = target_pos
 		else:
@@ -105,6 +116,7 @@ func _physics_process(delta: float) -> void:
 				if placing_obj == null:
 					placing_obj = placing_instance[placing_name].instance()
 					$"..".add_child(placing_obj)
+					toggle_collider(placing_obj, true)
 				placing_obj.visible = true
 				placing_obj.translation = end_point
 				var a : float = placing_obj.transform.basis.y.angle_to(norm)
