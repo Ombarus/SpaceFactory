@@ -37,7 +37,7 @@ shape = SubResource( 3 )
 [node name="PickupLabel" type="Label" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-text = "E"
+text = "R"
 align = 1
 valign = 1
 __meta__ = {

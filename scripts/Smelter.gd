@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 
 
 func _unhandled_key_input(event: InputEventKey) -> void:
-	if event.scancode == KEY_E and not event.is_pressed() and ui.visible == true:
+	if event.scancode == KEY_R and not event.is_pressed() and ui.visible == true:
 		if cur_out > 0:
 			Events.emit_signal("OnPickup", "iron ingot", cur_out)
 			cur_out = 0

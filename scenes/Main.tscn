@@ -1,13 +1,12 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=1]
-[ext_resource path="res://data/private/environment/skybox/panorama_image.png" type="Texture" id=2]
-[ext_resource path="res://scripts/UI/PlaceMinerBtn.gd" type="Script" id=3]
+[ext_resource path="res://data/private/environment/skybox/panorama_image_hdr.exr" type="Texture" id=2]
+[ext_resource path="res://scripts/FPSPlayer.gd" type="Script" id=3]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/UI/ConfirmDiagHUD.gd" type="Script" id=6]
-[ext_resource path="res://scripts/UI/PlaceSmelterBtn.gd" type="Script" id=7]
-[ext_resource path="res://scripts/UI/PlaceFloorBtn.gd" type="Script" id=9]
+[ext_resource path="res://scripts/UI/PlaceItemBtn.gd" type="Script" id=9]
 
 [sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0.0313726, 0.921569, 1, 1 )
@@ -26,13 +25,17 @@ radial_segments = 9
 
 [sub_resource type="SpatialMaterial" id=5]
 emission_enabled = true
-emission = Color( 64.25, 0, 0, 1 )
+emission = Color( 1.53, 0, 0, 1 )
 emission_energy = 2.12
 emission_operator = 0
 emission_on_uv2 = false
 
 [sub_resource type="SphereMesh" id=6]
 material = SubResource( 5 )
+
+[sub_resource type="CapsuleShape" id=7]
+radius = 0.1
+height = 0.2
 
 [sub_resource type="PanoramaSky" id=2]
 panorama = ExtResource( 2 )
@@ -45,9 +48,12 @@ ambient_light_energy = 1.5
 ambient_light_sky_contribution = 0.82
 tonemap_mode = 3
 glow_enabled = true
-glow_intensity = 0.86
-glow_strength = 1.61
-glow_bloom = 0.16
+glow_intensity = 0.1
+glow_strength = 0.89
+glow_bloom = 0.37
+glow_blend_mode = 0
+glow_hdr_threshold = 1.1
+glow_hdr_luminance_cap = 4.0
 
 [node name="Main" type="Node"]
 
@@ -61,9 +67,11 @@ transform = Transform( 0.973066, 0, -0.230525, 0, 1, 0, 0.230525, 0, 0.973066, -
 [node name="Player" parent="Dynamic" instance=ExtResource( 5 )]
 script = ExtResource( 4 )
 inv_line = NodePath("../../UI/SafeArea/HUD/HBoxContainer/Exemple")
+fps_player = NodePath("../FPSPlayer")
 
 [node name="Camera" type="Camera" parent="Dynamic/Player"]
-transform = Transform( 1, 0, 0, 0, 0.995401, 0.0957937, 0, -0.0957937, 0.995401, 0, 2.38645, 6.5088 )
+transform = Transform( 1, 0, 0, 0, 0.995401, 0.0957937, 0, -0.0957937, 0.995401, 0, 2.386, 5.018 )
+fov = 100.0
 near = 0.2
 far = 10000.0
 
@@ -73,15 +81,39 @@ mesh = SubResource( 4 )
 material/0 = null
 
 [node name="s" type="MeshInstance" parent="Dynamic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.88118 )
+visible = false
 mesh = SubResource( 6 )
 material/0 = null
 
 [node name="e" type="MeshInstance" parent="Dynamic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.88118 )
+visible = false
 mesh = SubResource( 6 )
 material/0 = null
 
+[node name="FPSPlayer" type="KinematicBody" parent="Dynamic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75522, 0, 0 )
+script = ExtResource( 3 )
+player_ship = NodePath("../Player")
+
+[node name="Camera" type="Camera" parent="Dynamic/FPSPlayer"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.132212, 0.193071 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Dynamic/FPSPlayer"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 7 )
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
+transform = Transform( 0.651628, 0.0484956, -0.756987, 0.1071, 0.982075, 0.155109, 0.75094, -0.182146, 0.634753, 0, 4.29697, 3.72167 )
+light_color = Color( 0.976471, 0.890196, 1, 1 )
+light_energy = 4.627
+light_specular = 3.105
+shadow_enabled = true
+shadow_color = Color( 0.196078, 0.196078, 0.196078, 1 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -110,38 +142,38 @@ __meta__ = {
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/SafeArea/HUD/VBoxContainer"]
 margin_right = 110.0
-margin_bottom = 472.0
+margin_bottom = 450.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="PlaceMinerBtn" type="Button" parent="UI/SafeArea/HUD/VBoxContainer"]
-margin_top = 476.0
+[node name="miner" type="Button" parent="UI/SafeArea/HUD/VBoxContainer"]
+margin_top = 454.0
 margin_right = 110.0
-margin_bottom = 516.0
+margin_bottom = 494.0
 rect_min_size = Vector2( 70, 40 )
 toggle_mode = true
 text = "Miner"
-script = ExtResource( 3 )
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlaceSmelterBtn" type="Button" parent="UI/SafeArea/HUD/VBoxContainer"]
-margin_top = 520.0
+[node name="smelter" type="Button" parent="UI/SafeArea/HUD/VBoxContainer"]
+margin_top = 498.0
 margin_right = 110.0
-margin_bottom = 560.0
+margin_bottom = 538.0
 rect_min_size = Vector2( 70, 40 )
 toggle_mode = true
 text = "Smelter"
-script = ExtResource( 7 )
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlaceFloorBtn" type="Button" parent="UI/SafeArea/HUD/VBoxContainer"]
-margin_top = 564.0
+[node name="floor" type="Button" parent="UI/SafeArea/HUD/VBoxContainer"]
+margin_top = 542.0
 margin_right = 110.0
-margin_bottom = 604.0
+margin_bottom = 582.0
 rect_min_size = Vector2( 70, 40 )
 toggle_mode = true
 text = "Floor"
@@ -150,8 +182,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="wall" type="Button" parent="UI/SafeArea/HUD/VBoxContainer"]
+margin_top = 586.0
+margin_right = 110.0
+margin_bottom = 626.0
+rect_min_size = Vector2( 70, 40 )
+toggle_mode = true
+text = "Wall"
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MarginContainer2" type="MarginContainer" parent="UI/SafeArea/HUD/VBoxContainer"]
-margin_top = 608.0
+margin_top = 630.0
 margin_right = 110.0
 margin_bottom = 1080.0
 size_flags_horizontal = 3
@@ -217,8 +261,9 @@ margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/PlaceMinerBtn" to="UI/SafeArea/HUD/VBoxContainer/PlaceMinerBtn" method="_on_PlaceMinerBtn_toggled"]
-[connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/PlaceSmelterBtn" to="UI/SafeArea/HUD/VBoxContainer/PlaceSmelterBtn" method="_on_PlaceSmelterBtn_toggled"]
-[connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/PlaceFloorBtn" to="UI/SafeArea/HUD/VBoxContainer/PlaceFloorBtn" method="_on_PlaceSmelterBtn_toggled"]
+[connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/miner" to="UI/SafeArea/HUD/VBoxContainer/miner" method="_on_PlaceSmelterBtn_toggled"]
+[connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/smelter" to="UI/SafeArea/HUD/VBoxContainer/smelter" method="_on_PlaceSmelterBtn_toggled"]
+[connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/floor" to="UI/SafeArea/HUD/VBoxContainer/floor" method="_on_PlaceSmelterBtn_toggled"]
+[connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/wall" to="UI/SafeArea/HUD/VBoxContainer/wall" method="_on_PlaceSmelterBtn_toggled"]
 [connection signal="pressed" from="UI/SafeArea/Confirm/VBoxContainer/Ok" to="UI/SafeArea/Confirm" method="_on_Ok_pressed"]
 [connection signal="pressed" from="UI/SafeArea/Confirm/VBoxContainer/Cancel" to="UI/SafeArea/Confirm" method="_on_Cancel_pressed"]

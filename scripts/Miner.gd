@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 		ui.rect_position = parent_pos
 
 func _unhandled_key_input(event: InputEventKey) -> void:
-	if event.scancode == KEY_E and not event.is_pressed() and ui.visible == true:
+	if event.scancode == KEY_R and not event.is_pressed() and ui.visible == true:
 		Events.emit_signal("OnPickup", "iron ore", cur_hold)
 		cur_hold = 0
 		

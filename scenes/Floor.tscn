@@ -1,4 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/Snapping.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Piece.gd" type="Script" id=2]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 5, 0.5, 5 )
@@ -11,6 +14,8 @@ extents = Vector3( 5, 0.75, 0.25 )
 
 [node name="Floor" type="StaticBody"]
 input_ray_pickable = false
+script = ExtResource( 2 )
+snap_association = [ [ "horizontal", "horizontal" ] ]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
@@ -23,32 +28,38 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 collision_layer = 4
 collision_mask = 4
+script = ExtResource( 1 )
+snap_name = "horizontal"
 
 [node name="CollisionShape" type="CollisionShape" parent="SnapZPos"]
 shape = SubResource( 3 )
 
 [node name="SnapZNeg" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -5 )
 collision_layer = 4
 collision_mask = 4
+script = ExtResource( 1 )
+snap_name = "horizontal"
 
 [node name="CollisionShape" type="CollisionShape" parent="SnapZNeg"]
 shape = SubResource( 3 )
 
 [node name="SnapXNeg" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 0 )
 collision_layer = 4
 collision_mask = 4
+script = ExtResource( 1 )
+snap_name = "horizontal"
 
 [node name="CollisionShape" type="CollisionShape" parent="SnapXNeg"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 3 )
 
 [node name="SnapXPos" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, 0 )
 collision_layer = 4
 collision_mask = 4
+script = ExtResource( 1 )
+snap_name = "horizontal"
 
 [node name="CollisionShape" type="CollisionShape" parent="SnapXPos"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 3 )
