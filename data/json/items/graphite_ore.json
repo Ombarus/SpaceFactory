@@ -1,0 +1,6 @@
+{
+    "name":"Graphite Ore",
+    "inventory": {
+        "max_stack":200
+    }
+}

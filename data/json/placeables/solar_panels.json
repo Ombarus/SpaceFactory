@@ -1,0 +1,18 @@
+{
+    "name":"Solar Panels",
+    "placeable": {
+        "__ref__":"data/json/refs/costs/miner_cost.json",
+        "surface":["placeable"]
+    },
+    "recipes":[
+        {
+            "input":[],
+            "output":[{"count":10, "name": "data/json/items/energy.json"}],
+            "processing_time_sec":2.0,
+            "energy_use":0.0
+        }
+    ],
+    "snap_association": [
+        ["anchor", "base"]
+    ]
+}

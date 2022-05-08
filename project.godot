@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Attributes",
+"language": "GDScript",
+"path": "res://scripts/Attributes.gd"
+}, {
 "base": "Spatial",
 "class": "Piece",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://scripts/Snapping.gd"
 } ]
 _global_script_class_icons={
+"Attributes": "",
 "Piece": "",
 "Snapping": ""
 }
@@ -33,6 +39,10 @@ config/icon="res://icon.png"
 [autoload]
 
 Events="*res://scripts/Autoload/Events.gd"
+Globals="*res://scripts/Autoload/Globals.gd"
+MersenneTwister="*res://scripts/Autoload/MersenneTwister.gd"
+PermSave="*res://scripts/Autoload/PermSave.gd"
+Preloader="*res://scripts/Autoload/Preloader.gd"
 
 [display]
 

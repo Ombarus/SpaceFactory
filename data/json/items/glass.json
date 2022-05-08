@@ -1,0 +1,6 @@
+{
+    "name":"Glass",
+    "inventory": {
+        "max_stack":200
+    }
+}

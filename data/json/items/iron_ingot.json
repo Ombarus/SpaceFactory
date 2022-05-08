@@ -1,0 +1,6 @@
+{
+    "name":"Iron Ingot",
+    "inventory": {
+        "max_stack":200
+    }
+}

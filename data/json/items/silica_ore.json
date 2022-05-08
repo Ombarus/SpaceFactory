@@ -1,0 +1,6 @@
+{
+    "name":"Silica Ore",
+    "inventory": {
+        "max_stack":200
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "name":"S-Type Asteroid",
+    "harvestable": {
+        "data/json/items/iron_ore.json":15,
+        "data/json/items/silica_ore.json":80,
+        "data/json/items/graphite_ore.json":5
+    },
+    "surface":"asteroid"
+}

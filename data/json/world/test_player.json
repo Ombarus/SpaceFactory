@@ -1,0 +1,14 @@
+{
+    "name":"player",
+    "player": {}
+    "recipes":[
+        {
+            "input":[],
+            "output":[{"count":10, "name": "data/json/items/energy.json"}],
+            "processing_time_sec":1.0,
+            "energy_use":0.0
+        }
+    ],
+    "max_inventory":5,
+    "havervester": {"item_per_second":0.5, "target":""}
+}

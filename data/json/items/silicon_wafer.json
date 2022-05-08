@@ -1,0 +1,6 @@
+{
+    "name":"Silicon Wafer",
+    "inventory": {
+        "max_stack":200
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "cost": [
+        {"count":4, "name":"data/json/items/iron_ingot.json"},
+        {"count":1, "name":"data/json/items/silicon_wafer.json"}
+    ]
+}

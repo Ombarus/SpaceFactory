@@ -1,0 +1,6 @@
+{
+    "name":"Iron Ore",
+    "inventory": {
+        "max_stack":200
+    }
+}
