@@ -1,42 +1,12 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://data/private/environment/skybox/panorama_image_hdr.exr" type="Texture" id=2]
-[ext_resource path="res://scripts/FPSPlayer.gd" type="Script" id=3]
-[ext_resource path="res://scripts/Player.gd" type="Script" id=4]
+[ext_resource path="res://scripts/Systems/LevelLoader.gd" type="Script" id=3]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/UI/ConfirmDiagHUD.gd" type="Script" id=6]
 [ext_resource path="res://scenes/sculpted_asteroid_01.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scripts/UI/PlaceItemBtn.gd" type="Script" id=9]
-
-[sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0.0313726, 0.921569, 1, 1 )
-emission_enabled = true
-emission = Color( 0.14, 1.55, 1.3, 1 )
-emission_energy = 1.0
-emission_operator = 0
-emission_on_uv2 = false
-
-[sub_resource type="CylinderMesh" id=4]
-material = SubResource( 3 )
-top_radius = 0.2
-bottom_radius = 0.2
-height = 1.0
-radial_segments = 9
-
-[sub_resource type="SpatialMaterial" id=5]
-emission_enabled = true
-emission = Color( 1.53, 0, 0, 1 )
-emission_energy = 2.12
-emission_operator = 0
-emission_on_uv2 = false
-
-[sub_resource type="SphereMesh" id=6]
-material = SubResource( 5 )
-
-[sub_resource type="CapsuleShape" id=7]
-radius = 0.1
-height = 0.2
 
 [sub_resource type="PanoramaSky" id=2]
 panorama = ExtResource( 2 )
@@ -56,7 +26,31 @@ glow_blend_mode = 0
 glow_hdr_threshold = 1.1
 glow_hdr_luminance_cap = 4.0
 
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.0313726, 0.921569, 1, 1 )
+emission_enabled = true
+emission = Color( 0.14, 1.55, 1.3, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="CylinderMesh" id=4]
+material = SubResource( 3 )
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.0
+radial_segments = 9
+
+[sub_resource type="CapsuleShape" id=7]
+radius = 0.1
+height = 0.2
+
 [node name="Main" type="Node"]
+
+[node name="Systems" type="Node" parent="."]
+
+[node name="LevelLoader" type="Node" parent="Systems"]
+script = ExtResource( 3 )
 
 [node name="Level" type="Spatial" parent="."]
 
@@ -66,12 +60,21 @@ transform = Transform( 0.973066, 0, -0.230525, 0, 1, 0, 0.230525, 0, 0.973066, -
 [node name="sculpted_asteroid_01" parent="Level" instance=ExtResource( 7 )]
 transform = Transform( 0.167096, 0, -0.985941, -0.27568, 0.960113, -0.0467218, 0.946615, 0.279611, 0.160431, 21.0589, 0, -13.2365 )
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Level"]
+environment = SubResource( 1 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Level/WorldEnvironment"]
+transform = Transform( 0.651628, 0.0484956, -0.756987, 0.1071, 0.982075, 0.155109, 0.75094, -0.182146, 0.634753, 0, 4.29697, 3.72167 )
+light_color = Color( 0.729412, 0.662745, 0.847059, 1 )
+light_energy = 4.069
+light_indirect_energy = 1.651
+light_specular = 2.326
+shadow_enabled = true
+shadow_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
 [node name="Dynamic" type="Spatial" parent="."]
 
 [node name="Player" parent="Dynamic" instance=ExtResource( 5 )]
-script = ExtResource( 4 )
-inv_line = NodePath("../../UI/SafeArea/HUD/HBoxContainer/Exemple")
-fps_player = NodePath("../FPSPlayer")
 
 [node name="Camera" type="Camera" parent="Dynamic/Player"]
 transform = Transform( 1, 0, 0, 0, 0.995401, 0.0957937, 0, -0.0957937, 0.995401, 0, 2.386, 5.018 )
@@ -84,22 +87,9 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0
 mesh = SubResource( 4 )
 material/0 = null
 
-[node name="s" type="MeshInstance" parent="Dynamic"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.88118 )
-visible = false
-mesh = SubResource( 6 )
-material/0 = null
-
-[node name="e" type="MeshInstance" parent="Dynamic"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.88118 )
-visible = false
-mesh = SubResource( 6 )
-material/0 = null
-
 [node name="FPSPlayer" type="KinematicBody" parent="Dynamic"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75522, 0, 0 )
-script = ExtResource( 3 )
-player_ship = NodePath("../Player")
+visible = false
 
 [node name="Camera" type="Camera" parent="Dynamic/FPSPlayer"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.132212, 0.193071 )
@@ -107,18 +97,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.132212, 0.193071 )
 [node name="CollisionShape" type="CollisionShape" parent="Dynamic/FPSPlayer"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 7 )
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
-
-[node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
-transform = Transform( 0.651628, 0.0484956, -0.756987, 0.1071, 0.982075, 0.155109, 0.75094, -0.182146, 0.634753, 0, 4.29697, 3.72167 )
-light_color = Color( 0.729412, 0.662745, 0.847059, 1 )
-light_energy = 4.069
-light_indirect_energy = 1.651
-light_specular = 2.326
-shadow_enabled = true
-shadow_color = Color( 0.196078, 0.196078, 0.196078, 1 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 

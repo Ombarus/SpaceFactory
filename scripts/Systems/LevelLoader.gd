@@ -1,6 +1,14 @@
 extends Node
 
-export var startLevel = "data/json/levels/start.json"
+var example_loaded_object = {
+	0: { # unique id handle
+		"src":"data/json/items/glass.json", # base_attributes, also serve as key in global cache
+		"inventory": { # override value in "src" (base_attribute)
+			"max_stack":200
+		}
+	}
+}
+var loaded_objects := {}
 
 func _ready():
 	Globals.LevelLoaderRef = self
@@ -14,7 +22,7 @@ func _ready():
 func _exit_tree():
 	Globals.LevelLoaderRef = null
 	
-func LoadJSON(filepath):
+func load_json(filepath):
 	var file = File.new()
 	if not "res://" in filepath and not "user://" in filepath:
 		filepath = "res://" + filepath
@@ -41,58 +49,68 @@ func LoadJSON(filepath):
 		Preloader.JsonCache[filepath] = data
 	return data
 	
-func LoadJSONArray(filepaths):
+func load_json_array(filepaths):
 	var res = []
 	if filepaths == null:
 		return res
 	for filepath in filepaths:
 		if not filepath.empty():
-			res.push_back(LoadJSON(filepath))
+			res.push_back(load_json(filepath))
 	return res
 	
 #######################################################
 # EVERY OBJECT SHOULD BE CREATED THROUGH HERE
 #######################################################
+func get_object_data(id : int) -> Dictionary:
+	return loaded_objects[id]
 
-func CreateAndInitNode(data, pos, modified_data = null):
-	var r = get_node("/root/Root/GameTiles")
-	var scene = Preloader.BaseObject
-	var n = scene.instance()
-	if data.has("name_id"):
-		var last = data["name_id"].split("/")
-		n.set_name(last[-1])
-	n.position = Tile_to_World(pos)
-	n.base_attributes = data
-	n.modified_attributes = {}
-	if modified_data != null:
-		# If I init objects with modified data in a loop and pass the same dictionnary
-		# it'll be shared between multiple objects. To avoid this, make sure I save a copy
-		# (see dropping food in ProcessHarvest())
-		n.modified_attributes = str2var(var2str(modified_data))
-	r.call_deferred("add_child", n)
-	levelTiles[ pos.x ][ pos.y ].push_back(n)
-	var obj_type = n.get_attrib("type")
-	if obj_type != null:
-		if not objByType.has(obj_type):
-			objByType[ obj_type ] = []
-		objByType[ obj_type ].push_back(n)
-		if obj_type == "wormhole" and not n.modified_attributes.has("depth"):
-			n.modified_attributes["depth"] = current_depth + 1
-	if not n.modified_attributes.has("unique_id"):
-		n.modified_attributes["unique_id"] = _sequence_id
-		_sequence_id += 1
-	objById[n.modified_attributes["unique_id"]] = n
-	if n.get_attrib("animation.waiting_moving") == true:
-		n.set_attrib("animation.waiting_moving", false)
-	if n.get_attrib("animation.in_movement") == true:
-		n.set_attrib("animation.in_movement", false)
-	BehaviorEvents.emit_signal("OnObjectLoaded", n)
-	if modified_data == null: # only count new stuff
-		var clean_path = Globals.clean_path(data["src"])
-		if not clean_path in _global_spawns:
-			_global_spawns[clean_path] = 0
-		_global_spawns[clean_path] += 1
-	return n
+func create_object_data(src_path : String, modified_attributes : Dictionary) -> int:
+	var new_id = Globals.unique_id
+	Globals.unique_id += 1
+	
+	loaded_objects[new_id] = str2var(var2str(modified_attributes))
+	loaded_objects[new_id]["src"] = src_path
+	return new_id
+
+#func CreateAndInitNode(data, pos, modified_data = null):
+#	var r = get_node("/root/Root/GameTiles")
+#	var scene = Preloader.BaseObject
+#	var n = scene.instance()
+#	if data.has("name_id"):
+#		var last = data["name_id"].split("/")
+#		n.set_name(last[-1])
+#	n.position = Tile_to_World(pos)
+#	n.base_attributes = data
+#	n.modified_attributes = {}
+#	if modified_data != null:
+#		# If I init objects with modified data in a loop and pass the same dictionnary
+#		# it'll be shared between multiple objects. To avoid this, make sure I save a copy
+#		# (see dropping food in ProcessHarvest())
+#		n.modified_attributes = str2var(var2str(modified_data))
+#	r.call_deferred("add_child", n)
+#	levelTiles[ pos.x ][ pos.y ].push_back(n)
+#	var obj_type = n.get_attrib("type")
+#	if obj_type != null:
+#		if not objByType.has(obj_type):
+#			objByType[ obj_type ] = []
+#		objByType[ obj_type ].push_back(n)
+#		if obj_type == "wormhole" and not n.modified_attributes.has("depth"):
+#			n.modified_attributes["depth"] = current_depth + 1
+#	if not n.modified_attributes.has("unique_id"):
+#		n.modified_attributes["unique_id"] = _sequence_id
+#		_sequence_id += 1
+#	objById[n.modified_attributes["unique_id"]] = n
+#	if n.get_attrib("animation.waiting_moving") == true:
+#		n.set_attrib("animation.waiting_moving", false)
+#	if n.get_attrib("animation.in_movement") == true:
+#		n.set_attrib("animation.in_movement", false)
+#	BehaviorEvents.emit_signal("OnObjectLoaded", n)
+#	if modified_data == null: # only count new stuff
+#		var clean_path = Globals.clean_path(data["src"])
+#		if not clean_path in _global_spawns:
+#			_global_spawns[clean_path] = 0
+#		_global_spawns[clean_path] += 1
+#	return n
 	
 #######################################################
 #######################################################

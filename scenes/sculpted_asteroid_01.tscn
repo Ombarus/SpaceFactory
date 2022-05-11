@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://data/ScupltedAsteroidCol01.tres" type="Shape" id=1]
 [ext_resource path="res://data/private/models/asteroid_01/asteroid_albedo_01.png" type="Texture" id=2]
 [ext_resource path="res://data/private/models/asteroid_01/asteroid_normal_01.png" type="Texture" id=3]
+[ext_resource path="res://scripts/Attributes.gd" type="Script" id=4]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "sculpted_asteroid_01_Cube"
@@ -26,6 +27,8 @@ normal_scale = 1.48
 normal_texture = ExtResource( 3 )
 
 [node name="sculpted_asteroid_01" type="StaticBody"]
+script = ExtResource( 4 )
+PreloadData = "res://data/json/world/silica_asteroid.json"
 
 [node name="Cube" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )
