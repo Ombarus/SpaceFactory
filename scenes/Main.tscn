@@ -3,6 +3,7 @@
 [ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://data/private/environment/skybox/panorama_image_hdr.exr" type="Texture" id=2]
 [ext_resource path="res://scripts/Systems/LevelLoader.gd" type="Script" id=3]
+[ext_resource path="res://scripts/Systems/PlayerControl.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/UI/ConfirmDiagHUD.gd" type="Script" id=6]
 [ext_resource path="res://scenes/sculpted_asteroid_01.tscn" type="PackedScene" id=7]
@@ -41,16 +42,15 @@ bottom_radius = 0.2
 height = 1.0
 radial_segments = 9
 
-[sub_resource type="CapsuleShape" id=7]
-radius = 0.1
-height = 0.2
-
 [node name="Main" type="Node"]
 
 [node name="Systems" type="Node" parent="."]
 
 [node name="LevelLoader" type="Node" parent="Systems"]
 script = ExtResource( 3 )
+
+[node name="PlayerControl" type="Node" parent="Systems"]
+script = ExtResource( 4 )
 
 [node name="Level" type="Spatial" parent="."]
 
@@ -86,17 +86,6 @@ far = 10000.0
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 4 )
 material/0 = null
-
-[node name="FPSPlayer" type="KinematicBody" parent="Dynamic"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75522, 0, 0 )
-visible = false
-
-[node name="Camera" type="Camera" parent="Dynamic/FPSPlayer"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.132212, 0.193071 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Dynamic/FPSPlayer"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-shape = SubResource( 7 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 

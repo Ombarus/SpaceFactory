@@ -9,6 +9,7 @@ var example_loaded_object = {
 	}
 }
 var loaded_objects := {}
+var loaded_visuals := {}
 
 func _ready():
 	Globals.LevelLoaderRef = self
@@ -63,13 +64,22 @@ func load_json_array(filepaths):
 #######################################################
 func get_object_data(id : int) -> Dictionary:
 	return loaded_objects[id]
+	
+func get_visual_from_data(data_id : int) -> Attributes:
+	var data = get_object_data(data_id)
+	return loaded_visuals[Globals.get_attrib(data, "visual.node_id")]
 
 func create_object_data(src_path : String, modified_attributes : Dictionary) -> int:
-	var new_id = Globals.unique_id
-	Globals.unique_id += 1
+	var new_id = Globals.get_unique_id()
 	
-	loaded_objects[new_id] = str2var(var2str(modified_attributes))
-	loaded_objects[new_id]["src"] = src_path
+	var modified_copy = str2var(var2str(modified_attributes))
+	modified_copy["src"] = src_path
+	modified_copy["id"] = new_id
+	loaded_objects[new_id] = modified_copy
+	var node_id = Globals.get_attrib(modified_copy, "visual.node_id", "")
+	if not node_id.is_empty():
+		loaded_visuals[node_id] = get_node(node_id)
+	Events.emit_signal("OnObjectCreated", loaded_objects[new_id])
 	return new_id
 
 #func CreateAndInitNode(data, pos, modified_data = null):

@@ -4,6 +4,11 @@ var LevelLoaderRef = null
 var unique_id = 0
 const _CHEAT_MODE = true
 
+func get_unique_id():
+	var id = unique_id
+	unique_id += 1
+	return id
+
 func get_attrib(modified_attributes : Dictionary, path : String, default=null):
 	var splices = path.split(".", false)
 	var base_attributes = Globals.LevelLoaderRef.load_json(modified_attributes["src"])
@@ -86,6 +91,10 @@ func set_attrib(modified_attributes : Dictionary, path : String, val) -> void:
 	
 	if typeof(val) == TYPE_VECTOR2:
 		val = {"__class":"Vector2", "value": var2str(val)}
+	elif typeof(val) == TYPE_VECTOR3:
+		val = {"__class":"Vector3", "value": var2str(val)}
+	elif typeof(val) == TYPE_TRANSFORM:
+		val = {"__class":"Transform", "value": var2str(val)}
 	elif not typeof(val) in [TYPE_NIL, TYPE_BOOL, TYPE_INT, TYPE_REAL, TYPE_STRING, TYPE_DICTIONARY, TYPE_ARRAY]:
 		print("warning: (", path,  " = ", val, ") trying to serialize an unknown type to JSON")
 	
