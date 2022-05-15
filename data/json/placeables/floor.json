@@ -2,7 +2,7 @@
     "name":"Floor",
     "placeable": {
         "__ref__":"data/json/refs/costs/floor_cost.json",
-        "surface":[]
+        "surfaces":[]
     },
     "surface":"floor",
     "snap_association": [

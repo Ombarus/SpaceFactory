@@ -47,6 +47,7 @@ func load_json(filepath):
 	
 	if data != null:
 		data["src"] = filepath
+		load_references(data)
 		Preloader.JsonCache[filepath] = data
 	return data
 	
@@ -58,6 +59,25 @@ func load_json_array(filepaths):
 		if not filepath.empty():
 			res.push_back(load_json(filepath))
 	return res
+	
+func load_references(json_data):
+	if typeof(json_data) == TYPE_DICTIONARY:
+		var key_to_delete = []
+		for key in json_data:
+			if "__ref__" in key:
+				var ref_data : Dictionary = load_json(json_data[key])
+				for ref_key in ref_data:
+					json_data[ref_key] = ref_data[ref_key]
+				key_to_delete.append(key)
+			elif typeof(json_data[key]) == TYPE_DICTIONARY or typeof(json_data[key]) == TYPE_ARRAY:
+				load_references(json_data[key])
+		for key in key_to_delete:
+			json_data.erase(key)
+	if typeof(json_data) == TYPE_ARRAY:
+		for val in json_data:
+			if typeof(val) == TYPE_DICTIONARY or typeof(val) == TYPE_ARRAY:
+				load_references(val)
+				
 	
 #######################################################
 # EVERY OBJECT SHOULD BE CREATED THROUGH HERE

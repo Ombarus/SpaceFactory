@@ -2,8 +2,8 @@
     "name":"Miner MK1",
     "placeable": {
         "__ref__":"data/json/refs/costs/miner_cost.json",
-        "surface":["asteroid"]
-    }
+        "surfaces":["asteroid"]
+    },
     "harvester": {"item_per_second":1.0, "target":""},
     "surface":"placeable"
 }

@@ -1,13 +1,22 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://data/private/environment/skybox/panorama_image_hdr.exr" type="Texture" id=2]
 [ext_resource path="res://scripts/Systems/LevelLoader.gd" type="Script" id=3]
 [ext_resource path="res://scripts/Systems/PlayerControl.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scripts/UI/ConfirmDiagHUD.gd" type="Script" id=6]
 [ext_resource path="res://scenes/sculpted_asteroid_01.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scripts/Systems/Camera.gd" type="Script" id=8]
 [ext_resource path="res://scripts/UI/PlaceItemBtn.gd" type="Script" id=9]
+[ext_resource path="res://scripts/CameraData.gd" type="Script" id=10]
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 10 )
+anchor_offset = Vector3( 0, 0, 0 )
+target_offset = Vector3( 0, 2.5, 5 )
+look_target = Vector3( 0, 5, -50 )
+rotation = Vector3( 0, 0, 0 )
+pitch_limit = Vector2( 0, 0 )
 
 [sub_resource type="PanoramaSky" id=2]
 panorama = ExtResource( 2 )
@@ -26,6 +35,8 @@ glow_bloom = 0.37
 glow_blend_mode = 0
 glow_hdr_threshold = 1.1
 glow_hdr_luminance_cap = 4.0
+adjustment_enabled = true
+adjustment_contrast = 1.22
 
 [sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0.0313726, 0.921569, 1, 1 )
@@ -42,6 +53,30 @@ bottom_radius = 0.2
 height = 1.0
 radial_segments = 9
 
+[sub_resource type="InputEventAction" id=6]
+action = "quick_bar_1"
+
+[sub_resource type="ShortCut" id=7]
+shortcut = SubResource( 6 )
+
+[sub_resource type="InputEventAction" id=8]
+action = "quick_bar_2"
+
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 8 )
+
+[sub_resource type="InputEventAction" id=10]
+action = "quick_bar_3"
+
+[sub_resource type="ShortCut" id=11]
+shortcut = SubResource( 10 )
+
+[sub_resource type="InputEventAction" id=12]
+action = "quick_bar_4"
+
+[sub_resource type="ShortCut" id=13]
+shortcut = SubResource( 12 )
+
 [node name="Main" type="Node"]
 
 [node name="Systems" type="Node" parent="."]
@@ -51,6 +86,18 @@ script = ExtResource( 3 )
 
 [node name="PlayerControl" type="Node" parent="Systems"]
 script = ExtResource( 4 )
+PlacingRoot = NodePath("../../Dynamic")
+
+[node name="Camera" type="Node" parent="Systems"]
+script = ExtResource( 8 )
+PlayerCamera = NodePath("../../Camera")
+CameraState = SubResource( 5 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.995401, 0.0957937, 0, -0.0957937, 0.995401, 0, 2.386, 5.018 )
+fov = 100.0
+near = 0.2
+far = 10000.0
 
 [node name="Level" type="Spatial" parent="."]
 
@@ -76,12 +123,6 @@ shadow_color = Color( 0.196078, 0.196078, 0.196078, 1 )
 
 [node name="Player" parent="Dynamic" instance=ExtResource( 5 )]
 
-[node name="Camera" type="Camera" parent="Dynamic/Player"]
-transform = Transform( 1, 0, 0, 0, 0.995401, 0.0957937, 0, -0.0957937, 0.995401, 0, 2.386, 5.018 )
-fov = 100.0
-near = 0.2
-far = 10000.0
-
 [node name="PlaceRay" type="MeshInstance" parent="Dynamic/Player"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 4 )
@@ -104,72 +145,78 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/SafeArea/HUD"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/SafeArea/HUD"]
+anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 34.0
-margin_right = 144.0
+margin_top = -56.0
+margin_bottom = -12.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/SafeArea/HUD/VBoxContainer"]
-margin_right = 110.0
-margin_bottom = 450.0
+[node name="MarginContainer" type="MarginContainer" parent="UI/SafeArea/HUD/HBoxContainer2"]
+margin_right = 806.0
+margin_bottom = 44.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="miner" type="Button" parent="UI/SafeArea/HUD/VBoxContainer"]
-margin_top = 454.0
-margin_right = 110.0
-margin_bottom = 494.0
+[node name="miner" type="Button" parent="UI/SafeArea/HUD/HBoxContainer2"]
+margin_left = 810.0
+margin_right = 880.0
+margin_bottom = 44.0
 rect_min_size = Vector2( 70, 40 )
 toggle_mode = true
-text = "Miner"
+shortcut = SubResource( 7 )
+text = "1. Miner"
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="smelter" type="Button" parent="UI/SafeArea/HUD/VBoxContainer"]
-margin_top = 498.0
-margin_right = 110.0
-margin_bottom = 538.0
+[node name="smelter" type="Button" parent="UI/SafeArea/HUD/HBoxContainer2"]
+margin_left = 884.0
+margin_right = 962.0
+margin_bottom = 44.0
 rect_min_size = Vector2( 70, 40 )
 toggle_mode = true
-text = "Smelter"
+shortcut = SubResource( 9 )
+text = "2. Smelter"
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="floor" type="Button" parent="UI/SafeArea/HUD/VBoxContainer"]
-margin_top = 542.0
-margin_right = 110.0
-margin_bottom = 582.0
+[node name="floor" type="Button" parent="UI/SafeArea/HUD/HBoxContainer2"]
+margin_left = 966.0
+margin_right = 1036.0
+margin_bottom = 44.0
 rect_min_size = Vector2( 70, 40 )
 toggle_mode = true
-text = "Floor"
+shortcut = SubResource( 11 )
+text = "3. Floor"
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="wall" type="Button" parent="UI/SafeArea/HUD/VBoxContainer"]
-margin_top = 586.0
-margin_right = 110.0
-margin_bottom = 626.0
+[node name="wall" type="Button" parent="UI/SafeArea/HUD/HBoxContainer2"]
+margin_left = 1040.0
+margin_right = 1110.0
+margin_bottom = 44.0
 rect_min_size = Vector2( 70, 40 )
 toggle_mode = true
-text = "Wall"
+shortcut = SubResource( 13 )
+text = "4. Wall"
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer2" type="MarginContainer" parent="UI/SafeArea/HUD/VBoxContainer"]
-margin_top = 630.0
-margin_right = 110.0
-margin_bottom = 1080.0
+[node name="MarginContainer2" type="MarginContainer" parent="UI/SafeArea/HUD/HBoxContainer2"]
+margin_left = 1114.0
+margin_right = 1920.0
+margin_bottom = 44.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -186,56 +233,7 @@ margin_right = 150.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 150, 0 )
 
-[node name="Confirm" type="Control" parent="UI/SafeArea"]
-visible = false
-anchor_bottom = 1.0
-margin_left = 32.0
-margin_right = 205.0
-rect_min_size = Vector2( 150, 0 )
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/SafeArea/Confirm"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/SafeArea/Confirm/VBoxContainer"]
-margin_right = 173.0
-margin_bottom = 484.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Ok" type="Button" parent="UI/SafeArea/Confirm/VBoxContainer"]
-margin_top = 488.0
-margin_right = 173.0
-margin_bottom = 538.0
-rect_min_size = Vector2( 0, 50 )
-text = "Ok"
-
-[node name="Cancel" type="Button" parent="UI/SafeArea/Confirm/VBoxContainer"]
-margin_top = 542.0
-margin_right = 173.0
-margin_bottom = 592.0
-rect_min_size = Vector2( 0, 50 )
-text = "Cancel"
-
-[node name="MarginContainer2" type="MarginContainer" parent="UI/SafeArea/Confirm/VBoxContainer"]
-margin_top = 596.0
-margin_right = 173.0
-margin_bottom = 1080.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/miner" to="UI/SafeArea/HUD/VBoxContainer/miner" method="_on_PlaceSmelterBtn_toggled"]
-[connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/smelter" to="UI/SafeArea/HUD/VBoxContainer/smelter" method="_on_PlaceSmelterBtn_toggled"]
-[connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/floor" to="UI/SafeArea/HUD/VBoxContainer/floor" method="_on_PlaceSmelterBtn_toggled"]
-[connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/wall" to="UI/SafeArea/HUD/VBoxContainer/wall" method="_on_PlaceSmelterBtn_toggled"]
-[connection signal="pressed" from="UI/SafeArea/Confirm/VBoxContainer/Ok" to="UI/SafeArea/Confirm" method="_on_Ok_pressed"]
-[connection signal="pressed" from="UI/SafeArea/Confirm/VBoxContainer/Cancel" to="UI/SafeArea/Confirm" method="_on_Cancel_pressed"]
+[connection signal="toggled" from="UI/SafeArea/HUD/HBoxContainer2/miner" to="UI/SafeArea/HUD/HBoxContainer2/miner" method="_on_PlaceSmelterBtn_toggled"]
+[connection signal="toggled" from="UI/SafeArea/HUD/HBoxContainer2/smelter" to="UI/SafeArea/HUD/HBoxContainer2/smelter" method="_on_PlaceSmelterBtn_toggled"]
+[connection signal="toggled" from="UI/SafeArea/HUD/HBoxContainer2/floor" to="UI/SafeArea/HUD/HBoxContainer2/floor" method="_on_PlaceSmelterBtn_toggled"]
+[connection signal="toggled" from="UI/SafeArea/HUD/HBoxContainer2/wall" to="UI/SafeArea/HUD/HBoxContainer2/wall" method="_on_PlaceSmelterBtn_toggled"]

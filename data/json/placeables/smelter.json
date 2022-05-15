@@ -2,7 +2,7 @@
     "name":"Smelter",
     "placeable": {
         "__ref__":"data/json/refs/costs/miner_cost.json",
-        "surface":["floor", "asteroid"]
+        "surfaces":["floor", "asteroid"]
     },
     "recipes":[
         {
