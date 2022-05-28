@@ -1,14 +1,17 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://data/private/environment/skybox/panorama_image_hdr.exr" type="Texture" id=2]
 [ext_resource path="res://scripts/Systems/LevelLoader.gd" type="Script" id=3]
 [ext_resource path="res://scripts/Systems/PlayerControl.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/Systems/Beam.gd" type="Script" id=6]
 [ext_resource path="res://scenes/sculpted_asteroid_01.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scripts/Systems/Camera.gd" type="Script" id=8]
 [ext_resource path="res://scripts/UI/PlaceItemBtn.gd" type="Script" id=9]
 [ext_resource path="res://scripts/CameraData.gd" type="Script" id=10]
+[ext_resource path="res://scenes/MiningLaser.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scripts/Systems/Harvester.gd" type="Script" id=12]
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 10 )
@@ -37,21 +40,6 @@ glow_hdr_threshold = 1.1
 glow_hdr_luminance_cap = 4.0
 adjustment_enabled = true
 adjustment_contrast = 1.22
-
-[sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0.0313726, 0.921569, 1, 1 )
-emission_enabled = true
-emission = Color( 0.14, 1.55, 1.3, 1 )
-emission_energy = 1.0
-emission_operator = 0
-emission_on_uv2 = false
-
-[sub_resource type="CylinderMesh" id=4]
-material = SubResource( 3 )
-top_radius = 0.2
-bottom_radius = 0.2
-height = 1.0
-radial_segments = 9
 
 [sub_resource type="InputEventAction" id=6]
 action = "quick_bar_1"
@@ -87,11 +75,19 @@ script = ExtResource( 3 )
 [node name="PlayerControl" type="Node" parent="Systems"]
 script = ExtResource( 4 )
 PlacingRoot = NodePath("../../Dynamic")
+HarvestBeam = NodePath("../../Dynamic/MiningLaser")
+InventoryLine = NodePath("../../UI/SafeArea/HUD/HBoxContainer/Exemple")
 
 [node name="Camera" type="Node" parent="Systems"]
 script = ExtResource( 8 )
 PlayerCamera = NodePath("../../Camera")
 CameraState = SubResource( 5 )
+
+[node name="Beam" type="Node" parent="Systems"]
+script = ExtResource( 6 )
+
+[node name="Harvester" type="Node" parent="Systems"]
+script = ExtResource( 12 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.995401, 0.0957937, 0, -0.0957937, 0.995401, 0, 2.386, 5.018 )
@@ -123,10 +119,8 @@ shadow_color = Color( 0.196078, 0.196078, 0.196078, 1 )
 
 [node name="Player" parent="Dynamic" instance=ExtResource( 5 )]
 
-[node name="PlaceRay" type="MeshInstance" parent="Dynamic/Player"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = null
+[node name="MiningLaser" parent="Dynamic" instance=ExtResource( 11 )]
+visible = false
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -141,6 +135,7 @@ __meta__ = {
 [node name="HUD" type="Control" parent="UI/SafeArea"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -1,9 +1,9 @@
 {
     "name":"G-Type Asteroid",
-    "harvestable": {
-        "data/json/items/iron_ore.json":10,
-        "data/json/items/silica_ore.json":10,
-        "data/json/items/graphite_ore.json":80
-    },
+    "harvestable": [
+        {"item":"data/json/items/iron_ore.json", "weight":10},
+        {"item":"data/json/items/silica_ore.json", "weight":10},
+        {"item":"data/json/items/graphite_ore.json", "weight":80}
+    ],
     "surface":"asteroid"
 }

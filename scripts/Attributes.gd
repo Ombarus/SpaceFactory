@@ -8,6 +8,9 @@ export(String, MULTILINE) var PreloadJSON = ""
 
 var attribute_ref := -1
 
+func is_valid() -> bool:
+	return attribute_ref >= 0
+
 # helper function to get modified_attributes
 func get_attrib(path : String, default=null):
 	return Globals.get_attrib(Globals.LevelLoaderRef.get_object_data(self.attribute_ref), path, default)
@@ -30,5 +33,3 @@ func _deferred_init():
 		"transform":self.global_transform
 	}
 	self.attribute_ref = Globals.LevelLoaderRef.create_object_data(PreloadData, modified_attributes)
-	var l = Globals.get_attrib(Globals.LevelLoaderRef.get_object_data(self.attribute_ref), "placeable", [])
-	print(name + " set attribute_ref " + str(self.attribute_ref))

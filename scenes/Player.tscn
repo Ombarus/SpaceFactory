@@ -17,3 +17,6 @@ PreloadData = "res://data/json/world/player_spaceship.json"
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.168188, 0.0814992 )
 shape = SubResource( 1 )
+
+[node name="FrontAnchor" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.49983 )

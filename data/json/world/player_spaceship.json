@@ -9,6 +9,5 @@
             "energy_use":0.0
         }
     ],
-    "max_inventory":5,
-    "havervester": {"item_per_second":0.5, "target":""}
+    "max_inventory":5
 }

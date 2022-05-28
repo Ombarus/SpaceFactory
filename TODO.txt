@@ -1,0 +1,24 @@
+0.0.1
+    - Fix/Improve context menu
+        - Generic way of displaying tooltips when close to objects
+            - Asteroid should show their composition
+            - Quick Pickup shortcut
+    - Building/Inventory Menu Mockup
+    - Implement building cost to build
+    - Implement crafting menu
+        - Implement manual crafting
+    - beautify harvester beam
+    - Fix building orientation on floors
+    - Improve look of buildings
+    - Implement power costs
+    - Implement proper HUD/GUI System (from SolarRogue)
+    
+    
+    
+DONE:
+    - Manual Harvest
+        - Laser beam on left click
+        - When asteroid hit, start collecting ressource
+    - Fix collecting resource from building
+        - New collector behavior
+        - Use json data to add to building inventory

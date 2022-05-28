@@ -1,0 +1,8 @@
+{
+    "name":"Mining Laser",
+    "harvester": {"item_per_second":0.5},
+    "connections": [],
+    "beam": {
+        "max_range":20.0
+    }
+}

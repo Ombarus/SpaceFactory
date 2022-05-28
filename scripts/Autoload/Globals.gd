@@ -4,6 +4,13 @@ var LevelLoaderRef = null
 var unique_id = 0
 const _CHEAT_MODE = true
 
+enum COLLISION_LAYERS {
+	WORLD = 1,
+	PLAYER = 2,
+	SNAP_POINTS = 4,
+	ALL = 2147483647
+}
+
 func get_unique_id():
 	var id = unique_id
 	unique_id += 1
