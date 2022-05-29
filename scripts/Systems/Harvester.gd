@@ -33,4 +33,4 @@ func _process(delta: float) -> void:
 				cur_inv[result] = min(cur_inv.get(result,0) + 1, max_stack)
 			obj.set_attrib("harvester.harvest_time", harvest_time)
 			break
-		obj.set_attrdib("inventory", cur_inv)
+		obj.set_attrib("inventory", cur_inv)

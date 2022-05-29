@@ -49,6 +49,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		harvest_beam_enable(true)
 	elif event.is_action_released("ui_accept"):
 		harvest_beam_enable(false)
+	elif event.is_action_released("context_menu"):
+		Events.emit_signal("OnPushGUI", "CraftDialog", {})
 
 func OnPlaceToggle_Callback(name : String) -> void:
 	placing_name = name

@@ -12,6 +12,9 @@
     - Improve look of buildings
     - Implement power costs
     - Implement proper HUD/GUI System (from SolarRogue)
+    - Start working on UI theme
+	- Standard Dialog window
+	- Theme Colors and Font
     
     
     
