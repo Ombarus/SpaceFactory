@@ -5,8 +5,14 @@ export(String, FILE, "*.json") var PreloadData = ""
 #TODO: hack to be able to modify modified_attributes in the editor. Apparently we can edit dictionnary in 3.1 so
 # this shouldn't be needed in 3.1
 export(String, MULTILINE) var PreloadJSON = ""
+export var do_cam := false
 
 var attribute_ref := -1
+
+func _process(delta: float) -> void:
+	if do_cam:
+		get_node("ViewportContainer/Viewport/MeshInstance").global_transform = get_node("Beam").global_transform
+		get_node("ViewportContainer/Viewport/Camera").global_transform = get_viewport().get_camera().global_transform
 
 func is_valid() -> bool:
 	return attribute_ref >= 0

@@ -1,7 +1,7 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=1]
-[ext_resource path="res://data/private/environment/skybox/panorama_image_hdr.exr" type="Texture" id=2]
+[ext_resource path="res://scenes/WorldEnvironment.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/Systems/LevelLoader.gd" type="Script" id=3]
 [ext_resource path="res://scripts/Systems/PlayerControl.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
@@ -22,26 +22,6 @@ target_offset = Vector3( 0, 2.5, 5 )
 look_target = Vector3( 0, 5, -50 )
 rotation = Vector3( 0, 0, 0 )
 pitch_limit = Vector2( 0, 0 )
-
-[sub_resource type="PanoramaSky" id=2]
-panorama = ExtResource( 2 )
-
-[sub_resource type="Environment" id=1]
-background_mode = 2
-background_sky = SubResource( 2 )
-ambient_light_color = Color( 0.623529, 0.623529, 0.623529, 1 )
-ambient_light_energy = 1.5
-ambient_light_sky_contribution = 0.82
-tonemap_mode = 3
-glow_enabled = true
-glow_intensity = 0.1
-glow_strength = 0.89
-glow_bloom = 0.37
-glow_blend_mode = 0
-glow_hdr_threshold = 1.1
-glow_hdr_luminance_cap = 4.0
-adjustment_enabled = true
-adjustment_contrast = 1.22
 
 [sub_resource type="InputEventAction" id=6]
 action = "quick_bar_1"
@@ -108,24 +88,15 @@ transform = Transform( 0.973066, 0, -0.230525, 0, 1, 0, 0.230525, 0, 0.973066, -
 [node name="sculpted_asteroid_01" parent="Level" instance=ExtResource( 7 )]
 transform = Transform( 0.167096, 0, -0.985941, -0.27568, 0.960113, -0.0467218, 0.946615, 0.279611, 0.160431, 21.0589, 0, -13.2365 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Level"]
-environment = SubResource( 1 )
-
-[node name="DirectionalLight" type="DirectionalLight" parent="Level/WorldEnvironment"]
-transform = Transform( 0.651628, 0.0484956, -0.756987, 0.1071, 0.982075, 0.155109, 0.75094, -0.182146, 0.634753, 0, 4.29697, 3.72167 )
-light_color = Color( 0.729412, 0.662745, 0.847059, 1 )
-light_energy = 4.069
-light_indirect_energy = 1.651
-light_specular = 2.326
-shadow_enabled = true
-shadow_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+[node name="WorldEnvironment" parent="Level" instance=ExtResource( 2 )]
 
 [node name="Dynamic" type="Spatial" parent="."]
 
 [node name="Player" parent="Dynamic" instance=ExtResource( 5 )]
 
 [node name="MiningLaser" parent="Dynamic" instance=ExtResource( 11 )]
-visible = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.17181 )
+do_cam = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
