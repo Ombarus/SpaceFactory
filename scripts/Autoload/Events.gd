@@ -1,10 +1,12 @@
 extends Node
 
 signal OnObjectCreated(data)
+signal OnQueueCrafting(crafter_data, recipe_data)
 
 signal OnPlaceToggle(name)
 signal OnDoPlacement()
 
+signal OnLockControl(locked)
 
 ### UI STUFF ###
 signal OnGUILoaded(name, obj)

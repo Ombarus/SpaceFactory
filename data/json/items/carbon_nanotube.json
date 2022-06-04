@@ -1,0 +1,6 @@
+{
+    "name":"Carbon Nanotube",
+    "inventory": {
+        "max_stack":200
+    }
+}

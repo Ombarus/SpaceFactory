@@ -12,6 +12,7 @@ func OnObjectCreated_Callback(data : Dictionary) -> void:
 func _physics_process(delta: float) -> void:
 	for obj in beam_objects:
 		if obj.visible == false:
+			obj.set_attrib("connections", [])
 			continue
 		
 		var originator_id = obj.get_attrib("beam.origin", null)

@@ -1,7 +1,8 @@
 extends Control
 
-export(bool) var Transition = false
+export(bool) var Transition := false
 export(NodePath) var VFXRoot = "."
+export(bool) var LockControls := false
 
 onready var _vfx_root = get_node(VFXRoot)
 
@@ -22,8 +23,10 @@ func Init(init_param):
 	
 # UIManager will call this when something else is pushed on top of this UI
 func OnFocusLost():
-	pass
+	if LockControls:
+		Events.emit_signal("OnLockControl", LockControls)
 	
 # UIManager will call this when whatever was on top of this UI is poped
 func OnFocusGained():
-	pass
+	if LockControls:
+		Events.emit_signal("OnLockControl", not LockControls)

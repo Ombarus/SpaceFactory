@@ -23,6 +23,9 @@ func get_attrib(path : String, default=null):
 
 func set_attrib(path : String, val) -> void:
 	Globals.set_attrib(Globals.LevelLoaderRef.get_object_data(self.attribute_ref), path, val)
+	
+func get_data() -> Dictionary:
+	return Globals.LevelLoaderRef.get_object_data(self.attribute_ref)
 
 func _ready():
 	if PreloadData == null or PreloadData.empty():

@@ -30,6 +30,9 @@ func OnGUILoaded_Callback(name, obj):
 	_gui_list[name] = obj
 	obj.visible = false
 	
+	# Default
+	if name == "HUD":
+		Events.emit_signal("OnPushGUI", name, {})
 	
 	
 func OnPushGUI_Callback(name, init_param, transition_name=""):
@@ -40,7 +43,6 @@ func OnPushGUI_Callback(name, init_param, transition_name=""):
 	if _stack.size() > 0:
 		_gui_list[_stack[-1]].call_deferred("OnFocusLost")
 	_stack.push_back(name)
-	Events.emit_signal("OnGUIChanged", _stack[-1])
 		
 	#print("visible true " + name)
 	_gui_list[name].visible = true

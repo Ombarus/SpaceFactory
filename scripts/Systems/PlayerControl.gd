@@ -5,6 +5,7 @@ var player_node : Attributes = null
 var placing_name := ""
 var cur_placing_distance := 15.0
 var placing_obj : Spatial = null
+var locked_controls : bool = false
 export(NodePath) var PlacingRoot : NodePath
 export(NodePath) var HarvestBeam : NodePath
 export(NodePath) var InventoryLine : NodePath
@@ -16,6 +17,10 @@ func _ready() -> void:
 	Events.connect("OnObjectCreated", self, "OnObjectCreated_Callback")
 	Events.connect("OnPlaceToggle", self, "OnPlaceToggle_Callback")
 	Events.connect("OnDoPlacement", self, "OnDoPlacement_Callback")
+	Events.connect("OnLockControl", self, "OnLockControl_Callback")
+	
+func OnLockControl_Callback(locked : bool) -> void:
+	locked_controls = locked
 	
 func OnObjectCreated_Callback(data : Dictionary) -> void:
 	if Globals.get_attrib(data, "player", null) != null:
@@ -42,7 +47,7 @@ func _input(event: InputEvent) -> void:
 		Events.emit_signal("OnPlaceToggle", "")
 		
 func _unhandled_input(event: InputEvent) -> void:
-	if placing_obj != null:
+	if placing_obj != null or locked_controls:
 		return
 		
 	if event.is_action_pressed("ui_accept"):
@@ -50,7 +55,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_released("ui_accept"):
 		harvest_beam_enable(false)
 	elif event.is_action_released("context_menu"):
-		Events.emit_signal("OnPushGUI", "CraftDialog", {})
+		Events.emit_signal("OnPushGUI", "CraftDialog", player_node.get_data())
 
 func OnPlaceToggle_Callback(name : String) -> void:
 	placing_name = name
@@ -79,7 +84,7 @@ func _process(delta: float) -> void:
 	if changed == true:
 		player_node.set_attrib("inventory", player_inv)
 		harvest_beam.set_attrib("inventory", beam_inv)
-		update_inventory_display()
+	update_inventory_display()
 		
 func update_inventory_display():
 	for n in get_tree().get_nodes_in_group("inventory"):
@@ -94,7 +99,7 @@ func update_inventory_display():
 		line.add_to_group("inventory")
 
 func _physics_process(delta: float) -> void:
-	if player_node == null:
+	if player_node == null or locked_controls:
 		return
 		
 	#if Input.is_mouse_button_pressed(1):

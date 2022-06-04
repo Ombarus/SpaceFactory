@@ -18,7 +18,9 @@ func get_unique_id():
 
 func get_attrib(modified_attributes : Dictionary, path : String, default=null):
 	var splices = path.split(".", false)
-	var base_attributes = Globals.LevelLoaderRef.load_json(modified_attributes["src"])
+	var base_attributes = {}
+	if "src" in modified_attributes:
+		base_attributes = Globals.LevelLoaderRef.load_json(modified_attributes["src"])
 	var sub = modified_attributes
 	for s in splices:
 		if sub.has(s):
