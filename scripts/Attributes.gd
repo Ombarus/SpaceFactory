@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 	if do_cam:
 		get_node("ViewportContainer/Viewport/MeshInstance").global_transform = get_node("Beam").global_transform
 		get_node("ViewportContainer/Viewport/Camera").global_transform = get_viewport().get_camera().global_transform
+		get_node("ViewportContainer").visible = self.visible
 
 func is_valid() -> bool:
 	return attribute_ref >= 0
@@ -32,6 +33,7 @@ func _ready():
 		return
 	
 	self.call_deferred("_deferred_init")
+	
 
 func _deferred_init():
 	var modified_attributes : Dictionary = {}

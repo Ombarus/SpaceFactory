@@ -131,13 +131,10 @@ material = SubResource( 15 )
 size = Vector2( 3, 3 )
 
 [sub_resource type="SpatialMaterial" id=17]
+flags_unshaded = true
+flags_disable_ambient_light = true
 params_blend_mode = 1
-albedo_color = Color( 0, 10, 0.05, 1 )
-emission_enabled = true
-emission = Color( 0, 1, 0, 1 )
-emission_energy = 3.69
-emission_operator = 1
-emission_on_uv2 = false
+albedo_color = Color( 0, 4.07, 0.05, 1 )
 
 [sub_resource type="PlaneMesh" id=18]
 material = SubResource( 17 )

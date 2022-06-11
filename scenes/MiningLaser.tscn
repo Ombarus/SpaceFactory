@@ -41,7 +41,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=23]
 shader = SubResource( 22 )
-shader_param/blur = 8.0
+shader_param/blur = 5.303
 
 [sub_resource type="Environment" id=30]
 background_mode = 1
@@ -58,7 +58,7 @@ albedo_color = Color( 0.0235294, 0.85098, 1, 1 )
 material = SubResource( 27 )
 top_radius = 2.0
 bottom_radius = 2.0
-height = 1.0
+height = 0.5
 radial_segments = 8
 rings = 1
 
@@ -82,7 +82,7 @@ void fragment() {
 
 [sub_resource type="Gradient" id=11]
 offsets = PoolRealArray( 0, 0.568507 )
-colors = PoolColorArray( 1, 0.991844, 0.701729, 1, 0, 0.43, 1.6, 1 )
+colors = PoolColorArray( 6.98, 7.06, 0.7, 1, 0, 0.53, 5, 1 )
 
 [sub_resource type="GradientTexture" id=12]
 gradient = SubResource( 11 )
@@ -200,7 +200,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="ViewportContainer"]
-size = Vector2( 480, 270 )
+size = Vector2( 1920, 1080 )
 own_world = true
 world = SubResource( 25 )
 handle_input_locally = false
