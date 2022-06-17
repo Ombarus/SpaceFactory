@@ -4,13 +4,6 @@ var attributes = null
 onready var inventory_list : ItemList = get_node("VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Inventory/InventoryList")
 onready var crafting_list : ItemList = get_node("VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Crafting/CraftingList")
 
-#TODO: Already seeing how this will get annoying everytime I tweak a name or add a new item type
-const name_to_json_path = {
-	"Glass":"data/json/items/glass.json",
-	"Iron Ingot":"data/json/items/iron_ingot.json",
-	"Silicon Wafer":"data/json/items/silicon_wafer.json",
-}
-
 func Init(init_param):
 	attributes = init_param
 	update_inventory()

@@ -27,6 +27,8 @@ Made with
 * [Godot Engine](https://godotengine.org/),
   [Krita](https://krita.org/)
 
+ Special Thanks
+ * [NekotoArts](https://www.youtube.com/channel/UCD7K_FECPHTF0z5okAVlh0g) Engine VFX Shader
 
 ## License
 

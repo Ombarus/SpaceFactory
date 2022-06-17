@@ -3,22 +3,22 @@
         - Generic way of displaying tooltips when close to objects
             - Asteroid should show their composition
             - Quick Pickup shortcut
-    - Building/Inventory Menu Mockup
+    - Implement power costs
     - Implement building cost to build
-    - Implement crafting menu
-        - Implement manual crafting
+    - Building/Inventory Menu Mockup
     - beautify harvester beam
     - Fix building orientation on floors
     - Improve look of buildings
-    - Implement power costs
     - Implement proper HUD/GUI System (from SolarRogue)
-    - Start working on UI theme
-	- Standard Dialog window
-	- Theme Colors and Font
+        - Start working on UI theme
+        - Standard Dialog window
+        - Theme Colors and Font
     
     
     
 DONE:
+    - Implement crafting menu
+        - Implement manual crafting
     - Manual Harvest
         - Laser beam on left click
         - When asteroid hit, start collecting ressource

@@ -87,7 +87,8 @@ func get_object_data(id : int) -> Dictionary:
 	
 func get_visual_from_data(data_id : int) -> Attributes:
 	var data = get_object_data(data_id)
-	return loaded_visuals[Globals.get_attrib(data, "visual.node_id")]
+	var visual = loaded_visuals.get(Globals.get_attrib(data, "visual.node_id"), null)
+	return visual
 
 func create_object_data(src_path : String, modified_attributes : Dictionary) -> int:
 	var new_id = Globals.get_unique_id()
@@ -101,7 +102,20 @@ func create_object_data(src_path : String, modified_attributes : Dictionary) -> 
 		loaded_visuals[node_id] = get_node(node_id)
 	Events.emit_signal("OnObjectCreated", loaded_objects[new_id])
 	return new_id
-
+	
+func destroy_object(id):
+	var data = get_object_data(id)
+	var visual = get_visual_from_data(id)
+	
+	Events.emit_signal("OnObjectDestroyed", data)
+	
+	if visual:
+		visual.visible = false
+		var node_id = Globals.get_attrib(data, "visual.node_id")
+		loaded_visuals[node_id].queue_free()
+		loaded_visuals.erase(node_id)
+		
+	loaded_objects.erase(id)
 #func CreateAndInitNode(data, pos, modified_data = null):
 #	var r = get_node("/root/Root/GameTiles")
 #	var scene = Preloader.BaseObject

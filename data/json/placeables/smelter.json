@@ -4,6 +4,7 @@
         "__ref__":"data/json/refs/costs/miner_cost.json",
         "surfaces":["floor", "asteroid"]
     },
+    "dialog_name":"SmelterDialog",
     "recipes":[
         {
             "input":[{"count":1, "name":"data/json/items/iron_ore.json"}],

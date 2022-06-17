@@ -10,6 +10,7 @@ export var do_cam := false
 var attribute_ref := -1
 
 func _process(delta: float) -> void:
+	# TODO: Move it out of Attributes!!
 	if do_cam:
 		get_node("ViewportContainer/Viewport/MeshInstance").global_transform = get_node("Beam").global_transform
 		get_node("ViewportContainer/Viewport/Camera").global_transform = get_viewport().get_camera().global_transform
@@ -44,3 +45,11 @@ func _deferred_init():
 		"transform":self.global_transform
 	}
 	self.attribute_ref = Globals.LevelLoaderRef.create_object_data(PreloadData, modified_attributes)
+
+
+func _on_UIInteraction_body_entered(body: Node) -> void:
+	Events.emit_signal("OnRegionEntered", get_data())
+
+
+func _on_UIInteraction_body_exited(body: Node) -> void:
+	Events.emit_signal("OnRegionLeft", get_data())

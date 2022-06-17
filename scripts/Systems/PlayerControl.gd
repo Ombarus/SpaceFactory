@@ -18,6 +18,17 @@ func _ready() -> void:
 	Events.connect("OnPlaceToggle", self, "OnPlaceToggle_Callback")
 	Events.connect("OnDoPlacement", self, "OnDoPlacement_Callback")
 	Events.connect("OnLockControl", self, "OnLockControl_Callback")
+	Events.connect("OnRegionEntered", self, "OnRegionEntered_Callback")
+	Events.connect("OnRegionLeft", self, "OnRegionLeft_Callback")
+	
+func OnRegionEntered_Callback(data : Dictionary) -> void:
+	player_node.set_attrib("current_context", data["id"])
+	
+# TODO: handle some sort of priority (in case multiple region overlap)
+func OnRegionLeft_Callback(data : Dictionary) -> void:
+	var current_context = player_node.get_attrib("current_context", -1)
+	if current_context == data["id"]:
+		player_node.set_attrib("current_context", -1)
 	
 func OnLockControl_Callback(locked : bool) -> void:
 	locked_controls = locked
@@ -55,13 +66,17 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_released("ui_accept"):
 		harvest_beam_enable(false)
 	elif event.is_action_released("context_menu"):
-		Events.emit_signal("OnPushGUI", "CraftDialog", player_node.get_data())
+		var current_context = player_node.get_attrib("current_context", -1)
+		var menu_name = "CraftDialog"
+		if current_context >= 0:
+			var data = Globals.LevelLoaderRef.get_object_data(current_context)
+			menu_name = Globals.get_attrib(data, "dialog_name", "CraftDialog")
+		Events.emit_signal("OnPushGUI", menu_name, player_node.get_data())
 
 func OnPlaceToggle_Callback(name : String) -> void:
 	placing_name = name
 	if placing_obj != null:
-		placing_obj.visible = false
-		placing_obj.queue_free()
+		Globals.LevelLoaderRef.destroy_object(placing_obj.attribute_ref)
 		placing_obj = null
 		
 func _process(delta: float) -> void:
@@ -100,6 +115,7 @@ func update_inventory_display():
 
 func _physics_process(delta: float) -> void:
 	if player_node == null or locked_controls:
+		last_mouse_pos = get_viewport().get_mouse_position()
 		return
 		
 	#if Input.is_mouse_button_pressed(1):
@@ -108,7 +124,7 @@ func _physics_process(delta: float) -> void:
 	var mouse_offset_y : float = last_mouse_pos.y - cur_mouse_pos.y
 	player_node.rotate(player_node.global_transform.basis.y.normalized(), mouse_offset_x / 100.0)
 	player_node.rotate(player_node.global_transform.basis.x.normalized(), mouse_offset_y / 100.0)
-	last_mouse_pos = get_viewport().get_mouse_position()
+	last_mouse_pos = cur_mouse_pos
 	
 	var roll = Input.get_action_strength("roll_left") - Input.get_action_strength("roll_right")
 	player_node.rotate(player_node.global_transform.basis.z.normalized(), roll / 50.0)
