@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/Attributes.gd" type="Script" id=1]
 
@@ -10,57 +10,6 @@ initial_velocity = 2.51
 
 [sub_resource type="PlaneMesh" id=4]
 size = Vector2( 0.1, 0.1 )
-
-[sub_resource type="Shader" id=28]
-code = "shader_type canvas_item;
-
-void fragment() {
-	vec4 c = textureLod(TEXTURE, UV, 1.0);
-	c.a = max(max(c.r, c.g), c.b);
-	COLOR = c;
-}"
-
-[sub_resource type="ShaderMaterial" id=29]
-shader = SubResource( 28 )
-
-[sub_resource type="Environment" id=24]
-background_mode = 1
-
-[sub_resource type="World" id=25]
-environment = SubResource( 24 )
-
-[sub_resource type="Shader" id=22]
-code = "shader_type canvas_item;
-
-uniform float blur = 7.0;
-
-void fragment() {
-	vec4 c = textureLod(SCREEN_TEXTURE, SCREEN_UV, blur);
-	COLOR = c;
-}"
-
-[sub_resource type="ShaderMaterial" id=23]
-shader = SubResource( 22 )
-shader_param/blur = 5.303
-
-[sub_resource type="Environment" id=30]
-background_mode = 1
-
-[sub_resource type="SpatialMaterial" id=27]
-flags_unshaded = true
-flags_no_depth_test = true
-flags_do_not_receive_shadows = true
-flags_disable_ambient_light = true
-params_cull_mode = 2
-albedo_color = Color( 0.0235294, 0.85098, 1, 1 )
-
-[sub_resource type="CylinderMesh" id=26]
-material = SubResource( 27 )
-top_radius = 2.0
-bottom_radius = 2.0
-height = 0.5
-radial_segments = 8
-rings = 1
 
 [sub_resource type="Shader" id=7]
 code = "shader_type spatial;
@@ -189,43 +138,6 @@ lifetime = 0.2
 process_material = SubResource( 3 )
 draw_pass_1 = SubResource( 4 )
 
-[node name="ViewportContainer" type="ViewportContainer" parent="."]
-material = SubResource( 29 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-stretch = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Viewport" type="Viewport" parent="ViewportContainer"]
-size = Vector2( 1920, 1080 )
-own_world = true
-world = SubResource( 25 )
-handle_input_locally = false
-keep_3d_linear = true
-render_target_update_mode = 3
-gui_disable_input = true
-
-[node name="ColorRect" type="ColorRect" parent="ViewportContainer/Viewport"]
-material = SubResource( 23 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 40.0
-margin_bottom = 40.0
-
-[node name="Camera" type="Camera" parent="ViewportContainer/Viewport"]
-transform = Transform( 1, 0, 0, 0, 0.914635, 0.40428, 0, -0.40428, 0.914635, -0.0995102, 2.55621, 4.78019 )
-cull_mask = 2
-environment = SubResource( 30 )
-current = true
-
-[node name="MeshInstance" type="MeshInstance" parent="ViewportContainer/Viewport"]
-layers = 2
-mesh = SubResource( 26 )
-material/0 = null
-
 [node name="Beam" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-07, -1, 0, 10, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 1 )
@@ -239,7 +151,6 @@ process_material = SubResource( 13 )
 draw_pass_1 = SubResource( 14 )
 
 [node name="red_intermittent_beam" type="MeshInstance" parent="Beam"]
-visible = false
 mesh = SubResource( 16 )
 material/0 = SubResource( 18 )
 

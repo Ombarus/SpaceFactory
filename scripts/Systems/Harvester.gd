@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 		if connections.empty():
 			Globals.set_attrib(data, "harvester.harvest_time", 0)
 			continue
-		var cur_inv = Globals.get_attrib(data, "inventory", {})
+		var inventory := InventoryUtil.new(data)
 		#NOTE: This will bork if there is more than one connection that's harvestable
 		for connected_id in connections:
 			var connected_obj : Dictionary = Globals.LevelLoaderRef.get_object_data(connected_id)
@@ -34,9 +34,6 @@ func _process(delta: float) -> void:
 			while harvest_time > seconds_per_item:
 				harvest_time -= seconds_per_item
 				var result : String = MersenneTwister.rand_weight(harvestable_data, "item", "weight")
-				var output_data : Dictionary = Globals.LevelLoaderRef.load_json(result)
-				var max_stack = Globals.get_attrib(output_data, "inventory.max_stack")
-				cur_inv[result] = min(cur_inv.get(result,0) + 1, max_stack)
+				inventory.add(result, 1)
 			Globals.set_attrib(data, "harvester.harvest_time", harvest_time)
 			break
-		Globals.set_attrib(data, "inventory", cur_inv)

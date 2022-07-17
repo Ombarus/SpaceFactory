@@ -15,6 +15,47 @@ func get_unique_id():
 	var id = unique_id
 	unique_id += 1
 	return id
+	
+func get_keys(modified_attributes : Dictionary, base_path : String) -> Array:
+	var splices = base_path.split(".", false)
+	var sub = modified_attributes
+	var default := []
+	for s in splices:
+		if sub.has(s):
+			sub = sub[s]
+			if typeof(sub) == TYPE_DICTIONARY and sub.has("disabled") and sub["disabled"] == true:
+				return default
+		else:
+			sub = null
+			break
+	var mod_keys = []
+	if typeof(sub) == TYPE_DICTIONARY:
+		mod_keys = sub.keys()
+	
+	sub = {}
+	if "src" in modified_attributes:
+		sub = Globals.LevelLoaderRef.load_json(modified_attributes["src"])
+	for s in splices:
+		if sub.has(s):
+			sub = sub[s]
+		else:
+			sub = null
+			break
+	var base_keys = []
+	if typeof(sub) == TYPE_DICTIONARY:
+		base_keys = sub.keys()
+		
+	# Can't find a better way to merge the two key list into a unique key list
+	var merge_dict := {}
+	for k in mod_keys:
+		merge_dict[k] = "h"
+		
+	for k in base_keys:
+		merge_dict[k] = "h"
+		
+	return merge_dict.keys()
+		
+	
 
 func get_attrib(modified_attributes : Dictionary, path : String, default=null):
 	var splices = path.split(".", false)

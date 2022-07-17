@@ -233,7 +233,6 @@ material/0 = null
 [node name="MiningLaser" parent="Dynamic" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.17181 )
 visible = false
-do_cam = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -371,8 +370,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="CraftDialog" parent="UI/SafeArea" instance=ExtResource( 14 )]
+visible = false
 
 [node name="SmelterDialog" parent="UI/SafeArea" instance=ExtResource( 17 )]
+visible = false
 
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/miner" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/miner" method="_on_PlaceSmelterBtn_toggled"]
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/smelter" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/smelter" method="_on_PlaceSmelterBtn_toggled"]

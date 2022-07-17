@@ -5,15 +5,18 @@ onready var inventory_list : ItemList = get_node("VBoxContainer/HBoxContainer/Th
 onready var crafting_list : ItemList = get_node("VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Crafting/CraftingList")
 
 func Init(init_param):
-	attributes = init_param
+	attributes = init_param["player_data"]
 	update_inventory()
 	update_crafting_list()
 	
 func update_inventory():
 	inventory_list.clear()
-	var inventory : Dictionary = Globals.get_attrib(attributes, "inventory", {})
-	for item_path in inventory:
-		var count = inventory[item_path]
+	var keys : Array = Globals.get_keys(attributes, "inventory_slots")
+	for key in keys:
+		var item_path : String = Globals.get_attrib(attributes, "inventory_slots.%s.content" % str(key))
+		if item_path.empty():
+			continue
+		var count : int = Globals.get_attrib(attributes, "inventory_slots.%s.count" % str(key))
 		var inventory_data = Globals.LevelLoaderRef.load_json(item_path)
 		inventory_list.add_item(Globals.get_attrib(inventory_data, "name") + " : " + str(count))
 	

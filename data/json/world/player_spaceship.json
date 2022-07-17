@@ -35,8 +35,16 @@
             "energy_use":5.0
         }
     ],
-    "inventory": {
-        "data/json/items/iron_ingot.json":10
-    },
-    "max_inventory":5
+    "inventory_slots": {
+        "0": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
+        "1": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
+        "2": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
+        "3": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
+        "4": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
+        "5": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
+        "6": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
+        "7": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
+        "8": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
+        "9": {"__ref__":"data/json/refs/inventory/solid_storage.json"}
+    }
 }

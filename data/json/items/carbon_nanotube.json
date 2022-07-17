@@ -1,6 +1,6 @@
 {
     "name":"Carbon Nanotube",
     "inventory": {
-        "max_stack":200
+        "__ref__":"data/json/refs/inventory/tier1_solid_properties.json"
     }
 }

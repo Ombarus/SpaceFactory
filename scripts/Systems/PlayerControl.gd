@@ -68,10 +68,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_released("context_menu"):
 		var current_context = player_node.get_attrib("current_context", -1)
 		var menu_name = "CraftDialog"
+		var data = null
 		if current_context >= 0:
-			var data = Globals.LevelLoaderRef.get_object_data(current_context)
+			data = Globals.LevelLoaderRef.get_object_data(current_context)
 			menu_name = Globals.get_attrib(data, "dialog_name", "CraftDialog")
-		Events.emit_signal("OnPushGUI", menu_name, player_node.get_data())
+		Events.emit_signal("OnPushGUI", menu_name, {"player_data": player_node.get_data(), "building_data":data})
 
 func OnPlaceToggle_Callback(name : String) -> void:
 	placing_name = name
@@ -83,34 +84,36 @@ func _process(delta: float) -> void:
 	if player_node == null and harvest_beam.is_valid():
 		return
 		
-	var beam_inv : Dictionary = harvest_beam.get_attrib("inventory", {})
-	var player_inv : Dictionary = player_node.get_attrib("inventory", {})
+	var beam_inv := InventoryUtil.new(harvest_beam.get_data())
+	var player_inv := InventoryUtil.new(player_node.get_data())
 	var changed := false
-	for item_path in beam_inv:
-		if beam_inv[item_path] <= 0:
+	var keys : Array = Globals.get_keys(harvest_beam.get_data(), "inventory_slots")
+	for key in keys:
+		var take_name : String = harvest_beam.get_attrib("inventory_slots.%s.content" % str(key))
+		var take_count : int = harvest_beam.get_attrib("inventory_slots.%s.count" % str(key))
+		if take_name.empty() or take_count <= 0:
 			continue
-		var data : Dictionary = Globals.LevelLoaderRef.load_json(item_path)
-		var max_stack = Globals.get_attrib(data, "inventory.max_stack")
-		var take = min(beam_inv[item_path], max_stack - player_inv.get(item_path, 0))
-		if take > 0:
-			changed = true
-		player_inv[item_path] = player_inv.get(item_path, 0) + take
-		beam_inv[item_path] -= take
-	if changed == true:
-		player_node.set_attrib("inventory", player_inv)
-		harvest_beam.set_attrib("inventory", beam_inv)
-	update_inventory_display()
+		player_inv.add(take_name, take_count)
+		beam_inv.substract(take_name, take_count)
+		changed = true
+	if changed:
+		update_inventory_display()
 		
 func update_inventory_display():
+	#TODO: update display when crafting finishes
 	for n in get_tree().get_nodes_in_group("inventory"):
 		n.queue_free()
-	var player_inv : Dictionary = player_node.get_attrib("inventory", {})
-	for key in player_inv:
+	var keys : Array = Globals.get_keys(player_node.get_data(), "inventory_slots")
+	for key in keys:
+		var item_path : String = player_node.get_attrib("inventory_slots.%s.content" % str(key))
+		if item_path.empty():
+			continue
 		var line = inventory_line.duplicate()
 		inventory_line.get_parent().add_child(line)
 		line.visible = true
-		var data : Dictionary = Globals.LevelLoaderRef.load_json(key)
-		line.text = Globals.get_attrib(data, "name") + " : " + str(player_inv[key])
+		var item_count : int = player_node.get_attrib("inventory_slots.%s.count" % str(key))
+		var data : Dictionary = Globals.LevelLoaderRef.load_json(item_path)
+		line.text = Globals.get_attrib(data, "name") + " : " + str(item_count)
 		line.add_to_group("inventory")
 
 func _physics_process(delta: float) -> void:

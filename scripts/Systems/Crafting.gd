@@ -11,11 +11,11 @@ func _ready() -> void:
 func OnQueueCrafting_Callback(crafter_data, recipe_data):
 	# TODO: eventually check if we have enough resource to *make*
 	# the missing resources then queue those before
-	if not HasEnoughResource(crafter_data, recipe_data):
+	var inventory := InventoryUtil.new(crafter_data)
+	if not HasEnoughResource(inventory, recipe_data):
 		return
 		
 	var crafting_queue : Array = crafter_data.get("crafting_queue", [])
-	var inventory : Dictionary = Globals.get_attrib(crafter_data, "inventory", {})
 	var input_list : Array = recipe_data.get("input")
 	var crafting_queue_data = {
 		"recipe": recipe_data,
@@ -24,16 +24,14 @@ func OnQueueCrafting_Callback(crafter_data, recipe_data):
 	for input_detail in input_list:
 		var input_name : String = input_detail.get("name")
 		var input_count : int = input_detail.get("count")
-		inventory[input_name] -= input_count
+		inventory.substract(input_name, input_count)
 	crafting_queue.push_back(crafting_queue_data)
 	Globals.set_attrib(crafter_data, "crafting_queue", crafting_queue)
-	Globals.set_attrib(crafter_data, "inventory", inventory)
 	queued_attributes[crafter_data.get("id")] = crafter_data
 	
-func HasEnoughResource(crafter_data, recipe_data):
-	#TODO: add an option to check if we have enough *derived(?)*
-	# resources to craft the missing requirements
-	var inventory : Dictionary = Globals.get_attrib(crafter_data, "inventory", {})
+func HasEnoughResource(inventory, recipe_data):
+	#TODO: add an option to check if we have enough *base(?)*
+	# resources to craft the missing intermediate requirements
 	var input_list : Array = recipe_data.get("input")
 	if input_list.empty():
 		return true
@@ -41,7 +39,7 @@ func HasEnoughResource(crafter_data, recipe_data):
 	for input_detail in input_list:
 		var input_name : String = input_detail.get("name")
 		var input_count : int = input_detail.get("count")
-		var inventory_count : int = inventory.get(input_name, 0)
+		var inventory_count : int = inventory.total(input_name)
 		if input_count > inventory_count:
 			return false
 		
@@ -53,13 +51,13 @@ func _process(delta: float) -> void:
 		var time_to_consume = delta
 		var crafter_data : Dictionary = queued_attributes[id]
 		var crafting_queue : Array = crafter_data.get("crafting_queue", [])
+		var inventory := InventoryUtil.new(crafter_data)
 		while time_to_consume > 0:
 			if crafting_queue.empty():
 				to_remove.push_back(id)
 				time_to_consume = 0
 				continue
 			var crafting_data : Dictionary = crafting_queue[0]
-			var inventory : Dictionary = crafter_data.get("inventory", {})
 			var current_time : float = crafting_data.get("process_time", 0)
 			var processing_time : float = Globals.get_attrib(crafting_data, "recipe.processing_time_sec")
 			var time_remaining : float = min(processing_time - current_time, time_to_consume)
@@ -73,9 +71,9 @@ func _process(delta: float) -> void:
 					var item_count = output_detail.get("count")
 					var item_path = output_detail.get("name")
 					print("added " + item_path)
-					inventory[item_path] = inventory.get(item_path, 0) + item_count
+					#TODO: check inventory limits
+					inventory.add(item_path, item_count)
 				crafting_queue.remove(0)
-			Globals.set_attrib(crafter_data, "inventory", inventory)
 				
 		
 		#TODO: Implement energy
