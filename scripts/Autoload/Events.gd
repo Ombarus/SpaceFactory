@@ -3,6 +3,8 @@ extends Node
 signal OnObjectCreated(data)
 signal OnObjectDestroyed(data)
 signal OnQueueCrafting(crafter_data, recipe_data)
+# !!Perf warning!! Thousands of objects will eventually use this to mark their inventory "dirty"
+signal OnInventoryChanged(data)
 
 signal OnPlaceToggle(name)
 signal OnDoPlacement()

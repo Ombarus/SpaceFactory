@@ -96,7 +96,7 @@ func _process(delta: float) -> void:
 		player_inv.add(take_name, take_count)
 		beam_inv.substract(take_name, take_count)
 		changed = true
-	if changed:
+	if changed or player_node.get_attrib("inventory_dirty", false) == true:
 		update_inventory_display()
 		
 func update_inventory_display():

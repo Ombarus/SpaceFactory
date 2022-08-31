@@ -6,6 +6,7 @@ func _ready() -> void:
 	Events.connect("OnQueueCrafting", self, "OnQueueCrafting_Callback")
 	#TODO: When an object load, check if it has a crafting queue already
 	
+	
 # TODO: maybe add an optional callback with crafting results?
 # QUEUED, FAILED, COMPLETED?
 func OnQueueCrafting_Callback(crafter_data, recipe_data):

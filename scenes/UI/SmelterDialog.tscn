@@ -131,3 +131,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/Button" to="." method="_on_Button_pressed"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/VBoxContainer3/InputInventory" to="." method="_on_InputInventory_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/VBoxContainer2/RecipeList" to="." method="_on_RecipeList_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/VBoxContainer/OutputInventory" to="." method="_on_OutputInventory_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/VBoxContainer4/PlayerInventory" to="." method="_on_PlayerInventory_item_selected"]

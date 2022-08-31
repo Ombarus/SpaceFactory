@@ -4,10 +4,18 @@ var attributes = null
 onready var inventory_list : ItemList = get_node("VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Inventory/InventoryList")
 onready var crafting_list : ItemList = get_node("VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Crafting/CraftingList")
 
+func _ready() -> void:
+	self.set_process(false)
+
 func Init(init_param):
 	attributes = init_param["player_data"]
 	update_inventory()
 	update_crafting_list()
+	self.set_process(true)
+	
+func _process(delta: float) -> void:
+	if Globals.get_attrib(attributes, "inventory_dirty", false) == true:
+		update_inventory()
 	
 func update_inventory():
 	inventory_list.clear()
@@ -36,9 +44,8 @@ func update_crafting_list():
 		crafting_list.add_item(recipe_name)
 		crafting_list.set_item_metadata(crafting_list.get_item_count()-1, count)
 		
-		
-
 func _on_Button_pressed() -> void:
+	self.set_process(false)
 	Events.emit_signal("OnPopGUI")
 
 func _on_CraftingList_item_selected(index: int) -> void:

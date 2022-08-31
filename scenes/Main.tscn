@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/WorldEnvironment.tscn" type="PackedScene" id=2]
@@ -17,6 +17,9 @@
 [ext_resource path="res://scripts/UI/DialogBase.gd" type="Script" id=15]
 [ext_resource path="res://scripts/Systems/Crafting.gd" type="Script" id=16]
 [ext_resource path="res://scenes/UI/SmelterDialog.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scripts/Systems/ProductionBuilding.gd" type="Script" id=18]
+[ext_resource path="res://scenes/UI/HarvesterDialog.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scripts/Systems/DirtyReset.gd" type="Script" id=20]
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 10 )
@@ -194,6 +197,12 @@ script = ExtResource( 13 )
 
 [node name="Crafting" type="Node" parent="Systems"]
 script = ExtResource( 16 )
+
+[node name="ProductionBuilding" type="Node" parent="Systems"]
+script = ExtResource( 18 )
+
+[node name="DirtyReset" type="Node" parent="Systems"]
+script = ExtResource( 20 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.995401, 0.0957937, 0, -0.0957937, 0.995401, 0, 2.386, 5.018 )
@@ -373,6 +382,9 @@ size_flags_vertical = 3
 visible = false
 
 [node name="SmelterDialog" parent="UI/SafeArea" instance=ExtResource( 17 )]
+visible = false
+
+[node name="HarvesterDialog" parent="UI/SafeArea" instance=ExtResource( 19 )]
 visible = false
 
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/miner" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/miner" method="_on_PlaceSmelterBtn_toggled"]

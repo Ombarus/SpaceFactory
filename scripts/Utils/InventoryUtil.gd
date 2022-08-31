@@ -31,6 +31,7 @@ func substract(item_path : String, number : int) -> int:
 			left_to_substract -= substracted
 			if left_to_substract == 0:
 				break
+	Events.emit_signal("OnInventoryChanged", _attributes)
 	return left_to_substract
 
 # return remainder if we don't have space in the inventory
@@ -59,4 +60,5 @@ func add(item_path: String, number : int) -> int:
 			left_to_add -= to_add
 			if left_to_add == 0:
 				break
+	Events.emit_signal("OnInventoryChanged", _attributes)
 	return left_to_add

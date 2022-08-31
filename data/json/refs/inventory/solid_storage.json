@@ -1,5 +1,7 @@
 {
     "content":"", 
-    "allowed":["solid"], 
+    "allowed":{
+        "default": ["solid"]
+    },
     "count":0
 }

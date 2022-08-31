@@ -1,5 +1,6 @@
 {
     "name":"Smelter",
+    "system": ["ProductionBuilding"],
     "placeable": {
         "__ref__":"data/json/refs/costs/miner_cost.json",
         "surfaces":["floor", "asteroid"]
@@ -13,9 +14,8 @@
             "energy_use":10.0
         },
         {
-            "input":[{"count":5, "name":"data/json/items/silica_ore.json"}],
+            "input":[{"count":2, "name":"data/json/items/silica_ore.json"}],
             "output":[
-                {"count":2, "name": "data/json/items/silicon_wafer.json"},
                 {"count":3, "name": "data/json/items/glass.json"}
             ],
             "processing_time_sec":2.0,
@@ -26,5 +26,9 @@
         ["center", "base"],
         ["horizontal", "base"]
     ],
-    "surface":"placeable"
+    "surface":"placeable",
+    "inventory_slots": {
+        "output": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
+        "input": {"__ref__":"data/json/refs/inventory/solid_storage.json"}
+    }
 }

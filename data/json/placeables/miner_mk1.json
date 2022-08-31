@@ -4,7 +4,13 @@
         "__ref__":"data/json/refs/costs/miner_cost.json",
         "surfaces":["asteroid"]
     },
+    "dialog_name":"HarvesterDialog",
     "harvester": {"item_per_second":1.0},
     "connections": [],
-    "surface":"placeable"
+    "surface":"placeable",
+    "inventory_slots": {
+        "output1": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
+        "output2": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
+        "output3": {"__ref__":"data/json/refs/inventory/solid_storage.json"}
+    }
 }
