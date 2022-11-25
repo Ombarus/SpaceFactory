@@ -42,10 +42,11 @@ func OnObjectCreated_Callback(data : Dictionary) -> void:
 			Globals.set_attrib(data, "beam.origin", player_node.get_attrib("id"))
 		
 func OnDoPlacement_Callback() -> void:
-	if placing_obj != null:
+	if placing_obj != null and validate_cost(placing_obj, true):
 		toggle_collider(placing_obj, false)
 		placing_obj = null
 		placing_name = ""
+			
 
 func _input(event: InputEvent) -> void:
 	if placing_obj == null:
@@ -152,6 +153,7 @@ func do_placement():
 			placing_obj = Preloader.BuildingList[placing_name].instance()
 			placing_root.add_child(placing_obj)
 			toggle_collider(placing_obj, true)
+			return # give it a frame to init properly
 		placing_obj.visible = true
 		
 		var space_state : PhysicsDirectSpaceState = player_node.get_world().direct_space_state
@@ -200,8 +202,15 @@ func do_placement():
 			placing_obj.visible = false
 			
 		var l = (end_point - start_point).length()
-		#place_ray.scale.y = l
-		#place_ray.translation.z = -2.0 -l/2.0
+		
+	if placing_obj != null:
+		var invalid_visual : Spatial = placing_obj.find_node("Invalid")
+		if invalid_visual != null:
+			if validate_cost(placing_obj):
+				invalid_visual.visible = false
+			else:
+				invalid_visual.visible = true
+		
 
 
 func toggle_collider(obj : Node, disabled : bool) -> void:
@@ -238,6 +247,25 @@ func validate_surface(placing_on : Attributes, placing_obj : Attributes) -> bool
 	var placing_on_surface_name : String = placing_on.get_attrib("surface", "")
 	var placing_valid_surfaces : Array = placing_obj.get_attrib("placeable.surfaces", [])
 	return placing_valid_surfaces.empty() or placing_on_surface_name in placing_valid_surfaces
+	
+func validate_cost(placing_obj : Attributes, consume := false) -> bool:
+	var player_inv := InventoryUtil.new(player_node.get_data())
+	var cost_list : Array = placing_obj.get_attrib("placeable.cost", [])
+	var has_mat := true
+	for item_data in cost_list:
+		var item_path : String = item_data.get("name")
+		var item_count : int = item_data.get("count")
+		if player_inv.total(item_path) < item_count:
+			has_mat = false
+			break
+	if has_mat and consume:
+		for item_data in cost_list:
+			var item_path : String = item_data.get("name")
+			var item_count : int = item_data.get("count")
+			player_inv.substract(item_path, item_count)
+		
+	return has_mat
+
 
 func harvest_beam_enable(is_enabled : bool) -> void:
 	harvest_beam.visible = is_enabled

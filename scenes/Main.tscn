@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/WorldEnvironment.tscn" type="PackedScene" id=2]
@@ -20,6 +20,17 @@
 [ext_resource path="res://scripts/Systems/ProductionBuilding.gd" type="Script" id=18]
 [ext_resource path="res://scenes/UI/HarvesterDialog.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scripts/Systems/DirtyReset.gd" type="Script" id=20]
+[ext_resource path="res://data/private/models/falcon/quixel/Falcon3_Roughness.png" type="Texture" id=21]
+[ext_resource path="res://data/private/models/falcon/FrontNorm3.png" type="Texture" id=22]
+[ext_resource path="res://data/private/models/falcon/DetailNorm3.png" type="Texture" id=23]
+[ext_resource path="res://data/private/models/falcon/falcon.glb" type="PackedScene" id=24]
+[ext_resource path="res://data/private/models/falcon/quixel/Falcon3_Normal.png" type="Texture" id=25]
+[ext_resource path="res://data/private/models/falcon/FrontAO.png" type="Texture" id=26]
+[ext_resource path="res://data/private/models/falcon/DetailAO.png" type="Texture" id=27]
+[ext_resource path="res://data/private/models/falcon/RearEmission.png" type="Texture" id=28]
+[ext_resource path="res://data/private/models/falcon/quixel/Falcon3_AO.png" type="Texture" id=29]
+[ext_resource path="res://data/private/models/falcon/quixel/Falcon3_Metalness.png" type="Texture" id=30]
+[ext_resource path="res://data/private/models/falcon/quixel/Falcon3_Albedo.png" type="Texture" id=31]
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 10 )
@@ -144,6 +155,54 @@ albedo_color = Color( 0, 4.07, 0.05, 1 )
 material = SubResource( 17 )
 size = Vector2( 0.3, 3 )
 
+[sub_resource type="SpatialMaterial" id=19]
+albedo_color = Color( 0.513726, 0.501961, 0.501961, 1 )
+metallic = 1.0
+roughness = 0.55
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 22 )
+ao_enabled = true
+ao_light_affect = 0.29
+ao_texture = ExtResource( 26 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+
+[sub_resource type="SpatialMaterial" id=20]
+albedo_color = Color( 0.513726, 0.501961, 0.501961, 1 )
+albedo_texture = ExtResource( 31 )
+metallic = 1.0
+metallic_texture = ExtResource( 30 )
+roughness = 0.55
+roughness_texture = ExtResource( 21 )
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 9.87
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 28 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 25 )
+ao_enabled = true
+ao_light_affect = 0.32
+ao_texture = ExtResource( 29 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+
+[sub_resource type="SpatialMaterial" id=21]
+albedo_color = Color( 0.513726, 0.501961, 0.501961, 1 )
+metallic = 1.0
+roughness = 0.55
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 23 )
+ao_enabled = true
+ao_light_affect = 0.37
+ao_texture = ExtResource( 27 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+
 [sub_resource type="InputEventAction" id=6]
 action = "quick_bar_1"
 
@@ -225,19 +284,33 @@ transform = Transform( 0.167096, 0, -0.985941, -0.27568, 0.960113, -0.0467218, 0
 [node name="Player" parent="Dynamic" instance=ExtResource( 5 )]
 
 [node name="MeshInstance" type="MeshInstance" parent="Dynamic/Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.30138 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.431328, 3.86717 )
 mesh = SubResource( 16 )
-material/0 = null
 
 [node name="MeshInstance2" type="MeshInstance" parent="Dynamic/Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.308558, 0, 3.12733 )
+visible = false
 mesh = SubResource( 18 )
-material/0 = null
 
 [node name="MeshInstance3" type="MeshInstance" parent="Dynamic/Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.330796, 0, 3.12733 )
+visible = false
 mesh = SubResource( 18 )
-material/0 = null
+
+[node name="falcon" parent="Dynamic/Player" instance=ExtResource( 24 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.431328, -0.518678 )
+visible = false
+
+[node name="cockpit_lowr" parent="Dynamic/Player/falcon" index="0"]
+material/0 = SubResource( 19 )
+
+[node name="Ship_rear3" parent="Dynamic/Player/falcon" index="1"]
+transform = Transform( 2.43574, 0, 0, 0, 2.43574, 0, 0, 0, 2.43574, 0, -0.252595, -0.714247 )
+material/0 = SubResource( 20 )
+
+[node name="top_turret" parent="Dynamic/Player/falcon" index="2"]
+transform = Transform( 0.0352107, -1.86265e-09, 0, 0, 0, -0.0352107, 1.86265e-09, 0.0352107, 0, 0.00513697, 0.459849, -0.249451 )
+material/0 = SubResource( 21 )
 
 [node name="MiningLaser" parent="Dynamic" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.17181 )
@@ -391,3 +464,5 @@ visible = false
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/smelter" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/smelter" method="_on_PlaceSmelterBtn_toggled"]
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/floor" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/floor" method="_on_PlaceSmelterBtn_toggled"]
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/wall" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/wall" method="_on_PlaceSmelterBtn_toggled"]
+
+[editable path="Dynamic/Player/falcon"]

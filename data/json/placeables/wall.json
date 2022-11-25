@@ -1,5 +1,6 @@
 {
     "name":"Wall",
+    "visual": "wall",
     "placeable": {
         "__ref__":"data/json/refs/costs/floor_cost.json",
         "surfaces":[]

@@ -1,5 +1,6 @@
 {
     "name":"Smelter",
+    "visual": "smelter",
     "system": ["ProductionBuilding"],
     "placeable": {
         "__ref__":"data/json/refs/costs/miner_cost.json",

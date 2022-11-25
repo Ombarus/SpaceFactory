@@ -27,7 +27,7 @@ environment = SubResource( 1 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.651628, 0.0484956, -0.756987, 0.1071, 0.982075, 0.155109, 0.75094, -0.182146, 0.634753, 0, 4.29697, 3.72167 )
-light_color = Color( 0.729412, 0.662745, 0.847059, 1 )
+light_color = Color( 0.803922, 0.772549, 0.862745, 1 )
 light_energy = 4.069
 light_indirect_energy = 1.651
 light_specular = 2.326

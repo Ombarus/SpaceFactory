@@ -1,6 +1,12 @@
 {
     "name":"player",
     "player": {},
+    "constructions":{
+        "floor": "data/json/placeables/floor.json",
+        "wall": "data/json/placeables/wall.json",
+        "miner": "data/json/placeables/miner_mk1.json",
+        "smelter": "data/json/placeables/smelter.json"
+    },
     "recipes":[
         {
             "input":[],
