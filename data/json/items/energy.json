@@ -1,8 +1,7 @@
 {
     "name":"Energy",
     "inventory": {
-        "max_stack":200,
-        "invisible":true,
+        "max_stack":2000,
         "tags": ["energy"]
     }
 }

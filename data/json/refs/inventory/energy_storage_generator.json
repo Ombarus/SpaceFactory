@@ -1,0 +1,8 @@
+{
+    "content":"data/json/items/energy.json",
+    "allowed":{
+        "default": ["energy"]
+    },
+    "generate_per_second":10.0,
+    "count":0
+}

@@ -51,6 +51,7 @@
         "6": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
         "7": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
         "8": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
-        "9": {"__ref__":"data/json/refs/inventory/solid_storage.json"}
+        "9": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
+        "energy": {"__ref__":"data/json/refs/inventory/energy_storage_generator.json"}
     }
 }

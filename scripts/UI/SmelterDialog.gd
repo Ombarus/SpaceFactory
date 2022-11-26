@@ -36,7 +36,6 @@ func update_inventory_list():
 		var count : int = Globals.get_attrib(player_data, "inventory_slots.%s.count" % str(key))
 		var inventory_data = Globals.LevelLoaderRef.load_json(item_path)
 		player_inventory.add_item(Globals.get_attrib(inventory_data, "name") + " : " + str(count))
-		#TODO: make sure to update when inventory change is fired (there's a "inventory_dirty" flag but it gets reset by player system so it might be tricky to time right?)
 		player_inventory.set_item_metadata(player_inventory.get_item_count()-1, key)
 		
 func update_building_inventories():

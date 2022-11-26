@@ -1,0 +1,7 @@
+{
+    "content":"data/json/items/energy.json",
+    "allowed":{
+        "default": ["data/json/items/energy.json"]
+    },
+    "count":0
+}
