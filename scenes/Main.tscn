@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/WorldEnvironment.tscn" type="PackedScene" id=2]
@@ -32,6 +32,10 @@
 [ext_resource path="res://data/private/models/falcon/quixel/Falcon3_Metalness.png" type="Texture" id=30]
 [ext_resource path="res://data/private/models/falcon/quixel/Falcon3_Albedo.png" type="Texture" id=31]
 [ext_resource path="res://scripts/Systems/InventoryGenerator.gd" type="Script" id=32]
+[ext_resource path="res://data/private/models/test_panel/metal-paint-test.glb" type="PackedScene" id=33]
+[ext_resource path="res://data/private/models/test_panel/final_rough.png" type="Texture" id=34]
+[ext_resource path="res://data/private/models/test_panel/final_col.png" type="Texture" id=35]
+[ext_resource path="res://data/private/models/test_panel/final_norm.png" type="Texture" id=36]
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 10 )
@@ -39,7 +43,7 @@ anchor_offset = Vector3( 0, 0, 0 )
 target_offset = Vector3( 0, 2.5, 5 )
 look_target = Vector3( 0, 5, -50 )
 rotation = Vector3( 0, 0, 0 )
-pitch_limit = Vector2( 0, 0 )
+pitch_limits = Vector2( -80, 80 )
 
 [sub_resource type="Shader" id=14]
 code = "shader_type spatial;
@@ -228,6 +232,13 @@ action = "quick_bar_4"
 [sub_resource type="ShortCut" id=13]
 shortcut = SubResource( 12 )
 
+[sub_resource type="SpatialMaterial" id=22]
+albedo_texture = ExtResource( 35 )
+roughness_texture = ExtResource( 34 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 36 )
+
 [node name="Main" type="Node"]
 
 [node name="Systems" type="Node" parent="."]
@@ -283,12 +294,17 @@ transform = Transform( 0.167096, 0, -0.985941, -0.27568, 0.960113, -0.0467218, 0
 
 [node name="WorldEnvironment" parent="Level" instance=ExtResource( 2 )]
 
+[node name="DirectionalLight" parent="Level/WorldEnvironment" index="0"]
+light_energy = 2.736
+
 [node name="Dynamic" type="Spatial" parent="."]
 
 [node name="Player" parent="Dynamic" instance=ExtResource( 5 )]
+transform = Transform( 0.884646, 0, 0.466263, 0, 1, 0, -0.466263, 0, 0.884646, 0, 0, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Dynamic/Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.431328, 3.86717 )
+visible = false
 mesh = SubResource( 16 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Dynamic/Player"]
@@ -461,9 +477,18 @@ visible = false
 [node name="HarvesterDialog" parent="UI/SafeArea" instance=ExtResource( 19 )]
 visible = false
 
+[node name="metal-paint-test" parent="." instance=ExtResource( 33 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7947, 0, 1.71697 )
+
+[node name="Plane" parent="metal-paint-test" index="0"]
+transform = Transform( 0.711666, -2.2975, 2.98657, 1.12152, 3.03077, 2.06427, -3.59726, 0.490373, 1.23442, 0.614575, 2.31285, -2.21392 )
+material/0 = SubResource( 22 )
+
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/miner" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/miner" method="_on_PlaceSmelterBtn_toggled"]
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/smelter" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/smelter" method="_on_PlaceSmelterBtn_toggled"]
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/floor" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/floor" method="_on_PlaceSmelterBtn_toggled"]
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/wall" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/wall" method="_on_PlaceSmelterBtn_toggled"]
 
+[editable path="Level/WorldEnvironment"]
 [editable path="Dynamic/Player/falcon"]
+[editable path="metal-paint-test"]

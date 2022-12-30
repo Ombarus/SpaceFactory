@@ -1,8 +1,15 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/Snapping.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Attributes.gd" type="Script" id=2]
 [ext_resource path="res://data/material/Invalid.tres" type="Material" id=3]
+[ext_resource path="res://data/private/models/straight_wall/wall_straight.glb" type="PackedScene" id=4]
+[ext_resource path="res://data/private/models/straight_wall/wall_baked_rough.png" type="Texture" id=5]
+[ext_resource path="res://data/private/models/straight_wall/wall_baked_metal.png" type="Texture" id=6]
+[ext_resource path="res://data/private/models/straight_wall/wall_baked_emission.png" type="Texture" id=7]
+[ext_resource path="res://data/private/models/straight_wall/wall_baked_color.png" type="Texture" id=8]
+[ext_resource path="res://data/private/models/straight_wall/wall_baked_normal.png" type="Texture" id=9]
+[ext_resource path="res://data/private/models/straight_wall/wall_baked_AO.png" type="Texture" id=10]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 5, 5, 0.5 )
@@ -13,6 +20,25 @@ size = Vector3( 10, 10, 1 )
 [sub_resource type="CubeMesh" id=6]
 material = ExtResource( 3 )
 size = Vector3( 10.5, 10.5, 1.5 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_texture = ExtResource( 8 )
+metallic_texture = ExtResource( 6 )
+roughness_texture = ExtResource( 5 )
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 7 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 9 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = ExtResource( 10 )
+ao_on_uv2 = false
+ao_texture_channel = 0
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 5, 0.75, 0.25 )
@@ -32,11 +58,18 @@ PreloadData = "res://data/json/placeables/wall.json"
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
+visible = false
 mesh = SubResource( 2 )
 
 [node name="Invalid" type="MeshInstance" parent="."]
 visible = false
 mesh = SubResource( 6 )
+
+[node name="wall_straight" parent="." instance=ExtResource( 4 )]
+transform = Transform( -2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 0, -4.99919, 0 )
+
+[node name="Wall2" parent="wall_straight" index="0"]
+material/0 = SubResource( 7 )
 
 [node name="SnapYPos" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
@@ -77,3 +110,5 @@ snap_name = "vertical"
 
 [node name="CollisionShape" type="CollisionShape" parent="SnapXPos"]
 shape = SubResource( 5 )
+
+[editable path="wall_straight"]

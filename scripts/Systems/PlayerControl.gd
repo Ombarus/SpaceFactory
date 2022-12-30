@@ -119,16 +119,20 @@ func update_inventory_display():
 
 func _physics_process(delta: float) -> void:
 	if player_node == null or locked_controls:
-		last_mouse_pos = get_viewport().get_mouse_position()
 		return
 		
-	#if Input.is_mouse_button_pressed(1):
-	var cur_mouse_pos : Vector2 = get_viewport().get_mouse_position()
-	var mouse_offset_x : float = last_mouse_pos.x - cur_mouse_pos.x
-	var mouse_offset_y : float = last_mouse_pos.y - cur_mouse_pos.y
-	player_node.rotate(player_node.global_transform.basis.y.normalized(), mouse_offset_x / 100.0)
-	player_node.rotate(player_node.global_transform.basis.x.normalized(), mouse_offset_y / 100.0)
-	last_mouse_pos = cur_mouse_pos
+	var camera_look_target : Vector3 = player_node.get_attrib("camera_look_at", Vector3.ZERO)
+	var desired_heading = camera_look_target - player_node.global_transform.origin
+	player_node.look_at(camera_look_target, player_node.global_transform.basis.y)
+#	var current_heading = player_node.global_transform.basis.z
+#	var current_offset : Vector3 = desired_heading - current_heading
+#
+#	var heading_dist = current_offset.length()
+#	var heading_dir = current_offset.normalized()
+#	var smooth_offset : Vector3 = (heading_dist * pow(0.1, (100.0 * delta))) * heading_dir
+#	#player_node.global_transform.basis.z = (current_heading + smooth_offset).normalized()
+#	player_node.look_at(player_node.global_transform.origin + current_heading + smooth_offset, player_node.global_transform.basis.y)
+	
 	
 	var roll = Input.get_action_strength("roll_left") - Input.get_action_strength("roll_right")
 	player_node.rotate(player_node.global_transform.basis.z.normalized(), roll / 50.0)
