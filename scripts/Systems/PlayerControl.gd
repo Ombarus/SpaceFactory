@@ -121,31 +121,26 @@ func _physics_process(delta: float) -> void:
 	if player_node == null or locked_controls:
 		return
 		
-	var camera_look_target : Vector3 = player_node.get_attrib("camera_look_at", Vector3.ZERO)
-	var desired_heading = camera_look_target - player_node.global_transform.origin
-	player_node.look_at(camera_look_target, player_node.global_transform.basis.y)
-#	var current_heading = player_node.global_transform.basis.z
-#	var current_offset : Vector3 = desired_heading - current_heading
-#
-#	var heading_dist = current_offset.length()
-#	var heading_dir = current_offset.normalized()
-#	var smooth_offset : Vector3 = (heading_dist * pow(0.1, (100.0 * delta))) * heading_dir
-#	#player_node.global_transform.basis.z = (current_heading + smooth_offset).normalized()
-#	player_node.look_at(player_node.global_transform.origin + current_heading + smooth_offset, player_node.global_transform.basis.y)
+	ship_orient_toward_camera()
 	
-	
-	var roll = Input.get_action_strength("roll_left") - Input.get_action_strength("roll_right")
-	player_node.rotate(player_node.global_transform.basis.z.normalized(), roll / 50.0)
-	
+	#var roll = Input.get_action_strength("roll_left") - Input.get_action_strength("roll_right")
+	#player_node.rotate(player_node.global_transform.basis.z.normalized(), roll / 50.0)
+
 	var dir := Vector3.ZERO
 	dir = player_node.global_transform.basis.z * (Input.get_action_strength("backward") - Input.get_action_strength("forward"))
 	dir += player_node.global_transform.basis.y * (Input.get_action_strength("strafe_up") - Input.get_action_strength("strafe_down"))
 	dir += player_node.global_transform.basis.x * (Input.get_action_strength("strafe_right") - Input.get_action_strength("strafe_left"))
 	var vel = player_node.move_and_slide(dir * 10.0, player_node.transform.basis.y)
 	
-	player_node.set_attrib("visual.transform", player_node.global_transform)
-	
 	do_placement()
+	
+#
+func ship_orient_toward_camera():
+	var camera_look_target : Vector3 = player_node.get_attrib("camera_look_at", Vector3.ZERO)
+	var camera_rotation : Vector3 = player_node.get_attrib("camera_rotation", Vector3.ZERO)
+	var cur_rot_quat : Quat = Quat(camera_rotation)
+	var rotated_up : Vector3 = cur_rot_quat.xform(Vector3.UP)
+	player_node.look_at(camera_look_target, rotated_up)
 	
 func do_placement():
 	if placing_name.empty():
