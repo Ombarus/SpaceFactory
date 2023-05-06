@@ -1,10 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://data/private/models/jerg_scout_2/jerg_scout_v2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Attributes.gd" type="Script" id=2]
-[ext_resource path="res://data/private/models/everspace_warship/SK_Warship_004_engine.glb" type="PackedScene" id=3]
-[ext_resource path="res://data/private/models/everspace_warship/SK_Warship_004_mid.glb" type="PackedScene" id=4]
-[ext_resource path="res://data/private/models/everspace_warship/SK_Warship_004_spawner.glb" type="PackedScene" id=5]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.582, 0.655, 1.956 )
@@ -23,17 +20,3 @@ shape = SubResource( 1 )
 
 [node name="FrontAnchor" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.49983 )
-
-[node name="Spatial" type="Spatial" parent="."]
-transform = Transform( -2.18557e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -2.18557e-09, 0, 0, 0 )
-visible = false
-
-[node name="SK_Warship_004_engine" parent="Spatial" instance=ExtResource( 3 )]
-
-[node name="SK_Warship_004_mid" parent="Spatial" instance=ExtResource( 4 )]
-
-[node name="SK_Warship_004_spawner" parent="Spatial" instance=ExtResource( 5 )]
-
-[editable path="Spatial/SK_Warship_004_engine"]
-[editable path="Spatial/SK_Warship_004_mid"]
-[editable path="Spatial/SK_Warship_004_spawner"]

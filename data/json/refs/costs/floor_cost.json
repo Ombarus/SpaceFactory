@@ -1,5 +1,6 @@
 {
     "cost": [
-        {"count":2, "name":"data/json/items/iron_ingot.json"}
+        {"count":2, "name":"data/json/items/iron_ingot.json"},
+        {"count":10, "name":"data/json/items/energy.json"}
     ]
 }

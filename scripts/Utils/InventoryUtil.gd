@@ -22,10 +22,11 @@ func substract(item_path : String, number : int) -> int:
 	for key in keys:
 		var count : int = Globals.get_attrib(_attributes, "inventory_slots.%s.count" % str(key))
 		var name : String = Globals.get_attrib(_attributes, "inventory_slots.%s.content" % str(key))
+		var is_generator : bool = Globals.get_attrib(_attributes, "inventory_slots.%s.generate_per_second" % str(key), 0.0) > 0.0
 		if name == item_path:
 			var substracted = min(left_to_substract, count)
 			Globals.set_attrib(_attributes, "inventory_slots.%s.count" % str(key), count - substracted)
-			if substracted == count:
+			if substracted == count and is_generator == false:
 				Globals.set_attrib(_attributes, "inventory_slots.%s.content" % str(key), "")
 			
 			left_to_substract -= substracted

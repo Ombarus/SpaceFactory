@@ -3,7 +3,9 @@
     "harvester": {"item_per_second":0.5},
     "connections": [],
     "beam": {
-        "max_range":20.0
+        "max_range":20.0,
+        "energy_per_sec":50.0,
+        "fail_cooldown_sec":2.0
     },
     "inventory_slots": {
         "0": {"__ref__":"data/json/refs/inventory/solid_storage.json"},

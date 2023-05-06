@@ -1,14 +1,23 @@
 0.0.1
+    - Controls & Camera
+        - Smooth ship rotation
+        - Smooth ship acceleration/braking
+        - Smooth camera distance from ship
+        - Animate Main Engine
+        - Side-Thruster VFX?
     - Fix/Improve context menu
         - Generic way of displaying tooltips when close to objects
             - Asteroid should show their composition
             - Quick Pickup shortcut
     - Implement power costs
-    - Implement building cost to build
     - Building/Inventory Menu Mockup
     - beautify harvester beam
     - Fix building orientation on floors
     - Improve look of buildings
+        - 45deg wall
+        - -45 deg wall (rotate or separate building?)
+        - replace floor with actual model and PBR
+        - Make emission color shader
     - Implement proper HUD/GUI System (from SolarRogue)
         - Start working on UI theme
         - Standard Dialog window
@@ -17,6 +26,7 @@
     
     
 DONE:
+    - Implement building cost to build
     - Implement crafting menu
         - Implement manual crafting
     - Manual Harvest

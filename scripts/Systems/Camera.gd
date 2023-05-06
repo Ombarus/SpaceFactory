@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 	
 	CameraState.rotation.y += mouse_offset_x / 100.0
 	CameraState.rotation.x += mouse_offset_y / 100.0
-	CameraState.rotation.x = min(max(CameraState.rotation.x, deg2rad(CameraState.pitch_limits.x)), deg2rad(CameraState.pitch_limits.y))
+	#CameraState.rotation.x = min(max(CameraState.rotation.x, deg2rad(CameraState.pitch_limits.x)), deg2rad(CameraState.pitch_limits.y))
 	
 	var roll = Input.get_action_strength("roll_left") - Input.get_action_strength("roll_right")
 	CameraState.rotation.z += roll / 50.0
