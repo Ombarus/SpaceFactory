@@ -5,11 +5,11 @@ var _gui_list := {}
 var _stack := []
 
 func _ready():
-	Events.connect("OnGUILoaded", self, "OnGUILoaded_Callback")
-	Events.connect("OnPushGUI", self, "OnPushGUI_Callback")
-	Events.connect("OnPopGUI", self, "OnPopGUI_Callback")
-	Events.connect("OnShowGUI", self, "OnShowGUI_Callback")
-	Events.connect("OnHideGUI", self, "OnHideGUI_Callback")
+	Events.connect("OnGUILoaded",Callable(self,"OnGUILoaded_Callback"))
+	Events.connect("OnPushGUI",Callable(self,"OnPushGUI_Callback"))
+	Events.connect("OnPopGUI",Callable(self,"OnPopGUI_Callback"))
+	Events.connect("OnShowGUI",Callable(self,"OnShowGUI_Callback"))
+	Events.connect("OnHideGUI",Callable(self,"OnHideGUI_Callback"))
 	
 
 func OnShowGUI_Callback(name, init_param, transition=""):

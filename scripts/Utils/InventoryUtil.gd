@@ -2,7 +2,7 @@ class_name InventoryUtil
 
 var _attributes : Dictionary
 
-func _init(attrib_ref : Dictionary) -> void:
+func _init(attrib_ref : Dictionary):
 	_attributes = attrib_ref
 	
 func total(item_path : String) -> int:
@@ -22,10 +22,11 @@ func substract(item_path : String, number : int) -> int:
 	for key in keys:
 		var count : int = Globals.get_attrib(_attributes, "inventory_slots.%s.count" % str(key))
 		var name : String = Globals.get_attrib(_attributes, "inventory_slots.%s.content" % str(key))
+		var is_generator : bool = Globals.get_attrib(_attributes, "inventory_slots.%s.generate_per_second" % str(key), 0.0) > 0.0
 		if name == item_path:
 			var substracted = min(left_to_substract, count)
 			Globals.set_attrib(_attributes, "inventory_slots.%s.count" % str(key), count - substracted)
-			if substracted == count:
+			if substracted == count and is_generator == false:
 				Globals.set_attrib(_attributes, "inventory_slots.%s.content" % str(key), "")
 			
 			left_to_substract -= substracted
@@ -52,7 +53,7 @@ func add(item_path: String, number : int) -> int:
 			left_to_add -= to_add
 			if left_to_add == 0:
 				break
-		if name.empty():
+		if name.is_empty():
 			empty_keys.push_back(key)
 	if left_to_add > 0:
 		for key in empty_keys:

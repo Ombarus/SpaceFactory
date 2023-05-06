@@ -3,8 +3,8 @@ extends Node
 var producer_data := {}
 
 func _ready() -> void:
-	Events.connect("OnObjectCreated", self, "OnObjectCreated_Callback")
-	Events.connect("OnObjectDestroyed", self, "OnObjectDestroyed_Callback")
+	Events.connect("OnObjectCreated",Callable(self,"OnObjectCreated_Callback"))
+	Events.connect("OnObjectDestroyed",Callable(self,"OnObjectDestroyed_Callback"))
 	
 func OnObjectDestroyed_Callback(data : Dictionary) -> void:
 	#TODO: drop or pickup inventory if any?
@@ -41,7 +41,7 @@ func _process(delta):
 				Globals.set_attrib(producer_data[id], "inventory_slots.%s.allowed.%s" % [key, "prod"], output_filter)
 				
 		var crafting_queue : Array = Globals.get_attrib(producer_data[id], "crafting_queue", [])
-		if crafting_queue.empty():
+		if crafting_queue.is_empty():
 			Events.emit_signal("OnQueueCrafting", producer_data[id], recipe_data)
 		
 		

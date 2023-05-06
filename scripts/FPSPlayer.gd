@@ -1,19 +1,19 @@
-extends KinematicBody
+extends CharacterBody3D
 
 var last_mouse_pos := Vector2.ZERO
-export(NodePath) onready var player_ship = get_node(player_ship)
+@export(NodePath) onready var player_ship = get_node(player_ship)
 
 func _ready() -> void:
 	last_mouse_pos = get_viewport().get_mouse_position()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if $Camera.current == true and Input.is_action_just_released("boarding"):
-		$Camera.current = false
-		(player_ship.get_node("Camera") as Camera).current = true
+	if $Camera3D.current == true and Input.is_action_just_released("boarding"):
+		$Camera3D.current = false
+		(player_ship.get_node("Camera3D") as Camera3D).current = true
 		return
 
 func _physics_process(delta: float) -> void:
-	if $Camera.current == false:
+	if $Camera3D.current == false:
 		return
 		
 	var cur_mouse_pos : Vector2 = get_viewport().get_mouse_position()
@@ -30,4 +30,7 @@ func _physics_process(delta: float) -> void:
 	dir = self.global_transform.basis.z * (Input.get_action_strength("backward") - Input.get_action_strength("forward"))
 	#dir += self.global_transform.basis.y * (Input.get_action_strength("strafe_up") - Input.get_action_strength("strafe_down"))
 	dir += self.global_transform.basis.x * (Input.get_action_strength("strafe_right") - Input.get_action_strength("strafe_left"))
-	var vel = self.move_and_slide(dir * 10.0, self.transform.basis.y)
+	self.set_velocity(dir * 10.0)
+	self.set_up_direction(self.transform.basis.y)
+	self.move_and_slide()
+	var vel = self.velocity

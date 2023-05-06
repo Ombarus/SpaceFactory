@@ -1,73 +1,145 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=21 format=3 uid="uid://cym3xyl8vsc32"]
 
-[ext_resource path="res://scripts/Snapping.gd" type="Script" id=1]
-[ext_resource path="res://scripts/Attributes.gd" type="Script" id=2]
-[ext_resource path="res://data/material/Invalid.tres" type="Material" id=3]
+[ext_resource type="Script" path="res://scripts/Snapping.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/Attributes.gd" id="2"]
+[ext_resource type="Material" path="res://data/material/Invalid.tres" id="3"]
+[ext_resource type="Shader" path="res://data/private/models/ue/floor/Floor.gdshader" id="5_djjsk"]
+[ext_resource type="Material" uid="uid://dskburn3qyquv" path="res://data/material/SM_Hall_Floor_Sec_C2_Base.tres" id="5_k12k0"]
+[ext_resource type="PackedScene" uid="uid://vy12iiiys4w1" path="res://data/private/models/ue/floor2/SM_Hall_Floor_Sec_C.glb" id="6_2u12j"]
+[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="6_or5gq"]
+[ext_resource type="Texture2D" uid="uid://dj4u88y8lahu5" path="res://data/private/models/ue/floor/T_Trims_A_M_B.PNG" id="10_dxm3g"]
+[ext_resource type="Texture2D" uid="uid://b4rwabblmhsyp" path="res://data/private/models/ue/floor/T_Metal_Scratches_M.PNG" id="10_kgfxk"]
+[ext_resource type="Texture2D" uid="uid://b7ojjlp55tqhy" path="res://data/private/models/ue/floor/T_Trims_A_N_normals.PNG" id="11_b06bo"]
+[ext_resource type="Texture2D" uid="uid://cta50p0r36fkj" path="res://data/private/models/ue/floor/T_Trims_A_Diff_B.PNG" id="11_ualkc"]
+[ext_resource type="Texture2D" uid="uid://b1p4xbb2drrwg" path="res://data/private/models/ue/floor/T_Pipes_A_Diff.PNG" id="13_drxr1"]
+[ext_resource type="Texture2D" uid="uid://qswy3c4btaha" path="res://data/private/models/ue/floor/T_Pipes_A_M.PNG" id="14_s3und"]
+[ext_resource type="Texture2D" uid="uid://b83okavx0n647" path="res://data/private/models/ue/floor/T_Pipes_A_N_normals.PNG" id="15_je87a"]
 
-[sub_resource type="BoxShape" id=1]
-extents = Vector3( 5, 0.5, 5 )
+[sub_resource type="BoxShape3D" id="1"]
+size = Vector3(5, 0.5, 5)
 
-[sub_resource type="CubeMesh" id=4]
-size = Vector3( 10, 1, 10 )
+[sub_resource type="BoxMesh" id="4"]
+size = Vector3(10, 1, 10)
 
-[sub_resource type="CubeMesh" id=2]
-material = ExtResource( 3 )
-size = Vector3( 10.5, 1.5, 10.5 )
+[sub_resource type="BoxMesh" id="2"]
+material = ExtResource("3")
+size = Vector3(10.5, 1.5, 10.5)
 
-[sub_resource type="BoxShape" id=3]
-extents = Vector3( 5, 0.75, 0.25 )
+[sub_resource type="BoxShape3D" id="3"]
+size = Vector3(5, 0.75, 0.25)
 
-[node name="Floor" type="StaticBody"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vfddn"]
+render_priority = 0
+shader = ExtResource("5_djjsk")
+shader_parameter/metallic_green = 0.7
+shader_parameter/metallic_other = 0.75
+shader_parameter/mettalic_red = 0.0
+shader_parameter/norm_detail_u = 18.0
+shader_parameter/norm_detail_v = 18.0
+shader_parameter/r_detail_u = 2.0
+shader_parameter/r_detail_v = 2.0
+shader_parameter/roughness_green = 0.2
+shader_parameter/roughness_other = 0.2
+shader_parameter/roughness_red = 0.65
+shader_parameter/spec_green = 0.5
+shader_parameter/spec_other = 0.5
+shader_parameter/spec_red = 0.55
+shader_parameter/diffuse = ExtResource("11_ualkc")
+shader_parameter/mask = ExtResource("10_dxm3g")
+shader_parameter/normal = ExtResource("11_b06bo")
+shader_parameter/scratches = ExtResource("10_kgfxk")
+shader_parameter/brushed = ExtResource("6_or5gq")
+shader_parameter/trim_diffuse = ExtResource("11_ualkc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ogp8b"]
+render_priority = 0
+shader = ExtResource("5_djjsk")
+shader_parameter/metallic_green = 0.7
+shader_parameter/metallic_other = 0.75
+shader_parameter/mettalic_red = 0.0
+shader_parameter/norm_detail_u = 18.0
+shader_parameter/norm_detail_v = 18.0
+shader_parameter/r_detail_u = 2.0
+shader_parameter/r_detail_v = 2.0
+shader_parameter/roughness_green = 0.1
+shader_parameter/roughness_other = 0.1
+shader_parameter/roughness_red = 0.65
+shader_parameter/spec_green = 0.5
+shader_parameter/spec_other = 0.5
+shader_parameter/spec_red = 0.55
+shader_parameter/diffuse = ExtResource("13_drxr1")
+shader_parameter/mask = ExtResource("14_s3und")
+shader_parameter/normal = ExtResource("15_je87a")
+shader_parameter/scratches = ExtResource("10_kgfxk")
+shader_parameter/brushed = ExtResource("6_or5gq")
+shader_parameter/trim_diffuse = ExtResource("11_ualkc")
+
+[node name="Floor" type="StaticBody3D"]
 input_ray_pickable = false
-script = ExtResource( 2 )
+script = ExtResource("2")
 PreloadData = "res://data/json/placeables/floor.json"
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-shape = SubResource( 1 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-mesh = SubResource( 4 )
-
-[node name="Invalid" type="MeshInstance" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
-mesh = SubResource( 2 )
+mesh = SubResource("4")
 
-[node name="SnapZPos" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
+[node name="Invalid" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("2")
+
+[node name="SnapZPos" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 collision_layer = 4
 collision_mask = 4
-script = ExtResource( 1 )
+script = ExtResource("1")
 snap_name = "horizontal"
 
-[node name="CollisionShape" type="CollisionShape" parent="SnapZPos"]
-shape = SubResource( 3 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnapZPos"]
+shape = SubResource("3")
 
-[node name="SnapZNeg" type="Area" parent="."]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -5 )
+[node name="SnapZNeg" type="Area3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -5)
 collision_layer = 4
 collision_mask = 4
-script = ExtResource( 1 )
+script = ExtResource("1")
 snap_name = "horizontal"
 
-[node name="CollisionShape" type="CollisionShape" parent="SnapZNeg"]
-shape = SubResource( 3 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnapZNeg"]
+shape = SubResource("3")
 
-[node name="SnapXNeg" type="Area" parent="."]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 0 )
+[node name="SnapXNeg" type="Area3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 0)
 collision_layer = 4
 collision_mask = 4
-script = ExtResource( 1 )
+script = ExtResource("1")
 snap_name = "horizontal"
 
-[node name="CollisionShape" type="CollisionShape" parent="SnapXNeg"]
-shape = SubResource( 3 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnapXNeg"]
+shape = SubResource("3")
 
-[node name="SnapXPos" type="Area" parent="."]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, 0 )
+[node name="SnapXPos" type="Area3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, 0)
 collision_layer = 4
 collision_mask = 4
-script = ExtResource( 1 )
+script = ExtResource("1")
 snap_name = "horizontal"
 
-[node name="CollisionShape" type="CollisionShape" parent="SnapXPos"]
-shape = SubResource( 3 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnapXPos"]
+shape = SubResource("3")
+
+[node name="SM_Hall_Floor_Sec_C" parent="." instance=ExtResource("6_2u12j")]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, -2.97528, 0, -2.99653)
+
+[node name="SM_Hall_Floor_Sec_C2" parent="SM_Hall_Floor_Sec_C" index="0"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -1.18599, 0, -1.08726)
+surface_material_override/0 = ExtResource("5_k12k0")
+surface_material_override/1 = SubResource("ShaderMaterial_vfddn")
+surface_material_override/2 = SubResource("ShaderMaterial_ogp8b")
+
+[node name="UCX_SM_Hall_Floor_Sec_C" parent="SM_Hall_Floor_Sec_C" index="1"]
+visible = false
+
+[editable path="SM_Hall_Floor_Sec_C"]

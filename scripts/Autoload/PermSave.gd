@@ -21,11 +21,13 @@ var _savefile_name = "user://perm_config.save"
 
 func _ready():
 	var tmp = _perm_save
-	if File.new().file_exists(_savefile_name):
-		var file = File.new()
-		file.open(_savefile_name, file.READ)
+	if FileAccess.file_exists(_savefile_name):
+		var file = FileAccess.open(_savefile_name, FileAccess.READ)
 		var text = file.get_as_text()
-		tmp = JSON.parse(text).result
+		var test_json_conv = JSON.new()
+		if test_json_conv.parse(text) != OK:
+			printerr("Error parsing JSON for %s" % _savefile_name)
+		tmp = test_json_conv.data
 		file.close()
 		
 		if "version" in tmp and tmp.version == CURRENT_VERSION:
@@ -49,7 +51,6 @@ func set_attrib(path, val, save=true):
 		save()
 	
 func save():
-	var save_game = File.new()
-	save_game.open(_savefile_name, File.WRITE)
-	save_game.store_line(to_json(_perm_save))
+	var save_game = FileAccess.open(_savefile_name, FileAccess.WRITE)
+	save_game.store_line(JSON.stringify(_perm_save))
 	save_game.close()

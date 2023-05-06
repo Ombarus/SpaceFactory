@@ -24,26 +24,23 @@ func _exit_tree():
 	Globals.LevelLoaderRef = null
 	
 func load_json(filepath):
-	var file = File.new()
 	if not "res://" in filepath and not "user://" in filepath:
 		filepath = "res://" + filepath
 	
 	if filepath in Preloader.JsonCache:
 		return Preloader.JsonCache[filepath]
 	
-	file.open(filepath, file.READ)
+	var file = FileAccess.open(filepath, FileAccess.READ)
 	var text = file.get_as_text()
-	var result_json = JSON.parse(text)
-	file.close()
-	
-	var data = null
-	if result_json.error == OK:  # If parse OK
-		data = result_json.result
-	else:  # If parse has errors
+	var test_json_conv = JSON.new()
+	if test_json_conv.parse(text) != OK:
 		print("Error in ", filepath)
-		print("Error: ", result_json.error)
-		print("Error Line: ", result_json.error_line)
-		print("Error String: ", result_json.error_string)
+		print("Error: ", test_json_conv.error)
+		print("Error Line: ", test_json_conv.error_line)
+		print("Error String: ", test_json_conv.error_string)
+		
+	var data = test_json_conv.data
+	file.close()
 	
 	if data != null:
 		data["src"] = filepath
@@ -56,7 +53,7 @@ func load_json_array(filepaths):
 	if filepaths == null:
 		return res
 	for filepath in filepaths:
-		if not filepath.empty():
+		if not filepath.is_empty():
 			res.push_back(load_json(filepath))
 	return res
 	
@@ -93,7 +90,7 @@ func get_visual_from_data(data_id : int) -> Attributes:
 func create_object_data(src_path : String, modified_attributes : Dictionary) -> int:
 	var new_id = Globals.get_unique_id()
 	
-	var modified_copy = str2var(var2str(modified_attributes))
+	var modified_copy = str_to_var(var_to_str(modified_attributes))
 	modified_copy["src"] = src_path
 	modified_copy["id"] = new_id
 	loaded_objects[new_id] = modified_copy
@@ -119,7 +116,7 @@ func destroy_object(id):
 #func CreateAndInitNode(data, pos, modified_data = null):
 #	var r = get_node("/root/Root/GameTiles")
 #	var scene = Preloader.BaseObject
-#	var n = scene.instance()
+#	var n = scene.instantiate()
 #	if data.has("name_id"):
 #		var last = data["name_id"].split("/")
 #		n.set_name(last[-1])
@@ -130,7 +127,7 @@ func destroy_object(id):
 #		# If I init objects with modified data in a loop and pass the same dictionnary
 #		# it'll be shared between multiple objects. To avoid this, make sure I save a copy
 #		# (see dropping food in ProcessHarvest())
-#		n.modified_attributes = str2var(var2str(modified_data))
+#		n.modified_attributes = str_to_var(var_to_str(modified_data))
 #	r.call_deferred("add_child", n)
 #	levelTiles[ pos.x ][ pos.y ].push_back(n)
 #	var obj_type = n.get_attrib("type")

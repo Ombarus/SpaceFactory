@@ -13,37 +13,37 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 100.0
-margin_top = 100.0
-margin_right = -100.0
-margin_bottom = -100.0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = -100.0
+offset_bottom = -100.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 1720.0
-margin_bottom = 40.0
+offset_right = 1720.0
+offset_bottom = 40.0
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2"]
-margin_right = 1676.0
-margin_bottom = 40.0
+offset_right = 1676.0
+offset_bottom = 40.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="VBoxContainer/HBoxContainer2"]
-margin_left = 1680.0
-margin_right = 1720.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
+offset_left = 1680.0
+offset_right = 1720.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 40, 40 )
 text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 44.0
-margin_right = 1720.0
-margin_bottom = 456.0
+offset_top = 44.0
+offset_right = 1720.0
+offset_bottom = 456.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -51,82 +51,82 @@ __meta__ = {
 }
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
-margin_right = 570.0
-margin_bottom = 412.0
+offset_right = 570.0
+offset_bottom = 412.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
-margin_right = 570.0
-margin_bottom = 14.0
+offset_right = 570.0
+offset_bottom = 14.0
 text = "Smelter Input"
 
 [node name="InputInventory" type="ItemList" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
-margin_top = 18.0
-margin_right = 570.0
-margin_bottom = 412.0
+offset_top = 18.0
+offset_right = 570.0
+offset_bottom = 412.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 574.0
-margin_right = 1145.0
-margin_bottom = 412.0
+offset_left = 574.0
+offset_right = 1145.0
+offset_bottom = 412.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_right = 571.0
-margin_bottom = 14.0
+offset_right = 571.0
+offset_bottom = 14.0
 text = "Smelter Recipe"
 
 [node name="RecipeList" type="ItemList" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 18.0
-margin_right = 571.0
-margin_bottom = 412.0
+offset_top = 18.0
+offset_right = 571.0
+offset_bottom = 412.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 1149.0
-margin_right = 1720.0
-margin_bottom = 412.0
+offset_left = 1149.0
+offset_right = 1720.0
+offset_bottom = 412.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_right = 571.0
-margin_bottom = 14.0
+offset_right = 571.0
+offset_bottom = 14.0
 text = "Smelter Output"
 
 [node name="OutputInventory" type="ItemList" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 18.0
-margin_right = 571.0
-margin_bottom = 412.0
+offset_top = 18.0
+offset_right = 571.0
+offset_bottom = 412.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
-margin_top = 460.0
-margin_right = 1720.0
-margin_bottom = 464.0
+offset_top = 460.0
+offset_right = 1720.0
+offset_bottom = 464.0
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 468.0
-margin_right = 1720.0
-margin_bottom = 880.0
+offset_top = 468.0
+offset_right = 1720.0
+offset_bottom = 880.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/VBoxContainer4"]
-margin_right = 1720.0
-margin_bottom = 14.0
+offset_right = 1720.0
+offset_bottom = 14.0
 text = "Player Inventory"
 
 [node name="PlayerInventory" type="ItemList" parent="VBoxContainer/VBoxContainer4"]
-margin_top = 18.0
-margin_right = 1720.0
-margin_bottom = 412.0
+offset_top = 18.0
+offset_right = 1720.0
+offset_bottom = 412.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 

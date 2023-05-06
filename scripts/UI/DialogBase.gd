@@ -1,10 +1,10 @@
 extends Control
 
-export(bool) var Transition := false
-export(NodePath) var VFXRoot = "."
-export(bool) var LockControls := false
+@export var Transition : bool = false
+@export var VFXRoot: NodePath = "."
+@export var LockControls : bool = false
 
-onready var _vfx_root = get_node(VFXRoot)
+@onready var _vfx_root = get_node(VFXRoot)
 
 var VFXCopy : Node = null
 

@@ -4,22 +4,22 @@ var last_mouse_pos := Vector2.ZERO
 var player_node : Attributes = null
 var placing_name := ""
 var cur_placing_distance := 15.0
-var placing_obj : Spatial = null
+var placing_obj : Node3D = null
 var locked_controls : bool = false
-export(NodePath) var PlacingRoot : NodePath
-export(NodePath) var HarvestBeam : NodePath
-export(NodePath) var InventoryLine : NodePath
-onready var placing_root : Node = get_node(PlacingRoot)
-onready var harvest_beam : Attributes = get_node(HarvestBeam)
-onready var inventory_line : Label = get_node(InventoryLine)
+@export var PlacingRoot : NodePath
+@export var HarvestBeam : NodePath
+@export var InventoryLine : NodePath
+@onready var placing_root : Node = get_node(PlacingRoot)
+@onready var harvest_beam : Attributes = get_node(HarvestBeam)
+@onready var inventory_line : Label = get_node(InventoryLine)
 
 func _ready() -> void:
-	Events.connect("OnObjectCreated", self, "OnObjectCreated_Callback")
-	Events.connect("OnPlaceToggle", self, "OnPlaceToggle_Callback")
-	Events.connect("OnDoPlacement", self, "OnDoPlacement_Callback")
-	Events.connect("OnLockControl", self, "OnLockControl_Callback")
-	Events.connect("OnRegionEntered", self, "OnRegionEntered_Callback")
-	Events.connect("OnRegionLeft", self, "OnRegionLeft_Callback")
+	Events.connect("OnObjectCreated",Callable(self,"OnObjectCreated_Callback"))
+	Events.connect("OnPlaceToggle",Callable(self,"OnPlaceToggle_Callback"))
+	Events.connect("OnDoPlacement",Callable(self,"OnDoPlacement_Callback"))
+	Events.connect("OnLockControl",Callable(self,"OnLockControl_Callback"))
+	Events.connect("OnRegionEntered",Callable(self,"OnRegionEntered_Callback"))
+	Events.connect("OnRegionLeft",Callable(self,"OnRegionLeft_Callback"))
 	
 func OnRegionEntered_Callback(data : Dictionary) -> void:
 	player_node.set_attrib("current_context", data["id"])
@@ -92,7 +92,7 @@ func _process(delta: float) -> void:
 	for key in keys:
 		var take_name : String = harvest_beam.get_attrib("inventory_slots.%s.content" % str(key))
 		var take_count : int = harvest_beam.get_attrib("inventory_slots.%s.count" % str(key))
-		if take_name.empty() or take_count <= 0:
+		if take_name.is_empty() or take_count <= 0:
 			continue
 		player_inv.add(take_name, take_count)
 		beam_inv.substract(take_name, take_count)
@@ -107,7 +107,7 @@ func update_inventory_display():
 	var keys : Array = Globals.get_keys(player_node.get_data(), "inventory_slots")
 	for key in keys:
 		var item_path : String = player_node.get_attrib("inventory_slots.%s.content" % str(key))
-		if item_path.empty():
+		if item_path.is_empty():
 			continue
 		var line = inventory_line.duplicate()
 		inventory_line.get_parent().add_child(line)
@@ -130,7 +130,10 @@ func _physics_process(delta: float) -> void:
 	dir = player_node.global_transform.basis.z * (Input.get_action_strength("backward") - Input.get_action_strength("forward"))
 	dir += player_node.global_transform.basis.y * (Input.get_action_strength("strafe_up") - Input.get_action_strength("strafe_down"))
 	dir += player_node.global_transform.basis.x * (Input.get_action_strength("strafe_right") - Input.get_action_strength("strafe_left"))
-	var vel = player_node.move_and_slide(dir * 10.0, player_node.transform.basis.y)
+	player_node.set_velocity(dir * 10.0)
+	player_node.set_up_direction(player_node.transform.basis.y)
+	player_node.move_and_slide()
+	var vel = player_node.velocity
 	
 	do_placement()
 	
@@ -138,43 +141,47 @@ func _physics_process(delta: float) -> void:
 func ship_orient_toward_camera():
 	var camera_look_target : Vector3 = player_node.get_attrib("camera_look_at", Vector3.ZERO)
 	var camera_rotation : Vector3 = player_node.get_attrib("camera_rotation", Vector3.ZERO)
-	var cur_rot_quat : Quat = Quat(camera_rotation)
-	var rotated_up : Vector3 = cur_rot_quat.xform(Vector3.UP)
+	var cur_rot_quat : Quaternion = Quaternion.from_euler(camera_rotation)
+	var rotated_up : Vector3 = cur_rot_quat * Vector3.UP
 	player_node.look_at(camera_look_target, rotated_up)
 	
 func do_placement():
-	if placing_name.empty():
+	if placing_name.is_empty():
 		return
 		
 	if placing_name in ["floor", "wall"]:
 		var target_pos = player_node.global_transform.origin - (player_node.global_transform.basis.z.normalized() * cur_placing_distance)
 		if placing_obj == null:
-			placing_obj = Preloader.BuildingList[placing_name].instance()
+			placing_obj = Preloader.BuildingList[placing_name].instantiate()
 			placing_root.add_child(placing_obj)
 			toggle_collider(placing_obj, true)
 			return # give it a frame to init properly
 		placing_obj.visible = true
 		
-		var space_state : PhysicsDirectSpaceState = player_node.get_world().direct_space_state
-		var start_point : Vector3 = player_node.translation - (player_node.global_transform.basis.z.normalized() * 2.0)
+		var space_state : PhysicsDirectSpaceState3D = player_node.get_world_3d().direct_space_state
+		var start_point : Vector3 = player_node.position - (player_node.global_transform.basis.z.normalized() * 2.0)
 		var end_point : Vector3 = start_point - (player_node.global_transform.basis.z.normalized() * 1000.0)
-		var result : Dictionary = space_state.intersect_ray(start_point, end_point, [], Globals.COLLISION_LAYERS.SNAP_POINTS, true, true)
-		if not result.empty():
+		var query = PhysicsRayQueryParameters3D.create(start_point, end_point, Globals.COLLISION_LAYERS.SNAP_POINTS)
+		query.collide_with_areas = true
+		var result : Dictionary = space_state.intersect_ray(query)
+		if not result.is_empty():
 			handle_piece_snapping(result)
 			return
 		placing_obj.global_transform = player_node.global_transform
-		placing_obj.translation = target_pos
+		placing_obj.position = target_pos
 	else:
-		var space_state : PhysicsDirectSpaceState = player_node.get_world().direct_space_state
-		var start_point : Vector3 = player_node.translation - (player_node.global_transform.basis.z.normalized() * 2.0)
+		var space_state : PhysicsDirectSpaceState3D = player_node.get_world_3d().direct_space_state
+		var start_point : Vector3 = player_node.position - (player_node.global_transform.basis.z.normalized() * 2.0)
 		var end_point : Vector3 = start_point - (player_node.global_transform.basis.z.normalized() * 1000.0)
-		var result : Dictionary = space_state.intersect_ray(start_point, end_point, [self])
-		if not result.empty():
+		var query = PhysicsRayQueryParameters3D.create(start_point, end_point)
+		query.exclude.append(self)
+		var result : Dictionary = space_state.intersect_ray(query)
+		if not result.is_empty():
 			end_point = result.position
 			var norm : Vector3 = result.normal
 			#norm.y = 0.0
 			if placing_obj == null:
-				placing_obj = Preloader.BuildingList[placing_name].instance()
+				placing_obj = Preloader.BuildingList[placing_name].instantiate()
 				placing_root.add_child(placing_obj)
 				toggle_collider(placing_obj, true)
 				return
@@ -190,12 +197,12 @@ func do_placement():
 				connections.push_back(placing_on_id)
 				placing_obj.set_attrib("connections", connections)
 			placing_obj.visible = true
-			placing_obj.translation = end_point
+			placing_obj.position = end_point
 			var a : float = placing_obj.transform.basis.y.angle_to(norm)
 			if a > 0.01:
 				var axis : Vector3 = placing_obj.transform.basis.y.cross(norm).normalized()
 				placing_obj.transform = placing_obj.transform.rotated(axis, a)
-			placing_obj.translation = end_point
+			placing_obj.position = end_point
 			
 		elif placing_obj != null:
 			placing_obj.visible = false
@@ -203,7 +210,7 @@ func do_placement():
 		var l = (end_point - start_point).length()
 		
 	if placing_obj != null:
-		var invalid_visual : Spatial = placing_obj.find_node("Invalid")
+		var invalid_visual : Node3D = placing_obj.find_child("Invalid")
 		if invalid_visual != null:
 			if validate_cost(placing_obj):
 				invalid_visual.visible = false
@@ -214,7 +221,7 @@ func do_placement():
 
 func toggle_collider(obj : Node, disabled : bool) -> void:
 	for c in obj.get_children():
-		if c is CollisionShape:
+		if c is CollisionShape3D:
 			c.disabled = disabled
 		toggle_collider(c, disabled)
 
@@ -245,7 +252,7 @@ func handle_piece_snapping(col_res):
 func validate_surface(placing_on : Attributes, placing_obj : Attributes) -> bool:
 	var placing_on_surface_name : String = placing_on.get_attrib("surface", "")
 	var placing_valid_surfaces : Array = placing_obj.get_attrib("placeable.surfaces", [])
-	return placing_valid_surfaces.empty() or placing_on_surface_name in placing_valid_surfaces
+	return placing_valid_surfaces.is_empty() or placing_on_surface_name in placing_valid_surfaces
 	
 func validate_cost(placing_obj : Attributes, consume := false) -> bool:
 	var player_inv := InventoryUtil.new(player_node.get_data())

@@ -3,15 +3,15 @@ extends Node
 const GENERATOR_ARRAY_SIZE : int = 623
 const RNG_MAX = 0xFFFFFFFF
 
-var _generator := PoolIntArray()
+var _generator := PackedInt32Array()
 var _index : int = 0
 
 class GeneratorState:
-	var cur_generator = PoolIntArray()
+	var cur_generator = PackedInt32Array()
 	var cur_index = 0
 	
-	func _init(gen, i):
-		cur_generator = str2var(var2str(gen))
+	func _init(gen,i):
+		cur_generator = str_to_var(var_to_str(gen))
 		cur_index = i
 		
 func _ready():
@@ -52,7 +52,7 @@ func set_non_critical_seed(newSeed):
 	seed( newSeed )
 	
 func reset_to_state(newState):
-	_generator = str2var(var2str(newState.cur_generator))
+	_generator = str_to_var(var_to_str(newState.cur_generator))
 	_index = newState.cur_index
 	
 func get_current_state():
@@ -117,7 +117,7 @@ class Sorter:
 # d should be an array of dictionary with two keys, one for the value and one for the weight
 func rand_weight(d : Array, val_name : String, weight_name : String, default=null):
 	var sorter := Sorter.new(weight_name)
-	d.sort_custom(sorter, "sort_function")
+	d.sort_custom(Callable(sorter,"sort_function"))
 	var max_pond = 0
 	for item in d:
 		max_pond += item[weight_name]

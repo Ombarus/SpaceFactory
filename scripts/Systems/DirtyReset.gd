@@ -3,8 +3,8 @@ extends Node
 var dirty_objs := {}
 
 func _ready() -> void:
-	Events.connect("OnInventoryChanged", self, "OnInventoryChanged_Callback")
-	Events.connect("OnObjectCreated", self, "OnObjectCreated_Callback")
+	Events.connect("OnInventoryChanged",Callable(self,"OnInventoryChanged_Callback"))
+	Events.connect("OnObjectCreated",Callable(self,"OnObjectCreated_Callback"))
 
 
 func OnObjectCreated_Callback(data : Dictionary) -> void:

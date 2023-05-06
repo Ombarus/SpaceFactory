@@ -3,8 +3,8 @@ extends Node
 var data_to_watch := {}
 
 func _ready() -> void:
-	Events.connect("OnObjectCreated", self, "OnObjectCreated_Callback")
-	Events.connect("OnObjectDestroyed", self, "OnObjectDestroyed_Callback")
+	Events.connect("OnObjectCreated",Callable(self,"OnObjectCreated_Callback"))
+	Events.connect("OnObjectDestroyed",Callable(self,"OnObjectDestroyed_Callback"))
 	# If we ever need to "create" an inventory slot that generate stuff on the fly
 	# I would add an OnGeneratePerSecondChanged event to avoid hooking to the spammy
 	# "OnInventoryChanged" event

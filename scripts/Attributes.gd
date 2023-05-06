@@ -1,10 +1,10 @@
-extends Spatial
+extends Node3D
 class_name Attributes
 
-export(String, FILE, "*.json") var PreloadData = ""
+@export_file("*.json") var PreloadData = "" # (String, FILE, "*.json")
 #TODO: hack to be able to modify modified_attributes in the editor. Apparently we can edit dictionnary in 3.1 so
 # this shouldn't be needed in 3.1
-export(String, MULTILINE) var PreloadJSON = ""
+@export_multiline var PreloadJSON = "" # (String, MULTILINE)
 
 var attribute_ref := -1
 
@@ -22,7 +22,7 @@ func get_data() -> Dictionary:
 	return Globals.LevelLoaderRef.get_object_data(self.attribute_ref)
 
 func _ready():
-	if PreloadData == null or PreloadData.empty():
+	if PreloadData == null or PreloadData.is_empty():
 		return
 	
 	self.call_deferred("_deferred_init")
@@ -30,8 +30,11 @@ func _ready():
 
 func _deferred_init():
 	var modified_attributes : Dictionary = {}
-	if not PreloadJSON.empty():
-		modified_attributes = JSON.parse(PreloadJSON).result
+	if not PreloadJSON.is_empty():
+		var test_json_conv = JSON.new()
+		if test_json_conv.parse(PreloadJSON) != OK:
+			printerr("Error loading inline JSON for object %s" % self.name)
+		modified_attributes = test_json_conv.data
 	modified_attributes["visual"] = {
 		"node_id":self.get_path(),
 		"transform":self.global_transform

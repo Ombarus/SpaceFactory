@@ -1,5 +1,5 @@
-extends Spatial
+extends Node3D
 class_name Snapping
 
-export(String) var snap_name
+@export var snap_name: String
 

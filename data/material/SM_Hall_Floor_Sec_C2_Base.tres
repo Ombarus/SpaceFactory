@@ -1,0 +1,32 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://dskburn3qyquv"]
+
+[ext_resource type="Shader" path="res://data/private/models/ue/floor/Floor.gdshader" id="1_oafrg"]
+[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="2_k0u0l"]
+[ext_resource type="Texture2D" uid="uid://dcf1lwljcrdl" path="res://data/private/models/ue/floor/T_Hall_Floor_Sec_Diff.PNG" id="3_iir30"]
+[ext_resource type="Texture2D" uid="uid://bn840v3o32sds" path="res://data/private/models/ue/floor/T_Hall_Floor_Sec_C_M.PNG" id="4_1xec5"]
+[ext_resource type="Texture2D" uid="uid://cys3nipt3ikcw" path="res://data/private/models/ue/floor/T_Hall_Floor_Sec_C_N_normals.PNG" id="5_4pv1p"]
+[ext_resource type="Texture2D" uid="uid://b4rwabblmhsyp" path="res://data/private/models/ue/floor/T_Metal_Scratches_M.PNG" id="6_4rsv1"]
+[ext_resource type="Texture2D" uid="uid://cta50p0r36fkj" path="res://data/private/models/ue/floor/T_Trims_A_Diff_B.PNG" id="7_8hhc1"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_oafrg")
+shader_parameter/metallic_green = 0.7
+shader_parameter/metallic_other = 0.75
+shader_parameter/mettalic_red = 0.0
+shader_parameter/norm_detail_u = 18.0
+shader_parameter/norm_detail_v = 18.0
+shader_parameter/r_detail_u = 2.0
+shader_parameter/r_detail_v = 2.0
+shader_parameter/roughness_green = 0.1
+shader_parameter/roughness_other = 0.2
+shader_parameter/roughness_red = 0.65
+shader_parameter/spec_green = 0.5
+shader_parameter/spec_other = 0.5
+shader_parameter/spec_red = 0.55
+shader_parameter/diffuse = ExtResource("3_iir30")
+shader_parameter/mask = ExtResource("4_1xec5")
+shader_parameter/normal = ExtResource("5_4pv1p")
+shader_parameter/scratches = ExtResource("6_4rsv1")
+shader_parameter/brushed = ExtResource("2_k0u0l")
+shader_parameter/trim_diffuse = ExtResource("7_8hhc1")

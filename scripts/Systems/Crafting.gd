@@ -3,7 +3,7 @@ extends Node
 var queued_attributes := {}
 
 func _ready() -> void:
-	Events.connect("OnQueueCrafting", self, "OnQueueCrafting_Callback")
+	Events.connect("OnQueueCrafting",Callable(self,"OnQueueCrafting_Callback"))
 	#TODO: When an object load, check if it has a crafting queue already
 	
 	
@@ -34,7 +34,7 @@ func HasEnoughResource(inventory, recipe_data):
 	#TODO: add an option to check if we have enough *base(?)*
 	# resources to craft the missing intermediate requirements
 	var input_list : Array = recipe_data.get("input")
-	if input_list.empty():
+	if input_list.is_empty():
 		return true
 		
 	for input_detail in input_list:
@@ -54,7 +54,7 @@ func _process(delta: float) -> void:
 		var crafting_queue : Array = crafter_data.get("crafting_queue", [])
 		var inventory := InventoryUtil.new(crafter_data)
 		while time_to_consume > 0:
-			if crafting_queue.empty():
+			if crafting_queue.is_empty():
 				to_remove.push_back(id)
 				time_to_consume = 0
 				continue
@@ -74,7 +74,7 @@ func _process(delta: float) -> void:
 					print("added " + item_path)
 					#TODO: check inventory limits
 					inventory.add(item_path, item_count)
-				crafting_queue.remove(0)
+				crafting_queue.remove_at(0)
 				
 		
 		#TODO: Implement energy

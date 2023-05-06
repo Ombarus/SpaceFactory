@@ -1,494 +1,284 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=37 format=3 uid="uid://do28hbwcrhxtb"]
 
-[ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/WorldEnvironment.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scripts/Systems/LevelLoader.gd" type="Script" id=3]
-[ext_resource path="res://scripts/Systems/PlayerControl.gd" type="Script" id=4]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scripts/Systems/Beam.gd" type="Script" id=6]
-[ext_resource path="res://scenes/sculpted_asteroid_01.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scripts/Systems/Camera.gd" type="Script" id=8]
-[ext_resource path="res://scripts/UI/PlaceItemBtn.gd" type="Script" id=9]
-[ext_resource path="res://scripts/CameraData.gd" type="Script" id=10]
-[ext_resource path="res://scenes/MiningLaser.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scripts/Systems/Harvester.gd" type="Script" id=12]
-[ext_resource path="res://scripts/Systems/UIManager.gd" type="Script" id=13]
-[ext_resource path="res://scenes/UI/CraftDialog.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scripts/UI/DialogBase.gd" type="Script" id=15]
-[ext_resource path="res://scripts/Systems/Crafting.gd" type="Script" id=16]
-[ext_resource path="res://scenes/UI/SmelterDialog.tscn" type="PackedScene" id=17]
-[ext_resource path="res://scripts/Systems/ProductionBuilding.gd" type="Script" id=18]
-[ext_resource path="res://scenes/UI/HarvesterDialog.tscn" type="PackedScene" id=19]
-[ext_resource path="res://scripts/Systems/DirtyReset.gd" type="Script" id=20]
-[ext_resource path="res://data/private/models/falcon/quixel/Falcon3_Roughness.png" type="Texture" id=21]
-[ext_resource path="res://data/private/models/falcon/FrontNorm3.png" type="Texture" id=22]
-[ext_resource path="res://data/private/models/falcon/DetailNorm3.png" type="Texture" id=23]
-[ext_resource path="res://data/private/models/falcon/falcon.glb" type="PackedScene" id=24]
-[ext_resource path="res://data/private/models/falcon/quixel/Falcon3_Normal.png" type="Texture" id=25]
-[ext_resource path="res://data/private/models/falcon/FrontAO.png" type="Texture" id=26]
-[ext_resource path="res://data/private/models/falcon/DetailAO.png" type="Texture" id=27]
-[ext_resource path="res://data/private/models/falcon/RearEmission.png" type="Texture" id=28]
-[ext_resource path="res://data/private/models/falcon/quixel/Falcon3_AO.png" type="Texture" id=29]
-[ext_resource path="res://data/private/models/falcon/quixel/Falcon3_Metalness.png" type="Texture" id=30]
-[ext_resource path="res://data/private/models/falcon/quixel/Falcon3_Albedo.png" type="Texture" id=31]
-[ext_resource path="res://scripts/Systems/InventoryGenerator.gd" type="Script" id=32]
-[ext_resource path="res://data/private/models/test_panel/metal-paint-test.glb" type="PackedScene" id=33]
-[ext_resource path="res://data/private/models/test_panel/final_rough.png" type="Texture" id=34]
-[ext_resource path="res://data/private/models/test_panel/final_col.png" type="Texture" id=35]
-[ext_resource path="res://data/private/models/test_panel/final_norm.png" type="Texture" id=36]
+[ext_resource type="PackedScene" uid="uid://dnyth0m35mwyp" path="res://scenes/Asteroid.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/Systems/LevelLoader.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/Systems/PlayerControl.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://cw11ex3b078pq" path="res://scenes/Player.tscn" id="5"]
+[ext_resource type="Script" path="res://scripts/Systems/Beam.gd" id="6"]
+[ext_resource type="PackedScene" uid="uid://5jh1kpktc4e3" path="res://scenes/sculpted_asteroid_01.tscn" id="7"]
+[ext_resource type="Script" path="res://scripts/Systems/Camera.gd" id="8"]
+[ext_resource type="Script" path="res://scripts/UI/PlaceItemBtn.gd" id="9"]
+[ext_resource type="Script" path="res://scripts/CameraData.gd" id="10"]
+[ext_resource type="PackedScene" path="res://scenes/MiningLaser.tscn" id="11"]
+[ext_resource type="Script" path="res://scripts/Systems/Harvester.gd" id="12"]
+[ext_resource type="Script" path="res://scripts/Systems/UIManager.gd" id="13"]
+[ext_resource type="PackedScene" uid="uid://d1fmxvecant73" path="res://scenes/UI/CraftDialog.tscn" id="14"]
+[ext_resource type="Texture2D" uid="uid://xml43hkygwcx" path="res://data/private/environment/skybox/panorama_image_hdr.exr" id="14_i2bxj"]
+[ext_resource type="Script" path="res://scripts/UI/DialogBase.gd" id="15"]
+[ext_resource type="Script" path="res://scripts/Systems/Crafting.gd" id="16"]
+[ext_resource type="PackedScene" path="res://scenes/UI/SmelterDialog.tscn" id="17"]
+[ext_resource type="Script" path="res://scripts/Systems/ProductionBuilding.gd" id="18"]
+[ext_resource type="PackedScene" path="res://scenes/UI/HarvesterDialog.tscn" id="19"]
+[ext_resource type="Script" path="res://scripts/Systems/DirtyReset.gd" id="20"]
+[ext_resource type="Script" path="res://scripts/Systems/InventoryGenerator.gd" id="32"]
 
-[sub_resource type="Resource" id=5]
-script = ExtResource( 10 )
-anchor_offset = Vector3( 0, 0, 0 )
-target_offset = Vector3( 0, 2.5, 5 )
-look_target = Vector3( 0, 5, -50 )
-rotation = Vector3( 0, 0, 0 )
-pitch_limits = Vector2( -80, 80 )
+[sub_resource type="Resource" id="5"]
+script = ExtResource("10")
+anchor_offset = Vector3(0, 0, 0)
+target_offset = Vector3(0, 2.5, 5)
+look_target = Vector3(0, 5, -50)
+rotation = Vector3(0, 0, 0)
+pitch_limits = Vector2(-80, 80)
 
-[sub_resource type="Shader" id=14]
-code = "shader_type spatial;
-render_mode unshaded, cull_disabled;
- 
-uniform vec3 billboard_axis = vec3(0.0, 1.0, 0.0);
-uniform float master_alpha : hint_range(0.0, 1.0) = 1.0;
-uniform float scroll_speed = 1.0;
-uniform float worley_speed = 1.0;
-uniform float worley_scale = 1.0;
-uniform float distortion_strength = 0.1;
- 
-const float PI = 3.141592654;
-const float TAU = 6.283185307;
- 
-vec3 project_on_plane( vec3 vec, vec3 normal ) {
-    return vec - normal * dot( vec, normal );
-}
- 
-vec3 rotatev(vec3 v, vec3 n, float a) {
-    return v * cos(a) + cross(n, v) * sin(a) + n * dot(n, v) * (1. - cos(a));
-}
- 
-void vertex() {
-    vec3 obj_pos = (WORLD_MATRIX * vec4(0, 0, 0, 1)).xyz;
-    vec3 world_camera = (CAMERA_MATRIX * vec4(0.0, 0.0, 0.0, 1.0)).xyz;
-    vec3 c = world_camera - obj_pos;
-    c = normalize(c);
-    c = (vec4(c, 0.0) * WORLD_MATRIX).xyz;
-    vec3 axis = normalize(billboard_axis);
-    vec3 target = project_on_plane(c, axis);
-    target = normalize(target);
-    float dot_product = dot(target, NORMAL);
-    float anglev = acos( dot_product);
-    if (target.x < 0.0) {
-        anglev = -anglev;
-    }
-    VERTEX = rotatev(VERTEX, axis, anglev);
-    NORMAL = rotatev(NORMAL, axis, anglev);
-}
- 
-vec2 random(vec2 uv) {
-    return vec2(fract(sin(dot(uv.xy,
-        vec2(12.9898,78.233))) * 43758.5453123));
-}
- 
-float worley(vec2 uv, float columns, float rows, float time) {
-    vec2 index_uv = floor(vec2(uv.x * columns, uv.y * rows));
-    vec2 fract_uv = fract(vec2(uv.x * columns, uv.y * rows));
-    
-    float minimum_dist = 1.0;  
-    
-    for (int y= -1; y <= 1; y++) {
-        for (int x= -1; x <= 1; x++) {
-            vec2 neighbor = vec2(float(x),float(y));
-            vec2 point = random(index_uv + neighbor);
-            float speed = 4.5;
-            point = vec2( cos(time * point.x * speed), sin(time * point.y * speed) ) * 0.5 + 0.5;
-            
-            vec2 diff = neighbor + point - fract_uv;
-            float dist = length(diff);
-            minimum_dist = min(minimum_dist, dist);
-        }
-    }
-    
-    return minimum_dist;
-}
- 
-float smootherstep(float edge0, float edge1, float x){
-    x = clamp((x - edge0) / (edge1 - edge0), 0.0, 1.0);
-    return x * x * x * (x * (x * 6.0 - 15.0) + 10.0);
-}
- 
-float nekoto_taper(float x, float ex){
-    float m = step(0.5, x);
-    float _in = pow(smootherstep(0.0, 1.0, 2.0 * x), ex);
-    float _out = pow(smootherstep(0.0, 1.0, -2.0 * x + 2.0), ex);
-    return mix(_in, _out, m);
-}
- 
-void fragment(){
-    vec2 uv = UV * worley_scale;
-    uv.y -= TIME * scroll_speed;
-    float wn = worley(uv, 3.0, 3.0, TIME * worley_speed);
-    wn = pow(wn, 3.0);
-    
-    float edge_taper = nekoto_taper(UV.x, 2.0) * nekoto_taper(UV.y, 1.0);
-    
-    vec3 screen_color = texture(SCREEN_TEXTURE, SCREEN_UV + wn * distortion_strength * edge_taper).rgb;
-    
-    ALBEDO = vec3(screen_color);
-}"
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5pkeu"]
+panorama = ExtResource("14_i2bxj")
 
-[sub_resource type="ShaderMaterial" id=15]
-shader = SubResource( 14 )
-shader_param/billboard_axis = Vector3( 0, 1, 0 )
-shader_param/master_alpha = 1.0
-shader_param/scroll_speed = 1.0
-shader_param/worley_speed = 20.0
-shader_param/worley_scale = 10.0
-shader_param/distortion_strength = 0.052
+[sub_resource type="Sky" id="Sky_fq0sq"]
+sky_material = SubResource("PanoramaSkyMaterial_5pkeu")
 
-[sub_resource type="QuadMesh" id=16]
-material = SubResource( 15 )
-size = Vector2( 3, 3 )
+[sub_resource type="Environment" id="Environment_r5mup"]
+background_mode = 2
+background_energy_multiplier = 1.04
+sky = SubResource("Sky_fq0sq")
+ambient_light_color = Color(0.25098, 0.207843, 0.25098, 1)
+ambient_light_sky_contribution = 0.82
+ssao_enabled = true
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 1.05
+fog_density = 0.0034
+fog_sky_affect = 0.0
 
-[sub_resource type="SpatialMaterial" id=17]
-flags_unshaded = true
-flags_disable_ambient_light = true
-params_blend_mode = 1
-albedo_color = Color( 0, 4.07, 0.05, 1 )
+[sub_resource type="StandardMaterial3D" id="17"]
+blend_mode = 1
+shading_mode = 0
+disable_ambient_light = true
+albedo_color = Color(0, 4.07, 0.05, 1)
 
-[sub_resource type="PlaneMesh" id=18]
-material = SubResource( 17 )
-size = Vector2( 0.3, 3 )
+[sub_resource type="PlaneMesh" id="18"]
+material = SubResource("17")
+size = Vector2(0.3, 3)
 
-[sub_resource type="SpatialMaterial" id=19]
-albedo_color = Color( 0.513726, 0.501961, 0.501961, 1 )
-metallic = 1.0
-roughness = 0.55
-normal_enabled = true
-normal_scale = 1.0
-normal_texture = ExtResource( 22 )
-ao_enabled = true
-ao_light_affect = 0.29
-ao_texture = ExtResource( 26 )
-ao_on_uv2 = false
-ao_texture_channel = 0
+[sub_resource type="ButtonGroup" id="ButtonGroup_emaf4"]
 
-[sub_resource type="SpatialMaterial" id=20]
-albedo_color = Color( 0.513726, 0.501961, 0.501961, 1 )
-albedo_texture = ExtResource( 31 )
-metallic = 1.0
-metallic_texture = ExtResource( 30 )
-roughness = 0.55
-roughness_texture = ExtResource( 21 )
-emission_enabled = true
-emission = Color( 0, 0, 0, 1 )
-emission_energy = 9.87
-emission_operator = 0
-emission_on_uv2 = false
-emission_texture = ExtResource( 28 )
-normal_enabled = true
-normal_scale = 1.0
-normal_texture = ExtResource( 25 )
-ao_enabled = true
-ao_light_affect = 0.32
-ao_texture = ExtResource( 29 )
-ao_on_uv2 = false
-ao_texture_channel = 0
+[sub_resource type="InputEventAction" id="InputEventAction_81n46"]
+action = &"quick_bar_1"
 
-[sub_resource type="SpatialMaterial" id=21]
-albedo_color = Color( 0.513726, 0.501961, 0.501961, 1 )
-metallic = 1.0
-roughness = 0.55
-normal_enabled = true
-normal_scale = 1.0
-normal_texture = ExtResource( 23 )
-ao_enabled = true
-ao_light_affect = 0.37
-ao_texture = ExtResource( 27 )
-ao_on_uv2 = false
-ao_texture_channel = 0
+[sub_resource type="Shortcut" id="7"]
+events = [SubResource("InputEventAction_81n46")]
 
-[sub_resource type="InputEventAction" id=6]
-action = "quick_bar_1"
+[sub_resource type="InputEventAction" id="InputEventAction_j0cxj"]
+action = &"quick_bar_2"
 
-[sub_resource type="ShortCut" id=7]
-shortcut = SubResource( 6 )
+[sub_resource type="Shortcut" id="9"]
+events = [SubResource("InputEventAction_j0cxj")]
 
-[sub_resource type="InputEventAction" id=8]
-action = "quick_bar_2"
+[sub_resource type="InputEventAction" id="InputEventAction_5k8gw"]
+action = &"quick_bar_3"
 
-[sub_resource type="ShortCut" id=9]
-shortcut = SubResource( 8 )
+[sub_resource type="Shortcut" id="11"]
+events = [SubResource("InputEventAction_5k8gw")]
 
-[sub_resource type="InputEventAction" id=10]
-action = "quick_bar_3"
+[sub_resource type="InputEventAction" id="InputEventAction_7k0rj"]
+action = &"quick_bar_4"
 
-[sub_resource type="ShortCut" id=11]
-shortcut = SubResource( 10 )
-
-[sub_resource type="InputEventAction" id=12]
-action = "quick_bar_4"
-
-[sub_resource type="ShortCut" id=13]
-shortcut = SubResource( 12 )
-
-[sub_resource type="SpatialMaterial" id=22]
-albedo_texture = ExtResource( 35 )
-roughness_texture = ExtResource( 34 )
-normal_enabled = true
-normal_scale = 1.0
-normal_texture = ExtResource( 36 )
+[sub_resource type="Shortcut" id="13"]
+events = [SubResource("InputEventAction_7k0rj")]
 
 [node name="Main" type="Node"]
 
 [node name="Systems" type="Node" parent="."]
 
 [node name="LevelLoader" type="Node" parent="Systems"]
-script = ExtResource( 3 )
+script = ExtResource("3")
 
 [node name="InventoryGenerator" type="Node" parent="Systems"]
-script = ExtResource( 32 )
+script = ExtResource("32")
 
 [node name="PlayerControl" type="Node" parent="Systems"]
-script = ExtResource( 4 )
+script = ExtResource("4")
 PlacingRoot = NodePath("../../Dynamic")
 HarvestBeam = NodePath("../../Dynamic/MiningLaser")
 InventoryLine = NodePath("../../UI/SafeArea/HUD/VBoxContainer/Inventory/Exemple")
 
-[node name="Camera" type="Node" parent="Systems"]
-script = ExtResource( 8 )
-PlayerCamera = NodePath("../../Camera")
-CameraState = SubResource( 5 )
+[node name="Camera3D" type="Node" parent="Systems"]
+script = ExtResource("8")
+PlayerCamera = NodePath("../../Camera3D")
+CameraState = SubResource("5")
 
 [node name="Beam" type="Node" parent="Systems"]
-script = ExtResource( 6 )
+script = ExtResource("6")
 
 [node name="Harvester" type="Node" parent="Systems"]
-script = ExtResource( 12 )
+script = ExtResource("12")
 
 [node name="UIManager" type="Node" parent="Systems"]
-script = ExtResource( 13 )
+script = ExtResource("13")
 
 [node name="Crafting" type="Node" parent="Systems"]
-script = ExtResource( 16 )
+script = ExtResource("16")
 
 [node name="ProductionBuilding" type="Node" parent="Systems"]
-script = ExtResource( 18 )
+script = ExtResource("18")
 
 [node name="DirtyReset" type="Node" parent="Systems"]
-script = ExtResource( 20 )
+script = ExtResource("20")
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.995401, 0.0957937, 0, -0.0957937, 0.995401, 0, 2.386, 5.018 )
-fov = 100.0
-near = 0.2
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.311072, -0.612231, 0.726917, 0.85024, 0.521028, 0.0749787, -0.424648, 0.59473, 0.68262, -9.704, -0.819, 0.895)
+fov = 66.4
+near = 0.01
 far = 10000.0
 
-[node name="Level" type="Spatial" parent="."]
+[node name="Level" type="Node3D" parent="."]
 
-[node name="Asteroid" parent="Level" instance=ExtResource( 1 )]
-transform = Transform( 0.973066, 0, -0.230525, 0, 1, 0, 0.230525, 0, 0.973066, -10.1802, -3.16468, -18.439 )
+[node name="Asteroid" parent="Level" instance=ExtResource("1")]
+transform = Transform3D(0.973066, 0, -0.230525, 0, 1, 0, 0.230525, 0, 0.973066, -10.1802, -3.16468, -18.439)
 
-[node name="sculpted_asteroid_01" parent="Level" instance=ExtResource( 7 )]
-transform = Transform( 0.167096, 0, -0.985941, -0.27568, 0.960113, -0.0467218, 0.946615, 0.279611, 0.160431, 21.0589, 0, -13.2365 )
+[node name="sculpted_asteroid_01" parent="Level" instance=ExtResource("7")]
+transform = Transform3D(-0.267642, -1.49012e-08, -0.963519, -0.269411, 0.960113, 0.0748356, 0.925087, 0.279611, -0.256967, 21.0589, 0, -13.2365)
 
-[node name="WorldEnvironment" parent="Level" instance=ExtResource( 2 )]
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="Level"]
+environment = SubResource("Environment_r5mup")
 
-[node name="DirectionalLight" parent="Level/WorldEnvironment" index="0"]
-light_energy = 2.736
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level/WorldEnvironment2"]
+transform = Transform3D(0.666819, 0.114908, -0.736308, 0, 0.988041, 0.154193, 0.74522, -0.102819, 0.658844, 0, 12.8632, 41.2752)
+light_color = Color(0.830918, 0.787641, 0.895833, 1)
+light_energy = 2.529
 
-[node name="Dynamic" type="Spatial" parent="."]
+[node name="Dynamic" type="Node3D" parent="."]
 
-[node name="Player" parent="Dynamic" instance=ExtResource( 5 )]
-transform = Transform( 0.884646, 0, 0.466263, 0, 1, 0, -0.466263, 0, 0.884646, 0, 0, 0 )
+[node name="Player" parent="Dynamic" instance=ExtResource("5")]
+transform = Transform3D(0.884646, 0, 0.466263, 0, 1, 0, -0.466263, 0, 0.884646, 0, 0, 0)
 
-[node name="MeshInstance" type="MeshInstance" parent="Dynamic/Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.431328, 3.86717 )
+[node name="MeshInstance2" type="MeshInstance3D" parent="Dynamic/Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.308558, 0, 3.12733)
 visible = false
-mesh = SubResource( 16 )
+mesh = SubResource("18")
 
-[node name="MeshInstance2" type="MeshInstance" parent="Dynamic/Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.308558, 0, 3.12733 )
+[node name="MeshInstance3" type="MeshInstance3D" parent="Dynamic/Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.330796, 0, 3.12733)
 visible = false
-mesh = SubResource( 18 )
+mesh = SubResource("18")
 
-[node name="MeshInstance3" type="MeshInstance" parent="Dynamic/Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.330796, 0, 3.12733 )
-visible = false
-mesh = SubResource( 18 )
-
-[node name="falcon" parent="Dynamic/Player" instance=ExtResource( 24 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.431328, -0.518678 )
-visible = false
-
-[node name="cockpit_lowr" parent="Dynamic/Player/falcon" index="0"]
-material/0 = SubResource( 19 )
-
-[node name="Ship_rear3" parent="Dynamic/Player/falcon" index="1"]
-transform = Transform( 2.43574, 0, 0, 0, 2.43574, 0, 0, 0, 2.43574, 0, -0.252595, -0.714247 )
-material/0 = SubResource( 20 )
-
-[node name="top_turret" parent="Dynamic/Player/falcon" index="2"]
-transform = Transform( 0.0352107, -1.86265e-09, 0, 0, 0, -0.0352107, 1.86265e-09, 0.0352107, 0, 0.00513697, 0.459849, -0.249451 )
-material/0 = SubResource( 21 )
-
-[node name="MiningLaser" parent="Dynamic" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.17181 )
+[node name="MiningLaser" parent="Dynamic" instance=ExtResource("11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.17181)
 visible = false
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="SafeArea" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HUD" type="Control" parent="UI/SafeArea"]
+anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-script = ExtResource( 15 )
+script = ExtResource("15")
 LockControls = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/SafeArea/HUD"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Inventory" type="HBoxContainer" parent="UI/SafeArea/HUD/VBoxContainer"]
-margin_right = 1920.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Exemple" type="Label" parent="UI/SafeArea/HUD/VBoxContainer/Inventory"]
-margin_top = 18.0
-margin_right = 150.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 150, 0 )
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/SafeArea/HUD/VBoxContainer"]
-margin_top = 54.0
-margin_right = 1920.0
-margin_bottom = 992.0
-mouse_filter = 2
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="CraftingQueue" type="HBoxContainer" parent="UI/SafeArea/HUD/VBoxContainer"]
-margin_top = 996.0
-margin_right = 1920.0
-margin_bottom = 1036.0
-rect_min_size = Vector2( 0, 40 )
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
 
 [node name="Exemple" type="Label" parent="UI/SafeArea/HUD/VBoxContainer/CraftingQueue"]
 visible = false
-margin_top = 13.0
-margin_bottom = 27.0
+layout_mode = 2
 
 [node name="Toolbar" type="HBoxContainer" parent="UI/SafeArea/HUD/VBoxContainer"]
-margin_top = 1040.0
-margin_right = 1920.0
-margin_bottom = 1080.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/SafeArea/HUD/VBoxContainer/Toolbar"]
-margin_right = 806.0
-margin_bottom = 40.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="miner" type="Button" parent="UI/SafeArea/HUD/VBoxContainer/Toolbar"]
-margin_left = 810.0
-margin_right = 880.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 70, 40 )
+custom_minimum_size = Vector2(70, 40)
+layout_mode = 2
 toggle_mode = true
-shortcut = SubResource( 7 )
+button_group = SubResource("ButtonGroup_emaf4")
+shortcut = SubResource("7")
 text = "1. Miner"
-script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("9")
 
 [node name="smelter" type="Button" parent="UI/SafeArea/HUD/VBoxContainer/Toolbar"]
-margin_left = 884.0
-margin_right = 962.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 70, 40 )
+custom_minimum_size = Vector2(70, 40)
+layout_mode = 2
 toggle_mode = true
-shortcut = SubResource( 9 )
+shortcut = SubResource("9")
 text = "2. Smelter"
-script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("9")
 
 [node name="floor" type="Button" parent="UI/SafeArea/HUD/VBoxContainer/Toolbar"]
-margin_left = 966.0
-margin_right = 1036.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 70, 40 )
+custom_minimum_size = Vector2(70, 40)
+layout_mode = 2
 toggle_mode = true
-shortcut = SubResource( 11 )
+shortcut = SubResource("11")
 text = "3. Floor"
-script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("9")
 
 [node name="wall" type="Button" parent="UI/SafeArea/HUD/VBoxContainer/Toolbar"]
-margin_left = 1040.0
-margin_right = 1110.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 70, 40 )
+custom_minimum_size = Vector2(70, 40)
+layout_mode = 2
 toggle_mode = true
-shortcut = SubResource( 13 )
+shortcut = SubResource("13")
 text = "4. Wall"
-script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("9")
 
 [node name="MarginContainer2" type="MarginContainer" parent="UI/SafeArea/HUD/VBoxContainer/Toolbar"]
-margin_left = 1114.0
-margin_right = 1920.0
-margin_bottom = 40.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CraftDialog" parent="UI/SafeArea" instance=ExtResource( 14 )]
+[node name="CraftDialog" parent="UI/SafeArea" instance=ExtResource("14")]
 visible = false
+layout_mode = 1
 
-[node name="SmelterDialog" parent="UI/SafeArea" instance=ExtResource( 17 )]
+[node name="SmelterDialog" parent="UI/SafeArea" instance=ExtResource("17")]
 visible = false
+layout_mode = 1
+anchors_preset = 15
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="HarvesterDialog" parent="UI/SafeArea" instance=ExtResource( 19 )]
+[node name="HarvesterDialog" parent="UI/SafeArea" instance=ExtResource("19")]
 visible = false
-
-[node name="metal-paint-test" parent="." instance=ExtResource( 33 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7947, 0, 1.71697 )
-
-[node name="Plane" parent="metal-paint-test" index="0"]
-transform = Transform( 0.711666, -2.2975, 2.98657, 1.12152, 3.03077, 2.06427, -3.59726, 0.490373, 1.23442, 0.614575, 2.31285, -2.21392 )
-material/0 = SubResource( 22 )
+layout_mode = 1
+anchors_preset = 15
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/miner" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/miner" method="_on_PlaceSmelterBtn_toggled"]
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/smelter" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/smelter" method="_on_PlaceSmelterBtn_toggled"]
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/floor" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/floor" method="_on_PlaceSmelterBtn_toggled"]
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/wall" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/wall" method="_on_PlaceSmelterBtn_toggled"]
-
-[editable path="Level/WorldEnvironment"]
-[editable path="Dynamic/Player/falcon"]
-[editable path="metal-paint-test"]

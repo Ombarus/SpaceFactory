@@ -2,11 +2,11 @@ extends Control
 
 
 func _ready() -> void:
-	Events.connect("OnPlaceToggle", self, "OnPlaceToggle_Callback")
+	Events.connect("OnPlaceToggle",Callable(self,"OnPlaceToggle_Callback"))
 	self.visible = false
 
 func OnPlaceToggle_Callback(name: String) -> void:
-	self.visible = not name.empty()
+	self.visible = not name.is_empty()
 
 
 func _on_Ok_pressed() -> void:

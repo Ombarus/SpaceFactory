@@ -1,10 +1,11 @@
 extends "res://scripts/UI/DialogBase.gd"
 
 var attributes = null
-onready var inventory_list : ItemList = get_node("VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Inventory/InventoryList")
-onready var crafting_list : ItemList = get_node("VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Crafting/CraftingList")
+@onready var inventory_list : ItemList = get_node("VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Inventory/InventoryList")
+@onready var crafting_list : ItemList = get_node("VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Crafting/CraftingList")
 
 func _ready() -> void:
+	super._ready()
 	self.set_process(false)
 
 func Init(init_param):
@@ -22,7 +23,7 @@ func update_inventory():
 	var keys : Array = Globals.get_keys(attributes, "inventory_slots")
 	for key in keys:
 		var item_path : String = Globals.get_attrib(attributes, "inventory_slots.%s.content" % str(key))
-		if item_path.empty():
+		if item_path.is_empty():
 			continue
 		var count : int = Globals.get_attrib(attributes, "inventory_slots.%s.count" % str(key))
 		var inventory_data = Globals.LevelLoaderRef.load_json(item_path)

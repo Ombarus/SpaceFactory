@@ -3,10 +3,10 @@ extends "res://scripts/UI/DialogBase.gd"
 var player_data := {}
 var building_data := {}
 
-onready var input_inventory = get_node("VBoxContainer/HBoxContainer/VBoxContainer3/InputInventory")
-onready var output_inventory = get_node("VBoxContainer/HBoxContainer/VBoxContainer/OutputInventory")
-onready var recipe_list = get_node("VBoxContainer/HBoxContainer/VBoxContainer2/RecipeList")
-onready var player_inventory = get_node("VBoxContainer/VBoxContainer4/PlayerInventory")
+@onready var input_inventory = get_node("VBoxContainer/HBoxContainer/VBoxContainer3/InputInventory")
+@onready var output_inventory = get_node("VBoxContainer/HBoxContainer/VBoxContainer/OutputInventory")
+@onready var recipe_list = get_node("VBoxContainer/HBoxContainer/VBoxContainer2/RecipeList")
+@onready var player_inventory = get_node("VBoxContainer/VBoxContainer4/PlayerInventory")
 
 func Init(init_param):
 	player_data = init_param["player_data"]
@@ -31,7 +31,7 @@ func update_inventory_list():
 	var keys : Array = Globals.get_keys(player_data, "inventory_slots")
 	for key in keys:
 		var item_path : String = Globals.get_attrib(player_data, "inventory_slots.%s.content" % str(key))
-		if item_path.empty():
+		if item_path.is_empty():
 			continue
 		var count : int = Globals.get_attrib(player_data, "inventory_slots.%s.count" % str(key))
 		var inventory_data = Globals.LevelLoaderRef.load_json(item_path)
@@ -44,7 +44,7 @@ func update_building_inventories():
 	var keys : Array = Globals.get_keys(building_data, "inventory_slots")
 	for key in keys:
 		var item_path : String = Globals.get_attrib(building_data, "inventory_slots.%s.content" % str(key))
-		if item_path.empty():
+		if item_path.is_empty():
 			continue
 		var count : int = Globals.get_attrib(building_data, "inventory_slots.%s.count" % str(key))
 		var inventory_data = Globals.LevelLoaderRef.load_json(item_path)
@@ -85,7 +85,7 @@ func _on_RecipeList_item_selected(index):
 func _on_PlayerInventory_item_selected(index):
 	var player_inv := InventoryUtil.new(player_data)
 	var item_path : String = Globals.get_attrib(building_data, "inventory_slots.input.content")
-	if not item_path.empty():
+	if not item_path.is_empty():
 		var item_count : int = Globals.get_attrib(building_data, "inventory_slots.input.count")
 		var remainder : int = player_inv.add(item_path, item_count)
 		if remainder > 0:

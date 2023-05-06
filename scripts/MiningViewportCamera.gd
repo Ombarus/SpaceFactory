@@ -1,2 +1,2 @@
-extends Camera
+extends Camera3D
 

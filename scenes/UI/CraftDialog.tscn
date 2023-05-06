@@ -1,124 +1,103 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://d1fmxvecant73"]
 
-[ext_resource path="res://scripts/UI/CraftDialog.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://scripts/UI/CraftDialog.gd" id="1"]
 
 [node name="CraftDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("1")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_right = 1920.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 0, 100 )
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 104.0
-margin_right = 1920.0
-margin_bottom = 976.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-margin_right = 100.0
-margin_bottom = 872.0
-rect_min_size = Vector2( 100, 0 )
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
 
 [node name="ThisShouldBeStandardDialogScene" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
-margin_left = 104.0
-margin_right = 1816.0
-margin_bottom = 872.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color( 0, 0.403922, 0.6, 1 )
+color = Color(0, 0.403922, 0.6, 1)
 
 [node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -52.0
-margin_top = 18.0
-margin_right = -12.0
-margin_bottom = 58.0
-rect_min_size = Vector2( 40, 40 )
+offset_left = -52.0
+offset_top = 18.0
+offset_right = -12.0
+offset_bottom = 58.0
 text = "X"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 28.0
-margin_top = 35.0
-margin_right = -62.0
-margin_bottom = -36.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = 28.0
+offset_top = 35.0
+offset_right = -62.0
+offset_bottom = -36.0
 
 [node name="Inventory" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer"]
-margin_right = 809.0
-margin_bottom = 801.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Inventory"]
-margin_right = 809.0
-margin_bottom = 14.0
+layout_mode = 2
 text = "Character"
 
 [node name="InventoryList" type="ItemList" parent="VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Inventory"]
-margin_top = 18.0
-margin_right = 809.0
-margin_bottom = 801.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Crafting" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer"]
-margin_left = 813.0
-margin_right = 1622.0
-margin_bottom = 801.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Crafting"]
-margin_right = 809.0
-margin_bottom = 14.0
+layout_mode = 2
 text = "Crafting"
 
 [node name="CraftingList" type="ItemList" parent="VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Crafting"]
-margin_top = 18.0
-margin_right = 809.0
-margin_bottom = 801.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-items = [ "Glass", null, false, "Iron Ingot", null, false, "Silicon Wafer", null, false ]
 allow_reselect = true
+item_count = 3
+item_0/text = "Glass"
+item_1/text = "Iron Ingot"
+item_2/text = "Silicon Wafer"
 
 [node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 1820.0
-margin_right = 1920.0
-margin_bottom = 872.0
-rect_min_size = Vector2( 100, 0 )
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 980.0
-margin_right = 1920.0
-margin_bottom = 1080.0
-rect_min_size = Vector2( 0, 100 )
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/Button" to="." method="_on_Button_pressed"]
 [connection signal="item_selected" from="VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Crafting/CraftingList" to="." method="_on_CraftingList_item_selected"]

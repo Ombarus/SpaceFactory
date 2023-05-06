@@ -2,10 +2,11 @@ extends "res://scripts/UI/DialogBase.gd"
 
 var player_data = null
 var building_data = null
-onready var character_list : ItemList = get_node("VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Character/InventoryList")
-onready var harvester_list : ItemList = get_node("VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Harvester/InventoryList")
+@onready var character_list : ItemList = get_node("VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Character/InventoryList")
+@onready var harvester_list : ItemList = get_node("VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Harvester/InventoryList")
 
 func _ready() -> void:
+	super._ready()
 	self.set_process(false)
 
 func Init(init_param):
@@ -26,7 +27,7 @@ func update_character_list():
 	var keys : Array = Globals.get_keys(player_data, "inventory_slots")
 	for key in keys:
 		var item_path : String = Globals.get_attrib(player_data, "inventory_slots.%s.content" % str(key))
-		if item_path.empty():
+		if item_path.is_empty():
 			continue
 		var count : int = Globals.get_attrib(player_data, "inventory_slots.%s.count" % str(key))
 		var inventory_data = Globals.LevelLoaderRef.load_json(item_path)
@@ -38,7 +39,7 @@ func update_harvester_list():
 	var keys : Array = Globals.get_keys(building_data, "inventory_slots")
 	for key in keys:
 		var item_path : String = Globals.get_attrib(building_data, "inventory_slots.%s.content" % str(key))
-		if item_path.empty():
+		if item_path.is_empty():
 			continue
 		var count : int = Globals.get_attrib(building_data, "inventory_slots.%s.count" % str(key))
 		var inventory_data = Globals.LevelLoaderRef.load_json(item_path)

@@ -42,14 +42,14 @@ height = 1.0
 radial_segments = 8
 rings = 1
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="StandardMaterial3D" id=2]
 flags_unshaded = true
 flags_no_depth_test = true
 flags_do_not_receive_shadows = true
 flags_disable_ambient_light = true
 params_cull_mode = 2
 
-[node name="ViewportContainer" type="ViewportContainer"]
+[node name="SubViewportContainer" type="SubViewportContainer"]
 material = SubResource( 11 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -58,7 +58,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Viewport" type="Viewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2( 480, 270 )
 own_world = true
 world = SubResource( 8 )
@@ -66,21 +66,21 @@ handle_input_locally = false
 keep_3d_linear = true
 render_target_update_mode = 3
 
-[node name="ColorRect" type="ColorRect" parent="Viewport"]
+[node name="ColorRect" type="ColorRect" parent="SubViewport"]
 material = SubResource( 13 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Camera" type="Camera" parent="Viewport"]
-transform = Transform( 1, 0, 0, 0, 0.940443, 0.339953, 0, -0.339953, 0.940443, 0, 2.235, 7.728 )
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D( 1, 0, 0, 0, 0.940443, 0.339953, 0, -0.339953, 0.940443, 0, 2.235, 7.728 )
 cull_mask = 1024
 environment = SubResource( 3 )
 current = true
 
-[node name="MeshInstance" type="MeshInstance" parent="Viewport"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-07, -1, 0, 10, -4.37114e-08, 0, 0, 0 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport"]
+transform = Transform3D( 1, 0, 0, 0, -4.37114e-07, -1, 0, 10, -4.37114e-08, 0, 0, 0 )
 layers = 1024
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")

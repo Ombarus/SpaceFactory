@@ -21,26 +21,26 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_right = 1920.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 0, 100 )
+offset_right = 1920.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 0, 100 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 104.0
-margin_right = 1920.0
-margin_bottom = 976.0
+offset_top = 104.0
+offset_right = 1920.0
+offset_bottom = 976.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-margin_right = 100.0
-margin_bottom = 872.0
-rect_min_size = Vector2( 100, 0 )
+offset_right = 100.0
+offset_bottom = 872.0
+custom_minimum_size = Vector2( 100, 0 )
 
 [node name="ThisShouldBeStandardDialogScene" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
-margin_left = 104.0
-margin_right = 1816.0
-margin_bottom = 872.0
+offset_left = 104.0
+offset_right = 1816.0
+offset_bottom = 872.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0, 0.403922, 0.6, 1 )
@@ -48,11 +48,11 @@ color = Color( 0, 0.403922, 0.6, 1 )
 [node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -52.0
-margin_top = 18.0
-margin_right = -12.0
-margin_bottom = 58.0
-rect_min_size = Vector2( 40, 40 )
+offset_left = -52.0
+offset_top = 18.0
+offset_right = -12.0
+offset_bottom = 58.0
+custom_minimum_size = Vector2( 40, 40 )
 text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -61,64 +61,64 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 28.0
-margin_top = 35.0
-margin_right = -62.0
-margin_bottom = -36.0
+offset_left = 28.0
+offset_top = 35.0
+offset_right = -62.0
+offset_bottom = -36.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Character" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer"]
-margin_right = 809.0
-margin_bottom = 801.0
+offset_right = 809.0
+offset_bottom = 801.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Character"]
-margin_right = 809.0
-margin_bottom = 14.0
+offset_right = 809.0
+offset_bottom = 14.0
 text = "Character"
 
 [node name="InventoryList" type="ItemList" parent="VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Character"]
-margin_top = 18.0
-margin_right = 809.0
-margin_bottom = 801.0
+offset_top = 18.0
+offset_right = 809.0
+offset_bottom = 801.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Harvester" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer"]
-margin_left = 813.0
-margin_right = 1622.0
-margin_bottom = 801.0
+offset_left = 813.0
+offset_right = 1622.0
+offset_bottom = 801.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Harvester"]
-margin_right = 809.0
-margin_bottom = 14.0
+offset_right = 809.0
+offset_bottom = 14.0
 text = "Harvester"
 
 [node name="InventoryList" type="ItemList" parent="VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Harvester"]
-margin_top = 18.0
-margin_right = 809.0
-margin_bottom = 801.0
+offset_top = 18.0
+offset_right = 809.0
+offset_bottom = 801.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 items = [ "Glass", null, false, "Iron Ingot", null, false, "Silicon Wafer", null, false ]
 allow_reselect = true
 
 [node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 1820.0
-margin_right = 1920.0
-margin_bottom = 872.0
-rect_min_size = Vector2( 100, 0 )
+offset_left = 1820.0
+offset_right = 1920.0
+offset_bottom = 872.0
+custom_minimum_size = Vector2( 100, 0 )
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 980.0
-margin_right = 1920.0
-margin_bottom = 1080.0
-rect_min_size = Vector2( 0, 100 )
+offset_top = 980.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+custom_minimum_size = Vector2( 0, 100 )
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/Button" to="." method="_on_Button_pressed"]
 [connection signal="item_selected" from="VBoxContainer/HBoxContainer/ThisShouldBeStandardDialogScene/HBoxContainer/Harvester/InventoryList" to="." method="_on_CraftingList_item_selected"]

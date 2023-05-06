@@ -1,7 +1,7 @@
-extends Spatial
+extends Node3D
 class_name Piece
 
-export(Array) var snap_association
+@export var snap_association: Array
 
 func _ready() -> void:
 	pass

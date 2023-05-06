@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cuere2eg263ij"]
+
+[ext_resource type="Shader" path="res://data/shaders/ModularScifiHallways/M_Glass.gdshader" id="1_ovntf"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ovntf")
+shader_parameter/ColorGlass = Color(0, 0, 0.00392157, 0.74902)
+shader_parameter/Roughness = 0.25
+shader_parameter/Specular = 0.05
+shader_parameter/FresnelFalloff = 10.0
+shader_parameter/Refraction = 1.0
