@@ -1,15 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://d4gtixhuyp44h"]
+[gd_scene load_steps=8 format=3 uid="uid://ci326kd812qhl"]
 
-[ext_resource type="PackedScene" uid="uid://8r2b6pm1r6ci" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Floor_Wire_B.glb" id="1_5mjsj"]
-[ext_resource type="Shader" uid="uid://b40ysgc6g65si" path="res://data/shaders/ModularScifiHallways/M_Base_Wires_B.tres" id="2_86ww6"]
-[ext_resource type="Texture2D" uid="uid://ct8eq75r6vi7" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Wires_Diff_A.PNG" id="3_a13ee"]
-[ext_resource type="Texture2D" uid="uid://dm3cx0el8iu0k" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Wire_Tiling_N.PNG" id="4_v5m4v"]
-[ext_resource type="Texture2D" uid="uid://thfnj7a2kt0e" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Wire_Tiling_AO.PNG" id="5_bever"]
-[ext_resource type="Material" uid="uid://su2xinxk8ipn" path="res://data/material/ModularScifiHallways/M_Base_2C.tres" id="6_f0o0k"]
+[ext_resource type="PackedScene" uid="uid://8r2b6pm1r6ci" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Floor_Wire_B.glb" id="1_ig6f2"]
+[ext_resource type="Shader" uid="uid://b40ysgc6g65si" path="res://data/shaders/ModularScifiHallways/M_Base_Wires_B.tres" id="2_nxwdi"]
+[ext_resource type="Texture2D" uid="uid://ct8eq75r6vi7" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Wires_Diff_A.PNG" id="3_diix1"]
+[ext_resource type="Texture2D" uid="uid://dm3cx0el8iu0k" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Wire_Tiling_N.PNG" id="4_ghesv"]
+[ext_resource type="Texture2D" uid="uid://thfnj7a2kt0e" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Wire_Tiling_AO.PNG" id="5_nlkby"]
+[ext_resource type="Material" uid="uid://su2xinxk8ipn" path="res://data/material/ModularScifiHallways/M_Base_2C.tres" id="6_jfb2s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kj1n7"]
 render_priority = 0
-shader = ExtResource("2_86ww6")
+shader = ExtResource("2_nxwdi")
 shader_parameter/DesaturationValue = 1.0
 shader_parameter/Metallic = 0.4
 shader_parameter/PatternDetailU = 22.0
@@ -19,16 +19,16 @@ shader_parameter/Roughness = 0.25
 shader_parameter/Specular = 0.5
 shader_parameter/WireBrightness = 1.5
 shader_parameter/WireColor = Color(1, 1, 1, 1)
-shader_parameter/Diffuse = ExtResource("3_a13ee")
-shader_parameter/Norm = ExtResource("4_v5m4v")
-shader_parameter/TextureSample = ExtResource("5_bever")
+shader_parameter/Diffuse = ExtResource("3_diix1")
+shader_parameter/Norm = ExtResource("4_ghesv")
+shader_parameter/TextureSample = ExtResource("5_nlkby")
 
 [node name="SM_Floor_Wire_B" type="Node3D"]
 
-[node name="Root" parent="." instance=ExtResource("1_5mjsj")]
+[node name="Root" parent="." instance=ExtResource("1_ig6f2")]
 
 [node name="SM_Floor_Wire_B2" parent="Root" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_kj1n7")
-surface_material_override/1 = ExtResource("6_f0o0k")
+surface_material_override/1 = ExtResource("6_jfb2s")
 
 [editable path="Root"]

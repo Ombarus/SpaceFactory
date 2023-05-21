@@ -1,19 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://d4gtixhuyp44h"]
+[gd_scene load_steps=12 format=3 uid="uid://80kc6shvahnx"]
 
-[ext_resource type="PackedScene" uid="uid://duiux7mnuo2ot" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Hall_Floor_Sec_D.glb" id="1_5ytg5"]
-[ext_resource type="Shader" uid="uid://chxyfwdkhe2k" path="res://data/shaders/ModularScifiHallways/M_Base_3C.tres" id="2_qmxvr"]
-[ext_resource type="Texture2D" uid="uid://cbmeyt8wlnbwq" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Floor_Sec_D_Diff.PNG" id="3_6eooi"]
-[ext_resource type="Texture2D" uid="uid://1doc8g2durq7" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_DefaultLight_S.PNG" id="4_k4q0w"]
-[ext_resource type="Texture2D" uid="uid://bir1g70hsvisd" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Floor_Sec_D_M.PNG" id="5_p5x6f"]
-[ext_resource type="Texture2D" uid="uid://doigwom1rahyi" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Floor_Sec_D_N_normals.PNG" id="6_l8dbn"]
-[ext_resource type="Texture2D" uid="uid://bgv4lbja5unq1" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Metal_Scratches_M.PNG" id="7_4nuav"]
-[ext_resource type="Texture2D" uid="uid://bmj7u6r8k025c" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Metal_Brushed_N.PNG" id="8_vocl8"]
-[ext_resource type="Material" uid="uid://cv5awhtwapdp7" path="res://data/material/ModularScifiHallways/MI_Trims_AB_M.tres" id="9_4nibc"]
-[ext_resource type="Material" uid="uid://coglehtps6rv5" path="res://data/material/ModularScifiHallways/MI_Trims_A_M.tres" id="10_67ooc"]
+[ext_resource type="PackedScene" uid="uid://duiux7mnuo2ot" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Hall_Floor_Sec_D.glb" id="1_rck7b"]
+[ext_resource type="Shader" uid="uid://chxyfwdkhe2k" path="res://data/shaders/ModularScifiHallways/M_Base_3C.tres" id="2_mugdi"]
+[ext_resource type="Texture2D" uid="uid://cbmeyt8wlnbwq" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Floor_Sec_D_Diff.PNG" id="3_m4avx"]
+[ext_resource type="Texture2D" uid="uid://1doc8g2durq7" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_DefaultLight_S.PNG" id="4_ehmbw"]
+[ext_resource type="Texture2D" uid="uid://bir1g70hsvisd" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Floor_Sec_D_M.PNG" id="5_n63j3"]
+[ext_resource type="Texture2D" uid="uid://doigwom1rahyi" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Floor_Sec_D_N_normals.PNG" id="6_o226q"]
+[ext_resource type="Texture2D" uid="uid://bgv4lbja5unq1" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Metal_Scratches_M.PNG" id="7_jggpm"]
+[ext_resource type="Texture2D" uid="uid://bmj7u6r8k025c" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Metal_Brushed_N.PNG" id="8_rgmdn"]
+[ext_resource type="Material" uid="uid://cv5awhtwapdp7" path="res://data/material/ModularScifiHallways/MI_Trims_AB_M.tres" id="9_24pyj"]
+[ext_resource type="Material" uid="uid://coglehtps6rv5" path="res://data/material/ModularScifiHallways/MI_Trims_A_M.tres" id="10_cvopc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fcyc1"]
 render_priority = 0
-shader = ExtResource("2_qmxvr")
+shader = ExtResource("2_mugdi")
 shader_parameter/BColor = Color(1, 1, 1, 1)
 shader_parameter/DiffuseDesat = 0.0
 shader_parameter/GColor = Color(1, 1, 1, 1)
@@ -37,21 +37,21 @@ shader_parameter/SpecBlue = 0.5
 shader_parameter/SpecGreen = 0.5
 shader_parameter/SpecOther = 0.5
 shader_parameter/SpecRed = 0.55
-shader_parameter/Diffuse = ExtResource("3_6eooi")
-shader_parameter/Emissive = ExtResource("4_k4q0w")
-shader_parameter/Mask = ExtResource("5_p5x6f")
-shader_parameter/Normal = ExtResource("6_l8dbn")
-shader_parameter/RoughnessBlendMask = ExtResource("7_4nuav")
-shader_parameter/TextureSample = ExtResource("8_vocl8")
-shader_parameter/MaskDiff = ExtResource("5_p5x6f")
+shader_parameter/Diffuse = ExtResource("3_m4avx")
+shader_parameter/Emissive = ExtResource("4_ehmbw")
+shader_parameter/Mask = ExtResource("5_n63j3")
+shader_parameter/Normal = ExtResource("6_o226q")
+shader_parameter/RoughnessBlendMask = ExtResource("7_jggpm")
+shader_parameter/TextureSample = ExtResource("8_rgmdn")
+shader_parameter/MaskDiff = ExtResource("5_n63j3")
 
 [node name="SM_Hall_Floor_Sec_D" type="Node3D"]
 
-[node name="Root" parent="." instance=ExtResource("1_5ytg5")]
+[node name="Root" parent="." instance=ExtResource("1_rck7b")]
 
 [node name="SM_Hall_Floor_Sec_D2" parent="Root" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_fcyc1")
-surface_material_override/1 = ExtResource("9_4nibc")
-surface_material_override/2 = ExtResource("10_67ooc")
+surface_material_override/1 = ExtResource("9_24pyj")
+surface_material_override/2 = ExtResource("10_cvopc")
 
 [editable path="Root"]

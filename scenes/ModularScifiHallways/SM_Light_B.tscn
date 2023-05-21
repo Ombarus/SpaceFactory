@@ -1,17 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4gtixhuyp44h"]
+[gd_scene load_steps=5 format=3 uid="uid://b3l57hwcygta7"]
 
-[ext_resource type="PackedScene" uid="uid://d0ue5pfech7yx" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Light_B.glb" id="1_5bejo"]
-[ext_resource type="Material" uid="uid://coglehtps6rv5" path="res://data/material/ModularScifiHallways/MI_Trims_A_M.tres" id="2_2pd17"]
-[ext_resource type="Material" uid="uid://cv5awhtwapdp7" path="res://data/material/ModularScifiHallways/MI_Trims_AB_M.tres" id="3_8d2gn"]
-[ext_resource type="Material" uid="uid://b4vkxor5jjrin" path="res://data/material/ModularScifiHallways/MI_Lights_Blue.tres" id="4_vg45w"]
+[ext_resource type="PackedScene" uid="uid://d0ue5pfech7yx" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Light_B.glb" id="1_ermsm"]
+[ext_resource type="Material" uid="uid://coglehtps6rv5" path="res://data/material/ModularScifiHallways/MI_Trims_A_M.tres" id="2_hk7wu"]
+[ext_resource type="Material" uid="uid://cv5awhtwapdp7" path="res://data/material/ModularScifiHallways/MI_Trims_AB_M.tres" id="3_1x7i3"]
+[ext_resource type="Material" uid="uid://b4vkxor5jjrin" path="res://data/material/ModularScifiHallways/MI_Lights_Blue.tres" id="4_nasku"]
 
 [node name="SM_Light_B" type="Node3D"]
 
-[node name="Root" parent="." instance=ExtResource("1_5bejo")]
+[node name="Root" parent="." instance=ExtResource("1_ermsm")]
 
 [node name="SM_Light_B2" parent="Root" index="0"]
-surface_material_override/0 = ExtResource("2_2pd17")
-surface_material_override/1 = ExtResource("3_8d2gn")
-surface_material_override/2 = ExtResource("4_vg45w")
+surface_material_override/0 = ExtResource("2_hk7wu")
+surface_material_override/1 = ExtResource("3_1x7i3")
+surface_material_override/2 = ExtResource("4_nasku")
 
 [editable path="Root"]

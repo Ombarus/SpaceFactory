@@ -1,17 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://d4gtixhuyp44h"]
+[gd_scene load_steps=10 format=3 uid="uid://c8g60yw811bn3"]
 
-[ext_resource type="PackedScene" uid="uid://c621wjbhy2bsu" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Hall_Light_Square.glb" id="1_gq8eg"]
-[ext_resource type="Shader" path="res://data/shaders/ModularScifiHallways/M_Base_2C.gdshader" id="2_gqpij"]
-[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="3_4ywva"]
-[ext_resource type="Texture2D" uid="uid://bmyxx8efwlrpl" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Light_Square_Diff.PNG" id="4_un1q8"]
-[ext_resource type="Texture2D" uid="uid://bq2qfs7kad8ch" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Light_Square_EM.PNG" id="5_6fo13"]
-[ext_resource type="Texture2D" uid="uid://dah504w8uomwx" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Light_Square_M.PNG" id="6_tpyvj"]
-[ext_resource type="Texture2D" uid="uid://b4rwabblmhsyp" path="res://data/private/models/ue/floor/T_Metal_Scratches_M.PNG" id="7_2nbl0"]
-[ext_resource type="Texture2D" uid="uid://c44v11pmufqe5" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Light_Square_N_normals.PNG" id="7_31klf"]
+[ext_resource type="PackedScene" uid="uid://c621wjbhy2bsu" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Hall_Light_Square.glb" id="1_1tvdl"]
+[ext_resource type="Shader" path="res://data/shaders/ModularScifiHallways/M_Base_2C.gdshader" id="2_kx5da"]
+[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="3_7i2xe"]
+[ext_resource type="Texture2D" uid="uid://bmyxx8efwlrpl" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Light_Square_Diff.PNG" id="4_gd2cm"]
+[ext_resource type="Texture2D" uid="uid://bq2qfs7kad8ch" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Light_Square_EM.PNG" id="5_dc06e"]
+[ext_resource type="Texture2D" uid="uid://dah504w8uomwx" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Light_Square_M.PNG" id="6_j4sj5"]
+[ext_resource type="Texture2D" uid="uid://c44v11pmufqe5" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Light_Square_N_normals.PNG" id="7_y4o4m"]
+[ext_resource type="Texture2D" uid="uid://b4rwabblmhsyp" path="res://data/private/models/ue/floor/T_Metal_Scratches_M.PNG" id="8_wkk5g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3tw52"]
 render_priority = 0
-shader = ExtResource("2_gqpij")
+shader = ExtResource("2_kx5da")
 shader_parameter/metallic_green = 0.7
 shader_parameter/metallic_other = 0.75
 shader_parameter/mettalic_red = 0.85
@@ -31,16 +31,16 @@ shader_parameter/GColor = Color(1, 1, 1, 1)
 shader_parameter/OtherColor = Color(1, 1, 1, 1)
 shader_parameter/DiffuseDesaturation = 0.0
 shader_parameter/RoughnessBlendContrast = 0.0
-shader_parameter/diffuse = ExtResource("4_un1q8")
-shader_parameter/mask = ExtResource("6_tpyvj")
-shader_parameter/normal = ExtResource("7_31klf")
-shader_parameter/scratches = ExtResource("7_2nbl0")
-shader_parameter/brushed = ExtResource("3_4ywva")
-shader_parameter/emissive = ExtResource("5_6fo13")
+shader_parameter/diffuse = ExtResource("4_gd2cm")
+shader_parameter/mask = ExtResource("6_j4sj5")
+shader_parameter/normal = ExtResource("7_y4o4m")
+shader_parameter/scratches = ExtResource("8_wkk5g")
+shader_parameter/brushed = ExtResource("3_7i2xe")
+shader_parameter/emissive = ExtResource("5_dc06e")
 
 [node name="SM_Hall_Light_Square" type="Node3D"]
 
-[node name="Root" parent="." instance=ExtResource("1_gq8eg")]
+[node name="Root" parent="." instance=ExtResource("1_1tvdl")]
 
 [node name="SM_Hall_Light_Square2" parent="Root" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_3tw52")

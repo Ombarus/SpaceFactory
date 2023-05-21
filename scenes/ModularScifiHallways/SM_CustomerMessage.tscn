@@ -1,20 +1,19 @@
-[gd_scene load_steps=14 format=3 uid="uid://d4gtixhuyp44h"]
+[gd_scene load_steps=13 format=3 uid="uid://chbeeysmap5cd"]
 
-[ext_resource type="PackedScene" uid="uid://ch01ftnrlgm6i" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Ceiling_A_Buffer.glb" id="1_j0soq"]
-[ext_resource type="Shader" path="res://data/shaders/ModularScifiHallways/M_Base_2C.gdshader" id="2_gqpij"]
-[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="3_4ywva"]
-[ext_resource type="Texture2D" uid="uid://bnnu183gtxqno" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Trims_A_N_normals.PNG" id="6_a8qbi"]
-[ext_resource type="Texture2D" uid="uid://b4rwabblmhsyp" path="res://data/private/models/ue/floor/T_Metal_Scratches_M.PNG" id="7_2nbl0"]
-[ext_resource type="Texture2D" uid="uid://cta50p0r36fkj" path="res://data/private/models/ue/floor/T_Trims_A_Diff_B.PNG" id="8_71r8h"]
-[ext_resource type="Texture2D" uid="uid://dclkw3cr643x0" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Trims_A_Diff_B.PNG" id="8_qesob"]
-[ext_resource type="Texture2D" uid="uid://btcpf0x35gcpo" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Ceiling_A_Buffer_Diff.PNG" id="9_hbeot"]
-[ext_resource type="Texture2D" uid="uid://c6vfs4twmssig" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Trims_A_M_B.PNG" id="9_sormy"]
-[ext_resource type="Texture2D" uid="uid://wo7jmpdy7ik0" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Ceiling_A_Buffer_M.PNG" id="10_2f2ew"]
-[ext_resource type="Texture2D" uid="uid://b10pomehakxlc" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Ceiling_A_Buffer_N_normals.PNG" id="11_hknmi"]
+[ext_resource type="PackedScene" uid="uid://ch01ftnrlgm6i" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Ceiling_A_Buffer.glb" id="1_dgbdc"]
+[ext_resource type="Shader" path="res://data/shaders/ModularScifiHallways/M_Base_2C.gdshader" id="2_7nu7s"]
+[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="3_d0c2o"]
+[ext_resource type="Texture2D" uid="uid://dclkw3cr643x0" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Trims_A_Diff_B.PNG" id="4_ggnpp"]
+[ext_resource type="Texture2D" uid="uid://c6vfs4twmssig" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Trims_A_M_B.PNG" id="5_rdlmr"]
+[ext_resource type="Texture2D" uid="uid://bnnu183gtxqno" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Trims_A_N_normals.PNG" id="6_qhms0"]
+[ext_resource type="Texture2D" uid="uid://b4rwabblmhsyp" path="res://data/private/models/ue/floor/T_Metal_Scratches_M.PNG" id="7_1ln6x"]
+[ext_resource type="Texture2D" uid="uid://btcpf0x35gcpo" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Ceiling_A_Buffer_Diff.PNG" id="8_3t46n"]
+[ext_resource type="Texture2D" uid="uid://wo7jmpdy7ik0" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Ceiling_A_Buffer_M.PNG" id="9_tvpak"]
+[ext_resource type="Texture2D" uid="uid://b10pomehakxlc" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Ceiling_A_Buffer_N_normals.PNG" id="10_nnmco"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_543pq"]
 render_priority = 0
-shader = ExtResource("2_gqpij")
+shader = ExtResource("2_7nu7s")
 shader_parameter/metallic_green = 0.7
 shader_parameter/metallic_other = 0.75
 shader_parameter/mettalic_red = 0.0
@@ -28,16 +27,21 @@ shader_parameter/roughness_red = 0.65
 shader_parameter/spec_green = 0.5
 shader_parameter/spec_other = 0.5
 shader_parameter/spec_red = 0.55
-shader_parameter/diffuse = ExtResource("8_qesob")
-shader_parameter/mask = ExtResource("9_sormy")
-shader_parameter/normal = ExtResource("6_a8qbi")
-shader_parameter/scratches = ExtResource("7_2nbl0")
-shader_parameter/brushed = ExtResource("3_4ywva")
-shader_parameter/trim_diffuse = ExtResource("8_71r8h")
+shader_parameter/light_intensity = 0.0
+shader_parameter/RColor = Color(1, 1, 1, 1)
+shader_parameter/GColor = Color(1, 1, 1, 1)
+shader_parameter/OtherColor = Color(1, 1, 1, 1)
+shader_parameter/DiffuseDesaturation = 0.0
+shader_parameter/RoughnessBlendContrast = 0.0
+shader_parameter/diffuse = ExtResource("4_ggnpp")
+shader_parameter/mask = ExtResource("5_rdlmr")
+shader_parameter/normal = ExtResource("6_qhms0")
+shader_parameter/scratches = ExtResource("7_1ln6x")
+shader_parameter/brushed = ExtResource("3_d0c2o")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b8tfb"]
 render_priority = 0
-shader = ExtResource("2_gqpij")
+shader = ExtResource("2_7nu7s")
 shader_parameter/metallic_green = 0.7
 shader_parameter/metallic_other = 0.75
 shader_parameter/mettalic_red = 0.85
@@ -51,16 +55,21 @@ shader_parameter/roughness_red = 0.2
 shader_parameter/spec_green = 0.5
 shader_parameter/spec_other = 0.5
 shader_parameter/spec_red = 0.5
-shader_parameter/diffuse = ExtResource("9_hbeot")
-shader_parameter/mask = ExtResource("10_2f2ew")
-shader_parameter/normal = ExtResource("11_hknmi")
-shader_parameter/scratches = ExtResource("7_2nbl0")
-shader_parameter/brushed = ExtResource("3_4ywva")
-shader_parameter/trim_diffuse = ExtResource("8_71r8h")
+shader_parameter/light_intensity = 0.0
+shader_parameter/RColor = Color(1, 1, 1, 1)
+shader_parameter/GColor = Color(1, 1, 1, 1)
+shader_parameter/OtherColor = Color(1, 1, 1, 1)
+shader_parameter/DiffuseDesaturation = 0.0
+shader_parameter/RoughnessBlendContrast = 0.0
+shader_parameter/diffuse = ExtResource("8_3t46n")
+shader_parameter/mask = ExtResource("9_tvpak")
+shader_parameter/normal = ExtResource("10_nnmco")
+shader_parameter/scratches = ExtResource("7_1ln6x")
+shader_parameter/brushed = ExtResource("3_d0c2o")
 
 [node name="SM_Ceiling_A_Buffer" type="Node3D"]
 
-[node name="Root" parent="." instance=ExtResource("1_j0soq")]
+[node name="Root" parent="." instance=ExtResource("1_dgbdc")]
 
 [node name="SM_Ceiling_A_Buffer2" parent="Root" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_543pq")

@@ -1,16 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4gtixhuyp44h"]
+[gd_scene load_steps=9 format=3 uid="uid://cvn6tgwsksvpn"]
 
-[ext_resource type="PackedScene" uid="uid://ctlcnixiwhc0e" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Hall_Vent_A.glb" id="1_58yj3"]
-[ext_resource type="Shader" path="res://data/shaders/ModularScifiHallways/M_Base_2C.gdshader" id="2_gqpij"]
-[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="3_4ywva"]
-[ext_resource type="Texture2D" uid="uid://lctnwdbmhi2y" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Vent_A_Diff.PNG" id="4_xsfhw"]
-[ext_resource type="Texture2D" uid="uid://clvtuo6ctx3le" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Vent_A_M.PNG" id="5_sbj82"]
-[ext_resource type="Texture2D" uid="uid://jv6gx1ry7vea" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Vent_A_N_normals.PNG" id="6_gld5y"]
-[ext_resource type="Texture2D" uid="uid://b4rwabblmhsyp" path="res://data/private/models/ue/floor/T_Metal_Scratches_M.PNG" id="7_2nbl0"]
+[ext_resource type="PackedScene" uid="uid://ctlcnixiwhc0e" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Hall_Vent_A.glb" id="1_6p0jk"]
+[ext_resource type="Shader" path="res://data/shaders/ModularScifiHallways/M_Base_2C.gdshader" id="2_mc7i4"]
+[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="3_hobus"]
+[ext_resource type="Texture2D" uid="uid://lctnwdbmhi2y" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Vent_A_Diff.PNG" id="4_24bqt"]
+[ext_resource type="Texture2D" uid="uid://clvtuo6ctx3le" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Vent_A_M.PNG" id="5_j31uc"]
+[ext_resource type="Texture2D" uid="uid://jv6gx1ry7vea" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Vent_A_N_normals.PNG" id="6_ccoef"]
+[ext_resource type="Texture2D" uid="uid://b4rwabblmhsyp" path="res://data/private/models/ue/floor/T_Metal_Scratches_M.PNG" id="7_clwe3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2i46o"]
 render_priority = 0
-shader = ExtResource("2_gqpij")
+shader = ExtResource("2_mc7i4")
 shader_parameter/metallic_green = 0.7
 shader_parameter/metallic_other = 0.75
 shader_parameter/mettalic_red = 0.0
@@ -30,15 +30,15 @@ shader_parameter/GColor = Color(1, 1, 1, 1)
 shader_parameter/OtherColor = Color(1, 1, 1, 1)
 shader_parameter/DiffuseDesaturation = 0.0
 shader_parameter/RoughnessBlendContrast = 0.0
-shader_parameter/diffuse = ExtResource("4_xsfhw")
-shader_parameter/mask = ExtResource("5_sbj82")
-shader_parameter/normal = ExtResource("6_gld5y")
-shader_parameter/scratches = ExtResource("7_2nbl0")
-shader_parameter/brushed = ExtResource("3_4ywva")
+shader_parameter/diffuse = ExtResource("4_24bqt")
+shader_parameter/mask = ExtResource("5_j31uc")
+shader_parameter/normal = ExtResource("6_ccoef")
+shader_parameter/scratches = ExtResource("7_clwe3")
+shader_parameter/brushed = ExtResource("3_hobus")
 
 [node name="SM_Hall_Vent_A" type="Node3D"]
 
-[node name="Root" parent="." instance=ExtResource("1_58yj3")]
+[node name="Root" parent="." instance=ExtResource("1_6p0jk")]
 
 [node name="SM_Hall_Vent_A2" parent="Root" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_2i46o")

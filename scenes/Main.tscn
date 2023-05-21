@@ -20,7 +20,7 @@
 [ext_resource type="Script" path="res://scripts/Systems/ProductionBuilding.gd" id="18"]
 [ext_resource type="PackedScene" path="res://scenes/UI/HarvesterDialog.tscn" id="19"]
 [ext_resource type="Script" path="res://scripts/Systems/DirtyReset.gd" id="20"]
-[ext_resource type="PackedScene" uid="uid://d4gtixhuyp44h" path="res://scenes/ModularScifiHallways/SM_Hall_FloorBuffer.tscn" id="22_ijfs6"]
+[ext_resource type="PackedScene" uid="uid://d4gtixhuyp44h" path="res://scenes/ModularScifiHallways/SM_Pipes_GRP_C.tscn" id="22_ijfs6"]
 [ext_resource type="Script" path="res://scripts/Systems/InventoryGenerator.gd" id="32"]
 
 [sub_resource type="Resource" id="5"]

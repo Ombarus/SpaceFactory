@@ -1,16 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4gtixhuyp44h"]
+[gd_scene load_steps=9 format=3 uid="uid://bwl7a07v52mh4"]
 
-[ext_resource type="PackedScene" uid="uid://c3s8orl2rb8rr" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Pipes_GRP_A.glb" id="1_c5r3t"]
-[ext_resource type="Shader" path="res://data/shaders/ModularScifiHallways/M_Base_2C.gdshader" id="2_gqpij"]
-[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="3_4ywva"]
-[ext_resource type="Texture2D" uid="uid://c3crxva6tefco" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Pipes_A_Diff.PNG" id="4_j0pxb"]
-[ext_resource type="Texture2D" uid="uid://dgra36xekf0le" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Pipes_A_M.PNG" id="5_6x3pf"]
-[ext_resource type="Texture2D" uid="uid://duhn4afj6yn14" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Pipes_A_N_normals.PNG" id="6_4sglt"]
-[ext_resource type="Texture2D" uid="uid://b4rwabblmhsyp" path="res://data/private/models/ue/floor/T_Metal_Scratches_M.PNG" id="7_2nbl0"]
+[ext_resource type="PackedScene" uid="uid://c3s8orl2rb8rr" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Pipes_GRP_A.glb" id="1_5j1p6"]
+[ext_resource type="Shader" path="res://data/shaders/ModularScifiHallways/M_Base_2C.gdshader" id="2_v2rxr"]
+[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="3_417xk"]
+[ext_resource type="Texture2D" uid="uid://c3crxva6tefco" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Pipes_A_Diff.PNG" id="4_rxrwj"]
+[ext_resource type="Texture2D" uid="uid://dgra36xekf0le" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Pipes_A_M.PNG" id="5_114i4"]
+[ext_resource type="Texture2D" uid="uid://duhn4afj6yn14" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Pipes_A_N_normals.PNG" id="6_0vlnv"]
+[ext_resource type="Texture2D" uid="uid://b4rwabblmhsyp" path="res://data/private/models/ue/floor/T_Metal_Scratches_M.PNG" id="7_w2q4u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m4yuo"]
 render_priority = 0
-shader = ExtResource("2_gqpij")
+shader = ExtResource("2_v2rxr")
 shader_parameter/metallic_green = 0.7
 shader_parameter/metallic_other = 0.75
 shader_parameter/mettalic_red = 0.0
@@ -30,15 +30,15 @@ shader_parameter/GColor = Color(1, 1, 1, 1)
 shader_parameter/OtherColor = Color(0.435294, 0.435294, 0.435294, 1)
 shader_parameter/DiffuseDesaturation = 0.0
 shader_parameter/RoughnessBlendContrast = 0.0
-shader_parameter/diffuse = ExtResource("4_j0pxb")
-shader_parameter/mask = ExtResource("5_6x3pf")
-shader_parameter/normal = ExtResource("6_4sglt")
-shader_parameter/scratches = ExtResource("7_2nbl0")
-shader_parameter/brushed = ExtResource("3_4ywva")
+shader_parameter/diffuse = ExtResource("4_rxrwj")
+shader_parameter/mask = ExtResource("5_114i4")
+shader_parameter/normal = ExtResource("6_0vlnv")
+shader_parameter/scratches = ExtResource("7_w2q4u")
+shader_parameter/brushed = ExtResource("3_417xk")
 
 [node name="SM_Pipes_GRP_A" type="Node3D"]
 
-[node name="Root" parent="." instance=ExtResource("1_c5r3t")]
+[node name="Root" parent="." instance=ExtResource("1_5j1p6")]
 
 [node name="SM_Pipes_GRP_A2" parent="Root" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_m4yuo")

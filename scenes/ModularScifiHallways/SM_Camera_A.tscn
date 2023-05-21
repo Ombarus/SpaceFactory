@@ -1,14 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://dkgyf7ht22xfd"]
+[gd_scene load_steps=16 format=3 uid="uid://c12jxncnmm375"]
 
-[ext_resource type="PackedScene" uid="uid://7d4w6g0hma0m" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Camera_A.glb" id="1_la34v"]
-[ext_resource type="Material" uid="uid://cuere2eg263ij" path="res://data/material/ModularScifiHallways/M_Glass.tres" id="2_ddvei"]
-[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="3_5nmf1"]
-[ext_resource type="Texture2D" uid="uid://dgtf5yg0cve2a" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Trims_A_Diff.PNG" id="4_8er6h"]
-[ext_resource type="Texture2D" uid="uid://bdixvqhjbyw3c" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Trims_A_M.PNG" id="5_wiefj"]
-[ext_resource type="Texture2D" uid="uid://bnnu183gtxqno" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Trims_A_N_normals.PNG" id="6_cp06r"]
-[ext_resource type="Texture2D" uid="uid://b4rwabblmhsyp" path="res://data/private/models/ue/floor/T_Metal_Scratches_M.PNG" id="7_qa2vh"]
-[ext_resource type="Texture2D" uid="uid://dclkw3cr643x0" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Trims_A_Diff_B.PNG" id="8_7xpx5"]
-[ext_resource type="Texture2D" uid="uid://c6vfs4twmssig" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Trims_A_M_B.PNG" id="9_87ixt"]
+[ext_resource type="PackedScene" uid="uid://7d4w6g0hma0m" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Camera_A.glb" id="1_1kxx3"]
+[ext_resource type="Material" uid="uid://cuere2eg263ij" path="res://data/material/ModularScifiHallways/M_Glass.tres" id="2_hb4lf"]
+[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="3_1fabb"]
+[ext_resource type="Texture2D" uid="uid://dgtf5yg0cve2a" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Trims_A_Diff.PNG" id="4_utjlp"]
+[ext_resource type="Texture2D" uid="uid://bdixvqhjbyw3c" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Trims_A_M.PNG" id="5_vle6o"]
+[ext_resource type="Texture2D" uid="uid://bnnu183gtxqno" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Trims_A_N_normals.PNG" id="6_gosxi"]
+[ext_resource type="Texture2D" uid="uid://b4rwabblmhsyp" path="res://data/private/models/ue/floor/T_Metal_Scratches_M.PNG" id="7_ah3f3"]
+[ext_resource type="Texture2D" uid="uid://dclkw3cr643x0" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Trims_A_Diff_B.PNG" id="8_2njvd"]
+[ext_resource type="Texture2D" uid="uid://c6vfs4twmssig" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Trims_A_M_B.PNG" id="9_f70ja"]
 
 [sub_resource type="Shader" id="Shader_gsqyj"]
 code = "shader_type spatial;
@@ -88,11 +88,11 @@ shader_parameter/roughness_red = 0.65
 shader_parameter/spec_green = 0.5
 shader_parameter/spec_other = 0.5
 shader_parameter/spec_red = 0.55
-shader_parameter/diffuse = ExtResource("4_8er6h")
-shader_parameter/mask = ExtResource("5_wiefj")
-shader_parameter/normal = ExtResource("6_cp06r")
-shader_parameter/scratches = ExtResource("7_qa2vh")
-shader_parameter/brushed = ExtResource("3_5nmf1")
+shader_parameter/diffuse = ExtResource("4_utjlp")
+shader_parameter/mask = ExtResource("5_vle6o")
+shader_parameter/normal = ExtResource("6_gosxi")
+shader_parameter/scratches = ExtResource("7_ah3f3")
+shader_parameter/brushed = ExtResource("3_1fabb")
 
 [sub_resource type="Shader" id="Shader_xwbjs"]
 code = "shader_type spatial;
@@ -171,11 +171,11 @@ shader_parameter/roughness_red = 0.65
 shader_parameter/spec_green = 0.5
 shader_parameter/spec_other = 0.5
 shader_parameter/spec_red = 0.55
-shader_parameter/diffuse = ExtResource("8_7xpx5")
-shader_parameter/mask = ExtResource("9_87ixt")
-shader_parameter/normal = ExtResource("6_cp06r")
-shader_parameter/scratches = ExtResource("7_qa2vh")
-shader_parameter/brushed = ExtResource("3_5nmf1")
+shader_parameter/diffuse = ExtResource("8_2njvd")
+shader_parameter/mask = ExtResource("9_f70ja")
+shader_parameter/normal = ExtResource("6_gosxi")
+shader_parameter/scratches = ExtResource("7_ah3f3")
+shader_parameter/brushed = ExtResource("3_1fabb")
 
 [sub_resource type="Shader" id="Shader_0nw6m"]
 code = "shader_type spatial;
@@ -206,10 +206,10 @@ shader_parameter/Refraction = 1.0
 
 [node name="SM_Camera_A" type="Node3D"]
 
-[node name="Root" parent="." instance=ExtResource("1_la34v")]
+[node name="Root" parent="." instance=ExtResource("1_1kxx3")]
 
 [node name="SM_Camera_A2" parent="Root" index="0"]
-surface_material_override/0 = ExtResource("2_ddvei")
+surface_material_override/0 = ExtResource("2_hb4lf")
 surface_material_override/1 = SubResource("ShaderMaterial_kr7ll")
 surface_material_override/2 = SubResource("ShaderMaterial_5quek")
 surface_material_override/3 = SubResource("ShaderMaterial_v380t")

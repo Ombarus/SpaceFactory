@@ -1,20 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://d4gtixhuyp44h"]
+[gd_scene load_steps=14 format=3 uid="uid://dbcuagkp6boy2"]
 
-[ext_resource type="PackedScene" uid="uid://dkv4drmnkxx4k" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_EnergyCore_A.glb" id="1_qrtri"]
-[ext_resource type="Shader" path="res://data/shaders/ModularScifiHallways/M_Base_2C.gdshader" id="2_gqpij"]
-[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="3_4ywva"]
-[ext_resource type="Texture2D" uid="uid://bc1knx0a288gk" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_EnergyCore_A_Diff.PNG" id="4_08vt7"]
-[ext_resource type="Texture2D" uid="uid://cgp0rpyrtmvn" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_EnergyCore_A_M.PNG" id="5_i68go"]
-[ext_resource type="Texture2D" uid="uid://13qbuqstncl3" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_EnergyCore_A_N_normals.PNG" id="6_lchtc"]
-[ext_resource type="Texture2D" uid="uid://b4rwabblmhsyp" path="res://data/private/models/ue/floor/T_Metal_Scratches_M.PNG" id="7_2nbl0"]
-[ext_resource type="Material" uid="uid://ci0gvu7pcmbqh" path="res://data/material/ModularScifiHallways/M_EnergyEmissive.tres" id="8_0fpeu"]
-[ext_resource type="Texture2D" uid="uid://c3crxva6tefco" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Pipes_A_Diff.PNG" id="9_u500s"]
-[ext_resource type="Texture2D" uid="uid://dgra36xekf0le" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Pipes_A_M.PNG" id="10_0mn3d"]
-[ext_resource type="Texture2D" uid="uid://cx53wg14d51qr" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Pipes_A_N_normals.PNG" id="11_oarq6"]
+[ext_resource type="PackedScene" uid="uid://dkv4drmnkxx4k" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_EnergyCore_A.glb" id="1_qhe22"]
+[ext_resource type="Shader" path="res://data/shaders/ModularScifiHallways/M_Base_2C.gdshader" id="2_e6uvo"]
+[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="3_7shxu"]
+[ext_resource type="Texture2D" uid="uid://bc1knx0a288gk" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_EnergyCore_A_Diff.PNG" id="4_wjnfb"]
+[ext_resource type="Texture2D" uid="uid://cgp0rpyrtmvn" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_EnergyCore_A_M.PNG" id="5_bkaee"]
+[ext_resource type="Texture2D" uid="uid://13qbuqstncl3" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_EnergyCore_A_N_normals.PNG" id="6_3sb4d"]
+[ext_resource type="Texture2D" uid="uid://b4rwabblmhsyp" path="res://data/private/models/ue/floor/T_Metal_Scratches_M.PNG" id="7_awk80"]
+[ext_resource type="Material" uid="uid://ci0gvu7pcmbqh" path="res://data/material/ModularScifiHallways/M_EnergyEmissive.tres" id="8_q4pou"]
+[ext_resource type="Texture2D" uid="uid://c3crxva6tefco" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Pipes_A_Diff.PNG" id="9_6pq5q"]
+[ext_resource type="Texture2D" uid="uid://dgra36xekf0le" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Pipes_A_M.PNG" id="10_u00ol"]
+[ext_resource type="Texture2D" uid="uid://duhn4afj6yn14" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Pipes_A_N_normals.PNG" id="11_r42mm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xdwwr"]
 render_priority = 0
-shader = ExtResource("2_gqpij")
+shader = ExtResource("2_e6uvo")
 shader_parameter/metallic_green = 0.55
 shader_parameter/metallic_other = 0.7
 shader_parameter/mettalic_red = 0.0
@@ -28,15 +28,21 @@ shader_parameter/roughness_red = 0.65
 shader_parameter/spec_green = 0.5
 shader_parameter/spec_other = 0.5
 shader_parameter/spec_red = 0.55
-shader_parameter/diffuse = ExtResource("4_08vt7")
-shader_parameter/mask = ExtResource("5_i68go")
-shader_parameter/normal = ExtResource("6_lchtc")
-shader_parameter/scratches = ExtResource("7_2nbl0")
-shader_parameter/brushed = ExtResource("3_4ywva")
+shader_parameter/light_intensity = 0.0
+shader_parameter/RColor = Color(1, 1, 1, 1)
+shader_parameter/GColor = Color(1, 1, 1, 1)
+shader_parameter/OtherColor = Color(1, 1, 1, 1)
+shader_parameter/DiffuseDesaturation = 0.0
+shader_parameter/RoughnessBlendContrast = 0.0
+shader_parameter/diffuse = ExtResource("4_wjnfb")
+shader_parameter/mask = ExtResource("5_bkaee")
+shader_parameter/normal = ExtResource("6_3sb4d")
+shader_parameter/scratches = ExtResource("7_awk80")
+shader_parameter/brushed = ExtResource("3_7shxu")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_awlvj"]
 render_priority = 0
-shader = ExtResource("2_gqpij")
+shader = ExtResource("2_e6uvo")
 shader_parameter/metallic_green = 0.7
 shader_parameter/metallic_other = 0.75
 shader_parameter/mettalic_red = 0.0
@@ -50,19 +56,25 @@ shader_parameter/roughness_red = 0.65
 shader_parameter/spec_green = 0.5
 shader_parameter/spec_other = 0.5
 shader_parameter/spec_red = 0.55
-shader_parameter/diffuse = ExtResource("9_u500s")
-shader_parameter/mask = ExtResource("10_0mn3d")
-shader_parameter/normal = ExtResource("11_oarq6")
-shader_parameter/scratches = ExtResource("7_2nbl0")
-shader_parameter/brushed = ExtResource("3_4ywva")
+shader_parameter/light_intensity = 0.0
+shader_parameter/RColor = Color(1, 1, 1, 1)
+shader_parameter/GColor = Color(1, 1, 1, 1)
+shader_parameter/OtherColor = Color(1, 1, 1, 1)
+shader_parameter/DiffuseDesaturation = 0.0
+shader_parameter/RoughnessBlendContrast = 0.0
+shader_parameter/diffuse = ExtResource("9_6pq5q")
+shader_parameter/mask = ExtResource("10_u00ol")
+shader_parameter/normal = ExtResource("11_r42mm")
+shader_parameter/scratches = ExtResource("7_awk80")
+shader_parameter/brushed = ExtResource("3_7shxu")
 
 [node name="SM_EnergyCore_A" type="Node3D"]
 
-[node name="Root" parent="." instance=ExtResource("1_qrtri")]
+[node name="Root" parent="." instance=ExtResource("1_qhe22")]
 
 [node name="SM_EnergyCore_A2" parent="Root" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_xdwwr")
-surface_material_override/1 = ExtResource("8_0fpeu")
+surface_material_override/1 = ExtResource("8_q4pou")
 surface_material_override/2 = SubResource("ShaderMaterial_awlvj")
 
 [editable path="Root"]

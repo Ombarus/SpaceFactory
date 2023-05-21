@@ -1,13 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4gtixhuyp44h"]
+[gd_scene load_steps=3 format=3 uid="uid://c0lm32q41obiu"]
 
-[ext_resource type="PackedScene" uid="uid://cu4nvcflrriu0" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Pipes_GRP_B.glb" id="1_ywlh1"]
-[ext_resource type="Material" uid="uid://v4e4ojndwja3" path="res://data/material/ModularScifiHallways/MI_Pipes_ADark_M.tres" id="2_ht3m3"]
+[ext_resource type="PackedScene" uid="uid://cu4nvcflrriu0" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Pipes_GRP_B.glb" id="1_fepso"]
+[ext_resource type="Material" uid="uid://v4e4ojndwja3" path="res://data/material/ModularScifiHallways/MI_Pipes_ADark_M.tres" id="2_8d8jm"]
 
 [node name="SM_Pipes_GRP_B" type="Node3D"]
 
-[node name="Root" parent="." instance=ExtResource("1_ywlh1")]
+[node name="Root" parent="." instance=ExtResource("1_fepso")]
 
 [node name="SM_Pipes_GRP_B2" parent="Root" index="0"]
-surface_material_override/0 = ExtResource("2_ht3m3")
+surface_material_override/0 = ExtResource("2_8d8jm")
 
 [editable path="Root"]

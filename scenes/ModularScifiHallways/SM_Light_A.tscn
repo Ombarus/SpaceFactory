@@ -1,28 +1,28 @@
-[gd_scene load_steps=7 format=3 uid="uid://d4gtixhuyp44h"]
+[gd_scene load_steps=7 format=3 uid="uid://bq760y0rl02bq"]
 
-[ext_resource type="PackedScene" uid="uid://bhuksdfll7x0j" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Light_A.glb" id="1_b8fkx"]
-[ext_resource type="Material" uid="uid://coglehtps6rv5" path="res://data/material/ModularScifiHallways/MI_Trims_A_M.tres" id="2_qa0y4"]
-[ext_resource type="Material" uid="uid://cv5awhtwapdp7" path="res://data/material/ModularScifiHallways/MI_Trims_AB_M.tres" id="3_shhr4"]
-[ext_resource type="Shader" path="res://data/shaders/M_Lights_Base.gdshader" id="4_los1w"]
-[ext_resource type="Texture2D" uid="uid://bjger1p418jpa" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_LightEmissive.PNG" id="5_6w2qt"]
+[ext_resource type="PackedScene" uid="uid://bhuksdfll7x0j" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Light_A.glb" id="1_12ana"]
+[ext_resource type="Material" uid="uid://coglehtps6rv5" path="res://data/material/ModularScifiHallways/MI_Trims_A_M.tres" id="2_7xpee"]
+[ext_resource type="Material" uid="uid://cv5awhtwapdp7" path="res://data/material/ModularScifiHallways/MI_Trims_AB_M.tres" id="3_b43lc"]
+[ext_resource type="Shader" path="res://data/shaders/M_Lights_Base.gdshader" id="4_djdds"]
+[ext_resource type="Texture2D" uid="uid://bjger1p418jpa" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_LightEmissive.PNG" id="5_3oct1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o3v4g"]
 render_priority = 0
-shader = ExtResource("4_los1w")
+shader = ExtResource("4_djdds")
 shader_parameter/Brightness = 0.0
 shader_parameter/Desaturation = 0.0
 shader_parameter/LightColor = Color(1, 1, 1, 1)
 shader_parameter/Metallic = 0.5
 shader_parameter/Roughness = 0.0
-shader_parameter/Diffuse = ExtResource("5_6w2qt")
+shader_parameter/Diffuse = ExtResource("5_3oct1")
 
 [node name="SM_Light_A" type="Node3D"]
 
-[node name="Root" parent="." instance=ExtResource("1_b8fkx")]
+[node name="Root" parent="." instance=ExtResource("1_12ana")]
 
 [node name="SM_Light_A2" parent="Root" index="0"]
-surface_material_override/0 = ExtResource("2_qa0y4")
-surface_material_override/1 = ExtResource("3_shhr4")
+surface_material_override/0 = ExtResource("2_7xpee")
+surface_material_override/1 = ExtResource("3_b43lc")
 surface_material_override/2 = SubResource("ShaderMaterial_o3v4g")
 
 [editable path="Root"]
