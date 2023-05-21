@@ -1,0 +1,42 @@
+[gd_scene load_steps=10 format=3 uid="uid://d4gtixhuyp44h"]
+
+[ext_resource type="PackedScene" uid="uid://bcdh12f7w8a1v" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Datapad.glb" id="1_srtym"]
+[ext_resource type="Shader" path="res://data/shaders/ModularScifiHallways/M_Base_2C.gdshader" id="2_gqpij"]
+[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="3_4ywva"]
+[ext_resource type="Texture2D" uid="uid://t7v88wgvxlf3" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Datapad_Diff.PNG" id="4_7i0vh"]
+[ext_resource type="Texture2D" uid="uid://wn38qv0n2bcj" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Datapad_M.PNG" id="5_ovpfj"]
+[ext_resource type="Texture2D" uid="uid://qumrjilmg0jb" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Datapad_N_normals.PNG" id="6_gt8me"]
+[ext_resource type="Texture2D" uid="uid://b4rwabblmhsyp" path="res://data/private/models/ue/floor/T_Metal_Scratches_M.PNG" id="7_2nbl0"]
+[ext_resource type="Material" uid="uid://dnlhcgb6bbvo5" path="res://data/material/ModularScifiHallways/M_UI_Parent.tres" id="8_qru72"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4jldg"]
+render_priority = 0
+shader = ExtResource("2_gqpij")
+shader_parameter/metallic_green = 0.7
+shader_parameter/metallic_other = 0.7
+shader_parameter/mettalic_red = 0.0
+shader_parameter/norm_detail_u = 10.5
+shader_parameter/norm_detail_v = 10.5
+shader_parameter/r_detail_u = 2.0
+shader_parameter/r_detail_v = 2.0
+shader_parameter/roughness_green = 0.1
+shader_parameter/roughness_other = 0.1
+shader_parameter/roughness_red = 0.65
+shader_parameter/spec_green = 0.5
+shader_parameter/spec_other = 0.5
+shader_parameter/spec_red = 0.55
+shader_parameter/diffuse = ExtResource("4_7i0vh")
+shader_parameter/mask = ExtResource("5_ovpfj")
+shader_parameter/normal = ExtResource("6_gt8me")
+shader_parameter/scratches = ExtResource("7_2nbl0")
+shader_parameter/brushed = ExtResource("3_4ywva")
+
+[node name="SM_Ceiling_A_Buffer" type="Node3D"]
+
+[node name="Root2" parent="." instance=ExtResource("1_srtym")]
+
+[node name="SM_Datapad2" parent="Root2" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_4jldg")
+surface_material_override/1 = ExtResource("8_qru72")
+
+[editable path="Root2"]

@@ -1,0 +1,46 @@
+[gd_resource type="Shader" format=3 uid="uid://b40ysgc6g65si"]
+
+[resource]
+code = "shader_type spatial;
+
+uniform float DesaturationValue = 0.0;
+uniform sampler2D Diffuse;
+uniform float Metallic = 0.5;
+uniform sampler2D Norm;
+uniform float PatternDetailU = 15.0;
+uniform float PatternDetailV = 15.0;
+uniform float PowerAO = 0.0;
+uniform float Roughness = 0.5;
+uniform float Specular = 0.5;
+uniform float WireBrightness = 1.0;
+uniform vec3 WireColor : source_color = vec3(1.0, 1.0, 1.0);
+uniform sampler2D TextureSample;
+
+vec3 desat(vec3 col, float desat_value)
+{
+	return mix(col.rgb, vec3(dot(col.rgb, vec3(0.299, 0.587, 0.114))), desat_value);
+}
+
+void fragment() {
+	// Diffuse
+	vec3 diff_color = texture(Diffuse, UV).rgb;
+	diff_color = desat(diff_color, DesaturationValue);
+	diff_color = WireColor * diff_color;
+	diff_color = vec3(pow(diff_color.r, WireBrightness), pow(diff_color.g, WireBrightness), pow(diff_color.b, WireBrightness));
+	ALBEDO = diff_color;
+	
+	// PBR
+	METALLIC = Metallic;
+	SPECULAR = Specular;
+	ROUGHNESS = Roughness;
+	
+	// Normal + AO Pattern
+	vec2 pattern_detail_uv = vec2(PatternDetailU, PatternDetailV);
+	vec2 tex_coord = UV * pattern_detail_uv;
+	vec3 tex_sample_col = texture(TextureSample, tex_coord).rgb;
+	vec3 norm_col = texture(Norm, tex_coord).rgb;
+	tex_sample_col = pow(tex_sample_col, vec3(PowerAO, PowerAO, PowerAO));
+	AO = tex_sample_col.r;
+	NORMAL_MAP = norm_col;
+}
+"

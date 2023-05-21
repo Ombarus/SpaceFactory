@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cmn4kquuspyx0"]
+
+[ext_resource type="Shader" path="res://data/shaders/ModularScifiHallways/M_Base_Wires.gdshader" id="1_ypcyw"]
+[ext_resource type="Texture2D" uid="uid://ct8eq75r6vi7" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Wires_Diff_A.PNG" id="2_p5l1e"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ypcyw")
+shader_parameter/Metallic = 0.5
+shader_parameter/Roughness = 0.5
+shader_parameter/Specular = 0.5
+shader_parameter/Brightness = 1.0
+shader_parameter/WireColor = Color(1, 1, 1, 1)
+shader_parameter/Diffuse = ExtResource("2_p5l1e")

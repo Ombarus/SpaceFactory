@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dnlhcgb6bbvo5"]
+
+[ext_resource type="Shader" path="res://data/shaders/ModularScifiHallways/SM_Datapad.gdshader" id="1_050ay"]
+[ext_resource type="Texture2D" uid="uid://b8s0mrwaqpdfh" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Datapad_UI.PNG" id="2_j6xiq"]
+[ext_resource type="Texture2D" uid="uid://chexpq80yrdua" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_UI_Details.PNG" id="3_vci6w"]
+[ext_resource type="Texture2D" uid="uid://u4drvk0pxmeg" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_UI_Details_c.PNG" id="4_8jhkj"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_050ay")
+shader_parameter/BigLinesBrightness = 1.1
+shader_parameter/DesatValue = 0.05
+shader_parameter/SmallLinesBrightness = 2.0
+shader_parameter/SquareBrightness = 1.3
+shader_parameter/SquareFlickerSpeed = 1.0
+shader_parameter/TexU = 0.5
+shader_parameter/TexV = 0.5
+shader_parameter/TypeBrightness = 3.0
+shader_parameter/TypeFlickerSpeed = 0.01
+shader_parameter/UIBrightness = 1.5
+shader_parameter/Diffuse = ExtResource("2_j6xiq")
+shader_parameter/UIDetails = ExtResource("4_8jhkj")
+shader_parameter/TextureSample = ExtResource("3_vci6w")

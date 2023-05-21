@@ -1,0 +1,28 @@
+[gd_resource type="Shader" format=3 uid="uid://q20lnxwvfol0"]
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix;
+
+uniform vec3 ColorGlass : source_color = vec3(0.0, 0.001202, 0.003303);
+uniform float GlassLightBrightness = 1.0;
+uniform vec3 LightColor : source_color = vec3(1.0, 1.0, 1.0);
+uniform float Opacity = 0.05;
+uniform float Roughness = 0.0;
+uniform float Specular = 10.0;
+uniform float FresnelFalloff = 10.0;
+uniform float Refraction = 1.0;
+
+uniform sampler2D TextureSample;
+
+void fragment() {
+	ALBEDO = ColorGlass.rgb;
+	ALPHA = Opacity;
+	SPECULAR = Specular;
+	ROUGHNESS = Roughness;
+	vec3 tex_sample = texture(TextureSample, UV).rgb;
+	tex_sample *= LightColor;
+	tex_sample *= GlassLightBrightness;
+	EMISSION = tex_sample;
+}
+"

@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://b4vkxor5jjrin"]
+
+[ext_resource type="Shader" path="res://data/shaders/M_Lights_Base.gdshader" id="1_2hk70"]
+[ext_resource type="Texture2D" uid="uid://bjger1p418jpa" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_LightEmissive.PNG" id="2_k0maq"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_2hk70")
+shader_parameter/Brightness = 0.0
+shader_parameter/Desaturation = 0.0
+shader_parameter/LightColor = Color(1, 1, 1, 1)
+shader_parameter/Metallic = 0.5
+shader_parameter/Roughness = 0.0
+shader_parameter/Diffuse = ExtResource("2_k0maq")

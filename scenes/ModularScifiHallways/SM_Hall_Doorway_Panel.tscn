@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://d4gtixhuyp44h"]
+
+[ext_resource type="PackedScene" uid="uid://qo35pu1n8fu1" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Hall_Doorway_Panel.glb" id="1_581e4"]
+[ext_resource type="Shader" path="res://data/shaders/ModularScifiHallways/M_Base_2C.gdshader" id="2_gqpij"]
+[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="3_4ywva"]
+[ext_resource type="Texture2D" uid="uid://df0gt5dl21jhw" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Doorway_Panel_Diff.PNG" id="4_8qe2l"]
+[ext_resource type="Texture2D" uid="uid://30mel5vammuo" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Doorway_Panel_M.PNG" id="5_odk26"]
+[ext_resource type="Texture2D" uid="uid://bneh3eyiho0xa" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Doorway_Panel_N_normals.PNG" id="6_q55r7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n4fay"]
+render_priority = 0
+shader = ExtResource("2_gqpij")
+shader_parameter/metallic_green = 0.7
+shader_parameter/metallic_other = 0.75
+shader_parameter/mettalic_red = 0.0
+shader_parameter/norm_detail_u = 11.0
+shader_parameter/norm_detail_v = 11.0
+shader_parameter/r_detail_u = 2.0
+shader_parameter/r_detail_v = 2.0
+shader_parameter/roughness_green = 0.1
+shader_parameter/roughness_other = 0.2
+shader_parameter/roughness_red = 0.65
+shader_parameter/spec_green = 0.5
+shader_parameter/spec_other = 0.5
+shader_parameter/spec_red = 0.55
+shader_parameter/light_intensity = 0.0
+shader_parameter/diffuse = ExtResource("4_8qe2l")
+shader_parameter/mask = ExtResource("5_odk26")
+shader_parameter/normal = ExtResource("6_q55r7")
+shader_parameter/brushed = ExtResource("3_4ywva")
+
+[node name="SM_Hall_Doorway_Panel" type="Node3D"]
+
+[node name="Root" parent="." instance=ExtResource("1_581e4")]
+
+[node name="SM_Hall_Doorway_Panel2" parent="Root" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_n4fay")
+
+[editable path="Root"]

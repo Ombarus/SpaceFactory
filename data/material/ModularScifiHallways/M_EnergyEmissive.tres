@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://ci0gvu7pcmbqh"]
+
+[ext_resource type="Shader" uid="uid://by8vdrsiyqpqt" path="res://data/shaders/ModularScifiHallways/M_EnergyEmissive.tres" id="1_63adf"]
+[ext_resource type="Texture2D" uid="uid://bphi7xuqt1q04" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_EnergyCore_EM.PNG" id="2_0lyh1"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_63adf")
+shader_parameter/Brightness = 4.0
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/Desaturation = 0.15
+shader_parameter/TextureSample = ExtResource("2_0lyh1")

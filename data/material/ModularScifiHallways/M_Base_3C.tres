@@ -1,0 +1,43 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://cw42vdyyu5cyu"]
+
+[ext_resource type="Shader" uid="uid://chxyfwdkhe2k" path="res://data/shaders/ModularScifiHallways/M_Base_3C.tres" id="1_8k3o1"]
+[ext_resource type="Texture2D" uid="uid://blgvr6mso3cd4" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_FloorBuffer_Diff.PNG" id="2_m4itq"]
+[ext_resource type="Texture2D" uid="uid://1doc8g2durq7" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_DefaultLight_S.PNG" id="3_ih783"]
+[ext_resource type="Texture2D" uid="uid://qk2q211xhw0x" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_FloorBuffer_M.PNG" id="4_gagd8"]
+[ext_resource type="Texture2D" uid="uid://c7yqllnm6jdw5" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_FloorBuffer_N_normals.PNG" id="6_w6o5t"]
+[ext_resource type="Texture2D" uid="uid://bgv4lbja5unq1" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Metal_Scratches_M.PNG" id="7_ref2p"]
+[ext_resource type="Texture2D" uid="uid://bmj7u6r8k025c" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Metal_Brushed_N.PNG" id="8_c1h2q"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_8k3o1")
+shader_parameter/BColor = Color(1, 1, 1, 1)
+shader_parameter/DiffuseDesat = 0.0
+shader_parameter/GColor = Color(1, 1, 1, 1)
+shader_parameter/LightIntensity = 0.0
+shader_parameter/MetallicBlue = 0.7
+shader_parameter/MetallicGreen = 0.75
+shader_parameter/MetallicOther = 0.75
+shader_parameter/MetallicRed = 0.0
+shader_parameter/DetailU = 20.0
+shader_parameter/DetailV = 20.0
+shader_parameter/OtherColor = Color(0.270588, 0.270588, 0.270588, 1)
+shader_parameter/RColor = Color(1, 1, 1, 1)
+shader_parameter/RDetailU = 2.0
+shader_parameter/RDetailV = 2.0
+shader_parameter/RoughnessBlendContrast = 0.0
+shader_parameter/RoughnessBlue = 0.0
+shader_parameter/RoughnessGreen = 0.1
+shader_parameter/RoughnessOther = 0.2
+shader_parameter/RoughnessRed = 0.65
+shader_parameter/SpecBlue = 0.5
+shader_parameter/SpecGreen = 0.5
+shader_parameter/SpecOther = 0.5
+shader_parameter/SpecRed = 0.55
+shader_parameter/Diffuse = ExtResource("2_m4itq")
+shader_parameter/Emissive = ExtResource("3_ih783")
+shader_parameter/Mask = ExtResource("4_gagd8")
+shader_parameter/Normal = ExtResource("6_w6o5t")
+shader_parameter/RoughnessBlendMask = ExtResource("7_ref2p")
+shader_parameter/TextureSample = ExtResource("8_c1h2q")
+shader_parameter/MaskDiff = ExtResource("4_gagd8")

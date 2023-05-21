@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://d4gtixhuyp44h"]
+
+[ext_resource type="PackedScene" uid="uid://c2qt63k8e5kj8" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Hall_Pipes_Ceiling.glb" id="1_mm6rh"]
+[ext_resource type="Shader" path="res://data/shaders/ModularScifiHallways/M_Base_2C.gdshader" id="2_gqpij"]
+[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="3_4ywva"]
+[ext_resource type="Texture2D" uid="uid://df48hln5ge48o" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Pipes_Ceiling_Diff.PNG" id="4_p5t7w"]
+[ext_resource type="Texture2D" uid="uid://ba3xux6jot77k" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Pipes_Ceiling_M.PNG" id="5_n2cte"]
+[ext_resource type="Texture2D" uid="uid://dwttnu2ofgyd1" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Pipes_Ceiling_N_normals.PNG" id="6_m1tp3"]
+[ext_resource type="Texture2D" uid="uid://b4rwabblmhsyp" path="res://data/private/models/ue/floor/T_Metal_Scratches_M.PNG" id="7_2nbl0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnjf4"]
+render_priority = 0
+shader = ExtResource("2_gqpij")
+shader_parameter/metallic_green = 0.8
+shader_parameter/metallic_other = 0.75
+shader_parameter/mettalic_red = 0.0
+shader_parameter/norm_detail_u = 5.0
+shader_parameter/norm_detail_v = 5.0
+shader_parameter/r_detail_u = 2.0
+shader_parameter/r_detail_v = 2.0
+shader_parameter/roughness_green = 0.5
+shader_parameter/roughness_other = 0.0
+shader_parameter/roughness_red = 0.65
+shader_parameter/spec_green = 0.5
+shader_parameter/spec_other = 0.5
+shader_parameter/spec_red = 0.55
+shader_parameter/light_intensity = 0.0
+shader_parameter/RColor = Color(1, 1, 1, 1)
+shader_parameter/GColor = Color(1, 1, 1, 1)
+shader_parameter/OtherColor = Color(1, 1, 1, 1)
+shader_parameter/DiffuseDesaturation = 0.0
+shader_parameter/RoughnessBlendContrast = 0.0
+shader_parameter/diffuse = ExtResource("4_p5t7w")
+shader_parameter/mask = ExtResource("5_n2cte")
+shader_parameter/normal = ExtResource("6_m1tp3")
+shader_parameter/scratches = ExtResource("7_2nbl0")
+shader_parameter/brushed = ExtResource("3_4ywva")
+
+[node name="SM_Hall_Pipes_Ceiling" type="Node3D"]
+
+[node name="Root" parent="." instance=ExtResource("1_mm6rh")]
+
+[node name="SM_Hall_Pipes_Ceiling2" parent="Root" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_vnjf4")
+
+[editable path="Root"]

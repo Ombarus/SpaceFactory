@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://cg22rq62k0rg8"]
+
+[ext_resource type="Shader" uid="uid://b40ysgc6g65si" path="res://data/shaders/ModularScifiHallways/M_Base_Wires_B.tres" id="1_ypbus"]
+[ext_resource type="Texture2D" uid="uid://thfnj7a2kt0e" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Wire_Tiling_AO.PNG" id="2_5i2t2"]
+[ext_resource type="Texture2D" uid="uid://ct8eq75r6vi7" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Wires_Diff_A.PNG" id="2_j3isv"]
+[ext_resource type="Texture2D" uid="uid://dm3cx0el8iu0k" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Wire_Tiling_N.PNG" id="3_nalyv"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ypbus")
+shader_parameter/DesaturationValue = 1.0
+shader_parameter/Metallic = 0.4
+shader_parameter/PatternDetailU = 22.0
+shader_parameter/PatternDetailV = 22.0
+shader_parameter/PowerAO = 7.0
+shader_parameter/Roughness = 0.25
+shader_parameter/Specular = 0.5
+shader_parameter/WireBrightness = 0.5
+shader_parameter/WireColor = Color(1, 1, 1, 1)
+shader_parameter/Diffuse = ExtResource("2_j3isv")
+shader_parameter/Norm = ExtResource("3_nalyv")
+shader_parameter/TextureSample = ExtResource("2_5i2t2")

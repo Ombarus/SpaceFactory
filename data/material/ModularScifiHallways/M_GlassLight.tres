@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c8qeiu7ff8ip2"]
+
+[ext_resource type="Shader" uid="uid://q20lnxwvfol0" path="res://data/shaders/ModularScifiHallways/M_GlassLight.tres" id="1_ug8h8"]
+[ext_resource type="Texture2D" uid="uid://dp284oysrhj18" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_GlassLightEmissive.PNG" id="2_1jm3v"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ug8h8")
+shader_parameter/ColorGlass = Color(0, 0, 0, 1)
+shader_parameter/GlassLightBrightness = 0.0
+shader_parameter/LightColor = Color(1, 1, 1, 1)
+shader_parameter/Opacity = 0.25
+shader_parameter/Roughness = 0.0
+shader_parameter/Specular = 10.0
+shader_parameter/FresnelFalloff = 10.0
+shader_parameter/Refraction = 1.0
+shader_parameter/TextureSample = ExtResource("2_1jm3v")

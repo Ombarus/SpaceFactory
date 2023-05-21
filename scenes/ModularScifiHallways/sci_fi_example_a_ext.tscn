@@ -1,0 +1,497 @@
+[gd_scene load_steps=14 format=3 uid="uid://bglmmkdqhqmri"]
+
+[ext_resource type="PackedScene" uid="uid://d4gtixhuyp44h" path="res://scenes/ModularScifiHallways/SM_Ceiling_A_Buffer.tscn" id="1_gpl7x"]
+[ext_resource type="PackedScene" uid="uid://d4gtixhuyp44h" path="res://scenes/ModularScifiHallways/SM_Hall_Ceiling_Main.tscn" id="2_y2ypy"]
+[ext_resource type="PackedScene" uid="uid://d4gtixhuyp44h" path="res://scenes/ModularScifiHallways/SM_Hall_Ceiling_Sec_A.tscn" id="3_spns3"]
+[ext_resource type="PackedScene" uid="uid://c1n0r4ktxwhfx" path="res://scenes/ModularScifiHallways/SM_Hall_Ceiling_Sec_B.tscn" id="4_23wg8"]
+[ext_resource type="PackedScene" uid="uid://d4gtixhuyp44h" path="res://scenes/ModularScifiHallways/SM_Hall_Ceiling_Sec_C.tscn" id="5_ougwe"]
+[ext_resource type="PackedScene" uid="uid://d4gtixhuyp44h" path="res://scenes/ModularScifiHallways/SM_Hall_Door_L.tscn" id="6_h1fec"]
+[ext_resource type="PackedScene" uid="uid://d4gtixhuyp44h" path="res://scenes/ModularScifiHallways/SM_Hall_DoorPipes.tscn" id="7_0m0tm"]
+[ext_resource type="PackedScene" uid="uid://d4gtixhuyp44h" path="res://scenes/ModularScifiHallways/SM_Hall_Doorway_L.tscn" id="8_p2ppv"]
+[ext_resource type="PackedScene" uid="uid://d4gtixhuyp44h" path="res://scenes/ModularScifiHallways/SM_Hall_Doorway_Panel.tscn" id="9_pxr3e"]
+[ext_resource type="PackedScene" uid="uid://d4gtixhuyp44h" path="res://scenes/ModularScifiHallways/SM_Hall_FloorBuffer.tscn" id="10_xbleq"]
+[ext_resource type="PackedScene" uid="uid://d4gtixhuyp44h" path="res://scenes/ModularScifiHallways/SM_Hall_FloorEdge.tscn" id="11_idhch"]
+[ext_resource type="PackedScene" uid="uid://d4gtixhuyp44h" path="res://scenes/ModularScifiHallways/SM_Hall_Floor_Main.tscn" id="12_rw83w"]
+[ext_resource type="PackedScene" uid="uid://d4gtixhuyp44h" path="res://scenes/ModularScifiHallways/SM_Hall_Floor_Sec_A.tscn" id="13_cjd2x"]
+
+[node name="SciFi_Example_A_Ext" type="Node3D"]
+
+[node name="SM_Ceiling_A_Buffer" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="SM_Ceiling_A_Buffer2" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 8.2, 0, -0.1)
+
+[node name="SM_Ceiling_A_Buffer3" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.5)
+
+[node name="SM_Ceiling_A_Buffer4" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 8.2, 0, -4.5)
+
+[node name="SM_Ceiling_A_Buffer5" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.9)
+
+[node name="SM_Ceiling_A_Buffer6" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 8.2, 0, -8.9)
+
+[node name="SM_Ceiling_A_Buffer7" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18, 0, -9.9)
+
+[node name="SM_Ceiling_A_Buffer8" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.6, 0, -9.9)
+
+[node name="SM_Ceiling_A_Buffer9" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(4.37114e-08, 0, 1, 0, 1, 0, 1, 0, -4.37114e-08, 13.6, 0, -18.1)
+
+[node name="SM_Ceiling_A_Buffer10" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(4.37114e-08, 0, 1, 0, 1, 0, 1, 0, -4.37114e-08, 9.2, 0, -18.1)
+
+[node name="SM_Ceiling_A_Buffer11" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.2, 0, -9.9)
+
+[node name="SM_Ceiling_A_Buffer12" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(4.37114e-08, 0, 1, 0, 1, 0, 1, 0, -4.37114e-08, 18, 0, -18.1)
+
+[node name="SM_Ceiling_A_Buffer13" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(1, 0, 8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -19.1)
+
+[node name="SM_Ceiling_A_Buffer14" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8.2, 0, -19.1)
+
+[node name="SM_Ceiling_A_Buffer15" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8.2, 0, -23.5)
+
+[node name="SM_Ceiling_A_Buffer16" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(1, 0, 8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -23.5)
+
+[node name="SM_Ceiling_A_Buffer17" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 28, 0, -27.9)
+
+[node name="SM_Ceiling_A_Buffer18" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(1, 0, -8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.8, 0, -27.9)
+
+[node name="SM_Ceiling_A_Buffer19" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 28, 0, -23.5)
+
+[node name="SM_Ceiling_A_Buffer20" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(1, 0, -8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.8, 0, -23.5)
+
+[node name="SM_Ceiling_A_Buffer21" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 28, 0, -19.1)
+
+[node name="SM_Ceiling_A_Buffer22" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(1, 0, -8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.8, 0, -19.1)
+
+[node name="SM_Ceiling_A_Buffer23" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 0.2)
+
+[node name="SM_Ceiling_A_Buffer24" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8, 0, 0.2)
+
+[node name="SM_Ceiling_A_Buffer25" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -4.2)
+
+[node name="SM_Ceiling_A_Buffer26" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8, 0, -4.2)
+
+[node name="SM_Ceiling_A_Buffer27" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8, 0, -8.9)
+
+[node name="SM_Ceiling_A_Buffer28" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -8.9)
+
+[node name="SM_Ceiling_A_Buffer29" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8, 0, 4.9)
+
+[node name="SM_Ceiling_A_Buffer30" parent="." instance=ExtResource("1_gpl7x")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 4.9)
+
+[node name="SM_Hall_Ceiling_Main" parent="." instance=ExtResource("2_y2ypy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3, 0, -0.1)
+
+[node name="SM_Hall_Ceiling_Main2" parent="." instance=ExtResource("2_y2ypy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3, 0, -4.5)
+
+[node name="SM_Hall_Ceiling_Main3" parent="." instance=ExtResource("2_y2ypy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18, 0, -18.2)
+
+[node name="SM_Hall_Ceiling_Main4" parent="." instance=ExtResource("2_y2ypy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.6, 0, -18.2)
+
+[node name="SM_Hall_Ceiling_Main5" parent="." instance=ExtResource("2_y2ypy")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.1, 0, -23.5)
+
+[node name="SM_Hall_Ceiling_Main6" parent="." instance=ExtResource("2_y2ypy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19.7, 0, -27.9)
+
+[node name="SM_Hall_Ceiling_Main7" parent="." instance=ExtResource("2_y2ypy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19.7, 0, -23.5)
+
+[node name="SM_Hall_Ceiling_Main8" parent="." instance=ExtResource("2_y2ypy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.1, 0, 0.2)
+
+[node name="SM_Hall_Ceiling_Sec_A" parent="." instance=ExtResource("3_spns3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 4.4, -16)
+
+[node name="SM_Hall_Ceiling_Sec_A2" parent="." instance=ExtResource("3_spns3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 6.1, 4.4, -12)
+
+[node name="SM_Hall_Ceiling_Sec_A3" parent="." instance=ExtResource("3_spns3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, 2.1, 4.4, -12)
+
+[node name="SM_Hall_Ceiling_Sec_A4" parent="." instance=ExtResource("3_spns3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.1, 4.4, -12)
+
+[node name="SM_Hall_Ceiling_Sec_A5" parent="." instance=ExtResource("3_spns3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25.9, 4.4, -12)
+
+[node name="SM_Hall_Ceiling_Sec_A6" parent="." instance=ExtResource("3_spns3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, 21.9, 4.4, -12)
+
+[node name="SM_Hall_Ceiling_Sec_A7" parent="." instance=ExtResource("3_spns3")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, 8.74228e-08, 0, 1, 21.9, 4.4, -16)
+
+[node name="SM_Hall_Ceiling_Sec_A8" parent="." instance=ExtResource("3_spns3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 21.9, 4.4, -12)
+
+[node name="SM_Hall_Ceiling_Sec_A11" parent="." instance=ExtResource("3_spns3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, 21.9, 4.3, -4.2)
+
+[node name="SM_Hall_Ceiling_Sec_A12" parent="." instance=ExtResource("3_spns3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25.9, 4.3, -4.2)
+
+[node name="SM_Hall_Ceiling_Sec_A13" parent="." instance=ExtResource("3_spns3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25.9, 4.3, 5)
+
+[node name="SM_Hall_Ceiling_Sec_A14" parent="." instance=ExtResource("3_spns3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, 21.9, 4.3, 5)
+
+[node name="SM_Hall_Ceiling_Sec_B" parent="." instance=ExtResource("4_23wg8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 4.4, -16)
+
+[node name="SM_Hall_Ceiling_Sec_B2" parent="." instance=ExtResource("4_23wg8")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25.9, 4.4, -12)
+
+[node name="SM_Hall_Ceiling_Sec_B4" parent="." instance=ExtResource("4_23wg8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9, 4.3, -8.2)
+
+[node name="SM_Hall_Ceiling_Sec_B5" parent="." instance=ExtResource("4_23wg8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9, 4.3, 1)
+
+[node name="SM_Hall_Ceiling_Sec_C" parent="." instance=ExtResource("5_ougwe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 4.4, -18.4)
+
+[node name="SM_Hall_Ceiling_Sec_C2" parent="." instance=ExtResource("5_ougwe")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 4.4, -18.4)
+
+[node name="SM_Hall_Ceiling_Sec_C3" parent="." instance=ExtResource("5_ougwe")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -0.3, 4.4, -9.6)
+
+[node name="SM_Hall_Ceiling_Sec_C4" parent="." instance=ExtResource("5_ougwe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 8.5, 4.4, -9.6)
+
+[node name="SM_Hall_Ceiling_Sec_C5" parent="." instance=ExtResource("5_ougwe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 28.3, 4.4, -9.6)
+
+[node name="SM_Hall_Ceiling_Sec_C6" parent="." instance=ExtResource("5_ougwe")]
+transform = Transform3D(4.37114e-08, 0, -1, 0, 1, 0, -1, 0, -4.37114e-08, 28.3, 4.4, -18.4)
+
+[node name="SM_Hall_Ceiling_Sec_C7" parent="." instance=ExtResource("5_ougwe")]
+transform = Transform3D(4.37114e-08, 0, 1, 0, 1, 0, -1, 0, 4.37114e-08, 19.5, 4.4, -18.4)
+
+[node name="SM_Hall_Ceiling_Sec_C8" parent="." instance=ExtResource("5_ougwe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, 19.5, 4.4, -9.6)
+
+[node name="SM_Hall_Door_L2" parent="." instance=ExtResource("6_h1fec")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0, 1.1)
+
+[node name="SM_Hall_Door_L3" parent="." instance=ExtResource("6_h1fec")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5, 0, -24.7)
+
+[node name="SM_Hall_Door_L6" parent="." instance=ExtResource("6_h1fec")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 27.3, 0, -29.1)
+
+[node name="SM_Hall_Door_L7" parent="." instance=ExtResource("6_h1fec")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 28.6, 0, -17.4)
+
+[node name="SM_Hall_Door_L8" parent="." instance=ExtResource("6_h1fec")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 27.3, 0, 6)
+
+[node name="SM_Hall_DoorPipes" parent="." instance=ExtResource("7_0m0tm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1, 0, -9.25)
+
+[node name="SM_Hall_DoorPipes2" parent="." instance=ExtResource("7_0m0tm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1, 0, 1.04)
+
+[node name="SM_Hall_DoorPipes3" parent="." instance=ExtResource("7_0m0tm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.85, 0, -14)
+
+[node name="SM_Hall_DoorPipes4" parent="." instance=ExtResource("7_0m0tm")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.14, 0, -14)
+
+[node name="SM_Hall_DoorPipes5" parent="." instance=ExtResource("7_0m0tm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1, 0, -18.75)
+
+[node name="SM_Hall_DoorPipes6" parent="." instance=ExtResource("7_0m0tm")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.1, 0, -24.64)
+
+[node name="SM_Hall_DoorPipes7" parent="." instance=ExtResource("7_0m0tm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 28.65, 0, -14)
+
+[node name="SM_Hall_DoorPipes8" parent="." instance=ExtResource("7_0m0tm")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 23.9, 0, -18.75)
+
+[node name="SM_Hall_DoorPipes9" parent="." instance=ExtResource("7_0m0tm")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 23.9, 0, -9.25)
+
+[node name="SM_Hall_DoorPipes10" parent="." instance=ExtResource("7_0m0tm")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 23.9, 0, -29.04)
+
+[node name="SM_Hall_DoorPipes11" parent="." instance=ExtResource("7_0m0tm")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 23.9, 0, 6.06)
+
+[node name="SM_Hall_Doorway_L" parent="." instance=ExtResource("8_p2ppv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, -9.6)
+
+[node name="SM_Hall_Doorway_L2" parent="." instance=ExtResource("8_p2ppv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 0.7)
+
+[node name="SM_Hall_Doorway_L3" parent="." instance=ExtResource("8_p2ppv")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.2, 0, -9.6)
+
+[node name="SM_Hall_Doorway_L4" parent="." instance=ExtResource("8_p2ppv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18.8, 0, -18.4)
+
+[node name="SM_Hall_Doorway_L5" parent="." instance=ExtResource("8_p2ppv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, -19.1)
+
+[node name="SM_Hall_Doorway_L6" parent="." instance=ExtResource("8_p2ppv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.3, 0, -24.3)
+
+[node name="SM_Hall_Doorway_L7" parent="." instance=ExtResource("8_p2ppv")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.5, 0, -8.9)
+
+[node name="SM_Hall_Doorway_L8" parent="." instance=ExtResource("8_p2ppv")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.5, 0, -18.4)
+
+[node name="SM_Hall_Doorway_L9" parent="." instance=ExtResource("8_p2ppv")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 29, 0, -9.6)
+
+[node name="SM_Hall_Doorway_L10" parent="." instance=ExtResource("8_p2ppv")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.5, 0, -28.7)
+
+[node name="SM_Hall_Doorway_L11" parent="." instance=ExtResource("8_p2ppv")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.5, 0, 6.4)
+
+[node name="SM_Hall_Doorway_Panel" parent="." instance=ExtResource("9_pxr3e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 0, -8.9)
+
+[node name="SM_Hall_Doorway_Panel2" parent="." instance=ExtResource("9_pxr3e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 0, -18.4)
+
+[node name="SM_Hall_Doorway_Panel3" parent="." instance=ExtResource("9_pxr3e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 0, 1.4)
+
+[node name="SM_Hall_Doorway_Panel4" parent="." instance=ExtResource("9_pxr3e")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.5, 0, -12)
+
+[node name="SM_Hall_Doorway_Panel5" parent="." instance=ExtResource("9_pxr3e")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.5, 0, -16)
+
+[node name="SM_Hall_Doorway_Panel6" parent="." instance=ExtResource("9_pxr3e")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.1, 0, -25)
+
+[node name="SM_Hall_Doorway_Panel7" parent="." instance=ExtResource("9_pxr3e")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 28.3, 0, -12)
+
+[node name="SM_Hall_Doorway_Panel8" parent="." instance=ExtResource("9_pxr3e")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 21.9, 0, -19.1)
+
+[node name="SM_Hall_Doorway_Panel9" parent="." instance=ExtResource("9_pxr3e")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 21.9, 0, -9.6)
+
+[node name="SM_Hall_Doorway_Panel10" parent="." instance=ExtResource("9_pxr3e")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 21.9, 0, -29.4)
+
+[node name="SM_Hall_Doorway_Panel11" parent="." instance=ExtResource("9_pxr3e")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 21.9, 0, 5.7)
+
+[node name="SM_Hall_FloorBuffer" parent="." instance=ExtResource("10_xbleq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, -9)
+
+[node name="SM_Hall_FloorBuffer2" parent="." instance=ExtResource("10_xbleq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, -4.6)
+
+[node name="SM_Hall_FloorBuffer3" parent="." instance=ExtResource("10_xbleq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.5, 0, 0.8)
+
+[node name="SM_Hall_FloorBuffer4" parent="." instance=ExtResource("10_xbleq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18.9, 0, -18.4)
+
+[node name="SM_Hall_FloorBuffer5" parent="." instance=ExtResource("10_xbleq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.5, 0, -9.6)
+
+[node name="SM_Hall_FloorBuffer6" parent="." instance=ExtResource("10_xbleq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.1, 0, -9.6)
+
+[node name="SM_Hall_FloorBuffer7" parent="." instance=ExtResource("10_xbleq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.5, 0, -19)
+
+[node name="SM_Hall_FloorBuffer8" parent="." instance=ExtResource("10_xbleq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, -24.4)
+
+[node name="SM_Hall_FloorBuffer9" parent="." instance=ExtResource("10_xbleq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 28.3, 0, -23.4)
+
+[node name="SM_Hall_FloorBuffer10" parent="." instance=ExtResource("10_xbleq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0, -28.8)
+
+[node name="SM_Hall_FloorBuffer11" parent="." instance=ExtResource("10_xbleq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 28.01, 0, -19.03)
+
+[node name="SM_Hall_FloorBuffer12" parent="." instance=ExtResource("10_xbleq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0, 0.1)
+
+[node name="SM_Hall_FloorBuffer13" parent="." instance=ExtResource("10_xbleq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0, -4.3)
+
+[node name="SM_Hall_FloorBuffer14" parent="." instance=ExtResource("10_xbleq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0, -9)
+
+[node name="SM_Hall_FloorBuffer15" parent="." instance=ExtResource("10_xbleq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0, 4.8)
+
+[node name="SM_Hall_FloorEdge" parent="." instance=ExtResource("11_idhch")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7, 0, -0.2)
+
+[node name="SM_Hall_FloorEdge2" parent="." instance=ExtResource("11_idhch")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.2)
+
+[node name="SM_Hall_FloorEdge3" parent="." instance=ExtResource("11_idhch")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7, 0, -4.6)
+
+[node name="SM_Hall_FloorEdge4" parent="." instance=ExtResource("11_idhch")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -4.6)
+
+[node name="SM_Hall_FloorEdge5" parent="." instance=ExtResource("11_idhch")]
+transform = Transform3D(4.37114e-08, 0, 1, 0, 1, 0, 1, 0, -4.37114e-08, 13.5, 0, -10.4)
+
+[node name="SM_Hall_FloorEdge6" parent="." instance=ExtResource("11_idhch")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.5, 0, -17.6)
+
+[node name="SM_Hall_FloorEdge7" parent="." instance=ExtResource("11_idhch")]
+transform = Transform3D(4.37114e-08, 0, 1, 0, 1, 0, 1, 0, -4.37114e-08, 17.9, 0, -10.4)
+
+[node name="SM_Hall_FloorEdge8" parent="." instance=ExtResource("11_idhch")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17.9, 0, -17.6)
+
+[node name="SM_Hall_FloorEdge9" parent="." instance=ExtResource("11_idhch")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, 0, -23.4)
+
+[node name="SM_Hall_FloorEdge10" parent="." instance=ExtResource("11_idhch")]
+transform = Transform3D(1, 0, -8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 7.7, 0, -23.4)
+
+[node name="SM_Hall_FloorEdge11" parent="." instance=ExtResource("11_idhch")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 20.3, 0, -27.8)
+
+[node name="SM_Hall_FloorEdge12" parent="." instance=ExtResource("11_idhch")]
+transform = Transform3D(1, 0, 8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 27.5, 0, -27.8)
+
+[node name="SM_Hall_FloorEdge13" parent="." instance=ExtResource("11_idhch")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 20.3, 0, -23.4)
+
+[node name="SM_Hall_FloorEdge14" parent="." instance=ExtResource("11_idhch")]
+transform = Transform3D(1, 0, 8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 27.5, 0, -23.4)
+
+[node name="SM_Hall_FloorEdge15" parent="." instance=ExtResource("11_idhch")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -3.3)
+
+[node name="SM_Hall_FloorEdge16" parent="." instance=ExtResource("11_idhch")]
+transform = Transform3D(1, 0, -8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 27.5, 0, -3.3)
+
+[node name="SM_Hall_Floor_Main" parent="." instance=ExtResource("12_rw83w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8, 0, -3.6)
+
+[node name="SM_Hall_Floor_Main2" parent="." instance=ExtResource("12_rw83w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8, 0, -8)
+
+[node name="SM_Hall_Floor_Main3" parent="." instance=ExtResource("12_rw83w")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.1, 0, -17.7)
+
+[node name="SM_Hall_Floor_Main4" parent="." instance=ExtResource("12_rw83w")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.5, 0, -17.7)
+
+[node name="SM_Hall_Floor_Main5" parent="." instance=ExtResource("12_rw83w")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.4, 0, -20)
+
+[node name="SM_Hall_Floor_Main6" parent="." instance=ExtResource("12_rw83w")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 20.2, 0, -24.4)
+
+[node name="SM_Hall_Floor_Main7" parent="." instance=ExtResource("12_rw83w")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 20.2, 0, -20)
+
+[node name="SM_Hall_Floor_Main8" parent="." instance=ExtResource("12_rw83w")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 20.2, 0, 0.1)
+
+[node name="SM_Hall_Floor_Sec_A" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -9.6)
+
+[node name="SM_Hall_Floor_Sec_A2" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -16.9)
+
+[node name="SM_Hall_Floor_Sec_A3" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 0, -11.1)
+
+[node name="SM_Hall_Floor_Sec_A4" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(-3.31769e-08, 0, -1, 0, 1, 0, 0.759, 0, -4.37114e-08, -0.3, 0, -9.6)
+
+[node name="SM_Hall_Floor_Sec_A5" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(-3.31769e-08, 0, -1, 0, 1, 0, 0.759, 0, -4.37114e-08, -0.3, 0, -14)
+
+[node name="SM_Hall_Floor_Sec_A6" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19.5, 0, -11.1)
+
+[node name="SM_Hall_Floor_Sec_A7" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 26.8, 0, -11.1)
+
+[node name="SM_Hall_Floor_Sec_A8" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 21, 0, -11.1)
+
+[node name="SM_Hall_Floor_Sec_A9" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 21, 0, -18.4)
+
+[node name="SM_Hall_Floor_Sec_A12" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(2.78879e-08, 0, 1, 0, 1, 0, 0.638, 0, -4.37114e-08, 21.4, 0, -4.3)
+
+[node name="SM_Hall_Floor_Sec_A13" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(2.78879e-08, 0, 1, 0, 1, 0, 0.638, 0, -4.37114e-08, 19.9, 0, -4.3)
+
+[node name="SM_Hall_Floor_Sec_A14" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(-0.862, 0, 1.07792e-07, 0, 1, 0, -7.53584e-08, 0, -1.233, 21.4, 0, -8)
+
+[node name="SM_Hall_Floor_Sec_A15" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(2.78879e-08, 0, 1, 0, 1, 0, 0.638, 0, -4.37114e-08, 27.9, 0, -4.3)
+
+[node name="SM_Hall_Floor_Sec_A16" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(2.78879e-08, 0, 1, 0, 1, 0, 0.638, 0, -4.37114e-08, 21.4, 0, 4.8)
+
+[node name="SM_Hall_Floor_Sec_A17" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(-0.862, 0, 1.07792e-07, 0, 1, 0, -7.53584e-08, 0, -1.233, 21.4, 0, 1.1)
+
+[node name="SM_Hall_Floor_Sec_A18" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(2.78879e-08, 0, 1, 0, 1, 0, 0.638, 0, -4.37114e-08, 19.9, 0, 4.8)
+
+[node name="SM_Hall_Floor_Sec_A19" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(2.78879e-08, 0, 1, 0, 1, 0, 0.638, 0, -4.37114e-08, 27.9, 0, 4.8)
+
+[node name="SM_Hall_Floor_Sec_A22" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(2.78879e-08, 0, 1, 0, 1, 0, 0.638, 0, -4.37114e-08, 29.4, 0, -4.3)
+
+[node name="SM_Hall_Floor_Sec_A23" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(-0.862, 0, 1.07792e-07, 0, 1, 0, -7.53584e-08, 0, -1.233, 21.4, 0, -6.15)
+
+[node name="SM_Hall_Floor_Sec_A24" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(2.78879e-08, 0, 1, 0, 1, 0, 0.638, 0, -4.37114e-08, 29.4, 0, 4.8)
+
+[node name="SM_Hall_Floor_Sec_A25" parent="." instance=ExtResource("13_cjd2x")]
+transform = Transform3D(-0.862, 0, 1.07792e-07, 0, 1, 0, -7.53584e-08, 0, -1.233, 21.4, 0, 2.95)

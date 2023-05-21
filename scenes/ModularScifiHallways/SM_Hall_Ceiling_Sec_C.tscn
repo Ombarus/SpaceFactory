@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://d4gtixhuyp44h"]
+
+[ext_resource type="PackedScene" uid="uid://c2krgcnu1wxg1" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Hall_Ceiling_Sec_C.glb" id="1_6db8m"]
+[ext_resource type="Shader" path="res://data/shaders/ModularScifiHallways/M_Base_2C.gdshader" id="2_gqpij"]
+[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="3_4ywva"]
+[ext_resource type="Texture2D" uid="uid://7swl6lv4wogy" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Ceiling_Sec_C_Diff.PNG" id="4_ttp1u"]
+[ext_resource type="Texture2D" uid="uid://bacbkpm1an0rs" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Ceiling_Sec_C_M.PNG" id="5_lwplp"]
+[ext_resource type="Texture2D" uid="uid://bnmtj25atb1j6" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Ceiling_Sec_C_N_normals.PNG" id="6_2kvrh"]
+[ext_resource type="Texture2D" uid="uid://b4rwabblmhsyp" path="res://data/private/models/ue/floor/T_Metal_Scratches_M.PNG" id="7_2nbl0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4auo7"]
+render_priority = 0
+shader = ExtResource("2_gqpij")
+shader_parameter/metallic_green = 0.7
+shader_parameter/metallic_other = 0.75
+shader_parameter/mettalic_red = 0.0
+shader_parameter/norm_detail_u = 11.0
+shader_parameter/norm_detail_v = 11.0
+shader_parameter/r_detail_u = 2.0
+shader_parameter/r_detail_v = 2.0
+shader_parameter/roughness_green = 0.1
+shader_parameter/roughness_other = 0.2
+shader_parameter/roughness_red = 0.65
+shader_parameter/spec_green = 0.5
+shader_parameter/spec_other = 0.5
+shader_parameter/spec_red = 0.55
+shader_parameter/light_intensity = 0.0
+shader_parameter/diffuse = ExtResource("4_ttp1u")
+shader_parameter/mask = ExtResource("5_lwplp")
+shader_parameter/normal = ExtResource("6_2kvrh")
+shader_parameter/scratches = ExtResource("7_2nbl0")
+shader_parameter/brushed = ExtResource("3_4ywva")
+
+[node name="SM_Hall_Ceiling_Sec_C" type="Node3D"]
+
+[node name="Root" parent="." instance=ExtResource("1_6db8m")]
+
+[node name="SM_Hall_Ceiling_Sec_C2" parent="Root" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_4auo7")
+
+[editable path="Root"]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=10 format=3 uid="uid://d4gtixhuyp44h"]
+
+[ext_resource type="PackedScene" uid="uid://teklkt8p5cal" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Hall_Door_L.glb" id="1_6l8yn"]
+[ext_resource type="Shader" path="res://data/shaders/ModularScifiHallways/M_Base_2C.gdshader" id="2_gqpij"]
+[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="3_4ywva"]
+[ext_resource type="Texture2D" uid="uid://w1m83w7di6u4" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Door_Diff.PNG" id="4_xn1pr"]
+[ext_resource type="Texture2D" uid="uid://duncocj18rjf6" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Door_L_EM.PNG" id="5_gn4vv"]
+[ext_resource type="Texture2D" uid="uid://d16kdmr1wadtu" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Door_L_M.PNG" id="6_w5ecn"]
+[ext_resource type="Texture2D" uid="uid://b4rwabblmhsyp" path="res://data/private/models/ue/floor/T_Metal_Scratches_M.PNG" id="7_2nbl0"]
+[ext_resource type="Texture2D" uid="uid://40u5qf4hpcb0" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Door_L_N_normals.PNG" id="7_sye0j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rjohx"]
+render_priority = 0
+shader = ExtResource("2_gqpij")
+shader_parameter/metallic_green = 0.95
+shader_parameter/metallic_other = 1.0
+shader_parameter/mettalic_red = 0.0
+shader_parameter/norm_detail_u = 10.0
+shader_parameter/norm_detail_v = 10.0
+shader_parameter/r_detail_u = 2.0
+shader_parameter/r_detail_v = 2.0
+shader_parameter/roughness_green = 0.1
+shader_parameter/roughness_other = 0.2
+shader_parameter/roughness_red = 0.65
+shader_parameter/spec_green = 0.5
+shader_parameter/spec_other = 0.5
+shader_parameter/spec_red = 0.55
+shader_parameter/light_intensity = 2.0
+shader_parameter/diffuse = ExtResource("4_xn1pr")
+shader_parameter/mask = ExtResource("6_w5ecn")
+shader_parameter/normal = ExtResource("7_sye0j")
+shader_parameter/scratches = ExtResource("7_2nbl0")
+shader_parameter/brushed = ExtResource("3_4ywva")
+shader_parameter/emissive = ExtResource("5_gn4vv")
+
+[node name="SM_Hall_Door_L" type="Node3D"]
+
+[node name="Root" parent="." instance=ExtResource("1_6l8yn")]
+
+[node name="SM_Hall_Door_L2" parent="Root" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_rjohx")
+
+[editable path="Root"]

@@ -1,0 +1,50 @@
+[gd_scene load_steps=11 format=3 uid="uid://d4gtixhuyp44h"]
+
+[ext_resource type="PackedScene" uid="uid://b6h84cpxb7nfd" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Hall_Win_Ceiling.glb" id="1_1roww"]
+[ext_resource type="Material" uid="uid://cv5awhtwapdp7" path="res://data/material/ModularScifiHallways/MI_Trims_AB_M.tres" id="2_b0x5q"]
+[ext_resource type="Shader" path="res://data/shaders/ModularScifiHallways/M_Base_2C.gdshader" id="2_gqpij"]
+[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="3_4ywva"]
+[ext_resource type="Texture2D" uid="uid://buo1wo8222n8d" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Win_Flr_A_Diff.PNG" id="5_oj0jc"]
+[ext_resource type="Texture2D" uid="uid://cvx1o1w0idkbf" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Win_Flr_A_M.PNG" id="6_un8ua"]
+[ext_resource type="Texture2D" uid="uid://b4rwabblmhsyp" path="res://data/private/models/ue/floor/T_Metal_Scratches_M.PNG" id="7_2nbl0"]
+[ext_resource type="Texture2D" uid="uid://cgkymfv1m3fmc" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Win_Flr_A_N_normals.PNG" id="7_coijs"]
+[ext_resource type="Material" uid="uid://coglehtps6rv5" path="res://data/material/ModularScifiHallways/MI_Trims_A_M.tres" id="9_skxck"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wxkne"]
+render_priority = 0
+shader = ExtResource("2_gqpij")
+shader_parameter/metallic_green = 0.7
+shader_parameter/metallic_other = 0.75
+shader_parameter/mettalic_red = 0.0
+shader_parameter/norm_detail_u = 10.0
+shader_parameter/norm_detail_v = 10.0
+shader_parameter/r_detail_u = 2.0
+shader_parameter/r_detail_v = 2.0
+shader_parameter/roughness_green = 0.1
+shader_parameter/roughness_other = 0.2
+shader_parameter/roughness_red = 0.65
+shader_parameter/spec_green = 0.5
+shader_parameter/spec_other = 0.5
+shader_parameter/spec_red = 0.55
+shader_parameter/light_intensity = 0.0
+shader_parameter/RColor = Color(1, 1, 1, 1)
+shader_parameter/GColor = Color(1, 1, 1, 1)
+shader_parameter/OtherColor = Color(1, 1, 1, 1)
+shader_parameter/DiffuseDesaturation = 0.0
+shader_parameter/RoughnessBlendContrast = 0.0
+shader_parameter/diffuse = ExtResource("5_oj0jc")
+shader_parameter/mask = ExtResource("6_un8ua")
+shader_parameter/normal = ExtResource("7_coijs")
+shader_parameter/scratches = ExtResource("7_2nbl0")
+shader_parameter/brushed = ExtResource("3_4ywva")
+
+[node name="SM_Hall_Win_Ceiling" type="Node3D"]
+
+[node name="Root" parent="." instance=ExtResource("1_1roww")]
+
+[node name="SM_Hall_Win_Ceiling2" parent="Root" index="0"]
+surface_material_override/0 = ExtResource("2_b0x5q")
+surface_material_override/1 = SubResource("ShaderMaterial_wxkne")
+surface_material_override/2 = ExtResource("9_skxck")
+
+[editable path="Root"]

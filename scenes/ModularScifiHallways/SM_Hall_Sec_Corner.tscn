@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://d4gtixhuyp44h"]
+
+[ext_resource type="PackedScene" uid="uid://df6b7ddd40cle" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Hall_Sec_Corner.glb" id="1_4tj58"]
+[ext_resource type="Shader" path="res://data/shaders/ModularScifiHallways/M_Base_2C.gdshader" id="2_gqpij"]
+[ext_resource type="Texture2D" uid="uid://dfhknrfersvd0" path="res://data/private/models/ue/floor/T_Metal_Brushed_N.PNG" id="3_4ywva"]
+[ext_resource type="Texture2D" uid="uid://d3cx4w16i1cx8" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Sec_Corner_Diff.PNG" id="4_s5g0i"]
+[ext_resource type="Texture2D" uid="uid://gamb1vaytuim" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Sec_Corner_M.PNG" id="5_yw8pa"]
+[ext_resource type="Texture2D" uid="uid://ugteo2jnvek7" path="res://data/private/models/ue/ModularScifiHallways/Textures/T_Hall_Sec_Corner_N_normals.PNG" id="6_2uprk"]
+[ext_resource type="Texture2D" uid="uid://b4rwabblmhsyp" path="res://data/private/models/ue/floor/T_Metal_Scratches_M.PNG" id="7_2nbl0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7o0wb"]
+render_priority = 0
+shader = ExtResource("2_gqpij")
+shader_parameter/metallic_green = 0.7
+shader_parameter/metallic_other = 0.75
+shader_parameter/mettalic_red = 0.0
+shader_parameter/norm_detail_u = 25.0
+shader_parameter/norm_detail_v = 25.0
+shader_parameter/r_detail_u = 2.0
+shader_parameter/r_detail_v = 2.0
+shader_parameter/roughness_green = 0.1
+shader_parameter/roughness_other = 0.2
+shader_parameter/roughness_red = 0.65
+shader_parameter/spec_green = 0.5
+shader_parameter/spec_other = 0.5
+shader_parameter/spec_red = 0.55
+shader_parameter/light_intensity = 0.0
+shader_parameter/RColor = Color(1, 1, 1, 1)
+shader_parameter/GColor = Color(1, 1, 1, 1)
+shader_parameter/OtherColor = Color(1, 1, 1, 1)
+shader_parameter/DiffuseDesaturation = 0.0
+shader_parameter/RoughnessBlendContrast = 0.0
+shader_parameter/diffuse = ExtResource("4_s5g0i")
+shader_parameter/mask = ExtResource("5_yw8pa")
+shader_parameter/normal = ExtResource("6_2uprk")
+shader_parameter/scratches = ExtResource("7_2nbl0")
+shader_parameter/brushed = ExtResource("3_4ywva")
+
+[node name="SM_Hall_Sec_Corner" type="Node3D"]
+
+[node name="Root" parent="." instance=ExtResource("1_4tj58")]
+
+[node name="SM_Hall_Sec_Corner2" parent="Root" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_7o0wb")
+
+[editable path="Root"]

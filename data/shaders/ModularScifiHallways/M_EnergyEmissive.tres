@@ -1,0 +1,27 @@
+[gd_resource type="Shader" format=3 uid="uid://by8vdrsiyqpqt"]
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix;
+
+uniform float Brightness = 1.0;
+uniform vec3 Color : source_color = vec3(1.0, 1.0, 1.0);
+uniform float Desaturation = 0.0;
+uniform sampler2D TextureSample;
+
+vec3 desat(vec3 col, float desat_value)
+{
+	return mix(col.rgb, vec3(dot(col.rgb, vec3(0.299, 0.587, 0.114))), desat_value);
+}
+
+void fragment() {
+	vec2 panning = UV + vec2(0.0075 * TIME, 0.0);
+	vec3 sample_col = texture(TextureSample, panning).rgb;
+	sample_col = desat(sample_col, Desaturation);
+	sample_col *= Color;
+	sample_col *= Brightness;
+	//ALBEDO = sample_col;
+	ALBEDO = vec3(0.0, 0.0, 0.0);
+	EMISSION = sample_col;
+}
+"

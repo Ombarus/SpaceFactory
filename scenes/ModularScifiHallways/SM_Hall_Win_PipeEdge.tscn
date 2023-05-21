@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4gtixhuyp44h"]
+
+[ext_resource type="PackedScene" uid="uid://dn55yjooxc8en" path="res://data/private/models/ue/ModularScifiHallways/Meshes/SM_Hall_Win_PipeEdge.glb" id="1_ns8ac"]
+[ext_resource type="Material" uid="uid://cp46xlm08p5ub" path="res://data/material/ModularScifiHallways/MI_Pipes_A_M.tres" id="2_k65ds"]
+
+[node name="SM_Hall_Win_PipeEdge" type="Node3D"]
+
+[node name="Root" parent="." instance=ExtResource("1_ns8ac")]
+
+[node name="SM_Hall_Win_PipeEdge2" parent="Root" index="0"]
+surface_material_override/0 = ExtResource("2_k65ds")
+
+[editable path="Root"]
