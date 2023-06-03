@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://do28hbwcrhxtb"]
+[gd_scene load_steps=37 format=3 uid="uid://do28hbwcrhxtb"]
 
 [ext_resource type="PackedScene" uid="uid://dnyth0m35mwyp" path="res://scenes/Asteroid.tscn" id="1"]
 [ext_resource type="Script" path="res://scripts/Systems/LevelLoader.gd" id="3"]
@@ -20,13 +20,12 @@
 [ext_resource type="Script" path="res://scripts/Systems/ProductionBuilding.gd" id="18"]
 [ext_resource type="PackedScene" path="res://scenes/UI/HarvesterDialog.tscn" id="19"]
 [ext_resource type="Script" path="res://scripts/Systems/DirtyReset.gd" id="20"]
-[ext_resource type="PackedScene" uid="uid://d4gtixhuyp44h" path="res://scenes/ModularScifiHallways/SM_Pipes_GRP_C.tscn" id="22_ijfs6"]
 [ext_resource type="Script" path="res://scripts/Systems/InventoryGenerator.gd" id="32"]
 
 [sub_resource type="Resource" id="5"]
 script = ExtResource("10")
 anchor_offset = Vector3(0, 0, 0)
-target_offset = Vector3(0, 2.5, 5)
+target_offset = Vector3(0, 2.5, 10)
 look_target = Vector3(0, 5, -50)
 rotation = Vector3(0, 0, 0)
 pitch_limits = Vector2(-80, 80)
@@ -107,6 +106,7 @@ InventoryLine = NodePath("../../UI/SafeArea/HUD/VBoxContainer/Inventory/Exemple"
 script = ExtResource("8")
 PlayerCamera = NodePath("../../Camera3D")
 CameraState = SubResource("5")
+Smoothing = 30.0
 
 [node name="Beam" type="Node" parent="Systems"]
 script = ExtResource("6")
@@ -278,9 +278,6 @@ layout_mode = 1
 anchors_preset = 15
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="SM_Hall_FloorBuffer" parent="." instance=ExtResource("22_ijfs6")]
-transform = Transform3D(0.477649, -0.745386, -0.465028, 2.88635e-08, 0.529312, -0.848427, 0.87855, 0.405251, 0.252826, -15.0257, 0, 0)
 
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/miner" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/miner" method="_on_PlaceSmelterBtn_toggled"]
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/smelter" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/smelter" method="_on_PlaceSmelterBtn_toggled"]

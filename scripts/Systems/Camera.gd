@@ -36,8 +36,12 @@ func _process(delta: float) -> void:
 	var mouse_offset_y : float = last_mouse_pos.y - cur_mouse_pos.y
 	last_mouse_pos = cur_mouse_pos
 	
-	CameraState.rotation.y += mouse_offset_x / 100.0
-	CameraState.rotation.x += mouse_offset_y / 100.0
+	var basis_z = player_camera.transform.basis.z
+	var basis_y = Vector3.UP
+	var dotres = basis_z.dot(basis_y)
+	
+	CameraState.rotation.y += mouse_offset_x / 100.0 * sign(dotres)
+	CameraState.rotation.x += mouse_offset_y / 100.0 * sign(dotres)
 	#CameraState.rotation.x = min(max(CameraState.rotation.x, deg_to_rad(CameraState.pitch_limits.x)), deg_to_rad(CameraState.pitch_limits.y))
 	
 	var roll = Input.get_action_strength("roll_left") - Input.get_action_strength("roll_right")
