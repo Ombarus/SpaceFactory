@@ -25,6 +25,8 @@ func _ready():
 	if PreloadData == null or PreloadData.is_empty():
 		return
 	
+	if Globals._CHEAT_MODE == true and "player_spaceship" in PreloadData:
+		PreloadData = "res://data/json/world/cheat_player_ship.json"
 	self.call_deferred("_deferred_init")
 	
 

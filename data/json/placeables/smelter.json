@@ -9,18 +9,16 @@
     "dialog_name":"SmelterDialog",
     "recipes":[
         {
-            "input":[{"count":1, "name":"data/json/items/iron_ore.json"}],
+            "input":[{"count":1, "name":"data/json/items/iron_ore.json"}, {"count":10, "name":"data/json/items/energy.json"}],
             "output":[{"count":1, "name": "data/json/items/iron_ingot.json"}],
-            "processing_time_sec":2.0,
-            "energy_use":10.0
+            "processing_time_sec":2.0
         },
         {
-            "input":[{"count":2, "name":"data/json/items/silica_ore.json"}],
+            "input":[{"count":2, "name":"data/json/items/silica_ore.json"}, {"count":10, "name":"data/json/items/energy.json"}],
             "output":[
                 {"count":3, "name": "data/json/items/glass.json"}
             ],
-            "processing_time_sec":2.0,
-            "energy_use":10.0
+            "processing_time_sec":2.0
         },
     ],
     "snap_association": [
@@ -30,6 +28,7 @@
     "surface":"placeable",
     "inventory_slots": {
         "output": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
-        "input": {"__ref__":"data/json/refs/inventory/solid_storage.json"}
+        "input": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
+		"energy": {"__ref__":"data/json/refs/inventory/energy_storage.json"}
     }
 }

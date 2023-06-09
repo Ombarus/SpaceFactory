@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://do28hbwcrhxtb"]
+[gd_scene load_steps=40 format=3 uid="uid://do28hbwcrhxtb"]
 
 [ext_resource type="PackedScene" uid="uid://dnyth0m35mwyp" path="res://scenes/Asteroid.tscn" id="1"]
 [ext_resource type="Script" path="res://scripts/Systems/LevelLoader.gd" id="3"]
@@ -20,13 +20,14 @@
 [ext_resource type="Script" path="res://scripts/Systems/ProductionBuilding.gd" id="18"]
 [ext_resource type="PackedScene" path="res://scenes/UI/HarvesterDialog.tscn" id="19"]
 [ext_resource type="Script" path="res://scripts/Systems/DirtyReset.gd" id="20"]
+[ext_resource type="PackedScene" uid="uid://bglmmkdqhqmri" path="res://scenes/ModularScifiHallways/sci_fi_example_a_ext.tscn" id="22_xgofd"]
 [ext_resource type="Script" path="res://scripts/Systems/InventoryGenerator.gd" id="32"]
 
 [sub_resource type="Resource" id="5"]
 script = ExtResource("10")
 anchor_offset = Vector3(0, 0, 0)
-target_offset = Vector3(0, 2.5, 10)
-look_target = Vector3(0, 5, -50)
+target_offset = Vector3(0, 4, 10)
+look_target = Vector3(0, -4, -50)
 rotation = Vector3(0, 0, 0)
 pitch_limits = Vector2(-80, 80)
 
@@ -86,6 +87,12 @@ action = &"quick_bar_4"
 [sub_resource type="Shortcut" id="13"]
 events = [SubResource("InputEventAction_7k0rj")]
 
+[sub_resource type="InputEventAction" id="InputEventAction_ya4pf"]
+action = &"quick_bar_5"
+
+[sub_resource type="Shortcut" id="Shortcut_3qx4q"]
+events = [SubResource("InputEventAction_ya4pf")]
+
 [node name="Main" type="Node"]
 
 [node name="Systems" type="Node" parent="."]
@@ -106,7 +113,8 @@ InventoryLine = NodePath("../../UI/SafeArea/HUD/VBoxContainer/Inventory/Exemple"
 script = ExtResource("8")
 PlayerCamera = NodePath("../../Camera3D")
 CameraState = SubResource("5")
-Smoothing = 30.0
+Smoothing = 300.0
+SmoothingBase = 0.7
 
 [node name="Beam" type="Node" parent="Systems"]
 script = ExtResource("6")
@@ -127,7 +135,7 @@ script = ExtResource("18")
 script = ExtResource("20")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.311072, -0.612231, 0.726917, 0.85024, 0.521028, 0.0749787, -0.424648, 0.59473, 0.68262, -9.704, -0.819, 0.895)
+transform = Transform3D(0.251817, -0.277508, -0.927134, 0.134222, 0.958762, -0.250519, 0.958422, -0.0613571, 0.278681, -28.3418, -0.819, 0.348471)
 fov = 66.4
 near = 0.01
 far = 10000.0
@@ -151,7 +159,7 @@ light_energy = 2.529
 [node name="Dynamic" type="Node3D" parent="."]
 
 [node name="Player" parent="Dynamic" instance=ExtResource("5")]
-transform = Transform3D(0.884646, 0, 0.466263, 0, 1, 0, -0.466263, 0, 0.884646, 0, 0, 0)
+transform = Transform3D(0.884646, 0, 0.466263, 0, 1, 0, -0.466263, 0, 0.884646, 0.188656, 12.7431, 3.69321)
 
 [node name="MeshInstance2" type="MeshInstance3D" parent="Dynamic/Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.308558, 0, 3.12733)
@@ -256,6 +264,14 @@ shortcut = SubResource("13")
 text = "4. Wall"
 script = ExtResource("9")
 
+[node name="solar" type="Button" parent="UI/SafeArea/HUD/VBoxContainer/Toolbar"]
+custom_minimum_size = Vector2(70, 40)
+layout_mode = 2
+toggle_mode = true
+shortcut = SubResource("Shortcut_3qx4q")
+text = "5. Solar Panel"
+script = ExtResource("9")
+
 [node name="MarginContainer2" type="MarginContainer" parent="UI/SafeArea/HUD/VBoxContainer/Toolbar"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -279,7 +295,11 @@ anchors_preset = 15
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="SciFi_Example_A_Ext" parent="." instance=ExtResource("22_xgofd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7095, 0, 57.8683)
+
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/miner" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/miner" method="_on_PlaceSmelterBtn_toggled"]
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/smelter" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/smelter" method="_on_PlaceSmelterBtn_toggled"]
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/floor" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/floor" method="_on_PlaceSmelterBtn_toggled"]
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/wall" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/wall" method="_on_PlaceSmelterBtn_toggled"]
+[connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/solar" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/solar" method="_on_PlaceSmelterBtn_toggled"]

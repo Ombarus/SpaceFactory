@@ -120,11 +120,20 @@ func update_inventory_display():
 func _physics_process(delta: float) -> void:
 	if player_node == null or locked_controls:
 		return
-		
-	ship_orient_toward_camera()
 	
-	#var roll = Input.get_action_strength("roll_left") - Input.get_action_strength("roll_right")
-	#player_node.rotate(player_node.global_transform.basis.z.normalized(), roll / 50.0)
+	var cur_mouse_pos : Vector2 = get_viewport().get_mouse_position()
+	var mouse_offset_x : float = last_mouse_pos.x - cur_mouse_pos.x
+	var mouse_offset_y : float = last_mouse_pos.y - cur_mouse_pos.y
+	last_mouse_pos = cur_mouse_pos
+	
+	# pitch
+	player_node.rotate(player_node.global_transform.basis.x.normalized(), mouse_offset_y / 100.0)
+	
+	# yaw
+	player_node.rotate(player_node.global_transform.basis.y.normalized(), mouse_offset_x / 100.0)
+	
+	var roll = Input.get_action_strength("roll_left") - Input.get_action_strength("roll_right")
+	player_node.rotate(player_node.global_transform.basis.z.normalized(), roll / 50.0)
 
 	var dir := Vector3.ZERO
 	dir = player_node.global_transform.basis.z * (Input.get_action_strength("backward") - Input.get_action_strength("forward"))
@@ -137,13 +146,6 @@ func _physics_process(delta: float) -> void:
 	
 	do_placement()
 	
-#
-func ship_orient_toward_camera():
-	var camera_look_target : Vector3 = player_node.get_attrib("camera_look_at", Vector3.ZERO)
-	var camera_rotation : Vector3 = player_node.get_attrib("camera_rotation", Vector3.ZERO)
-	var cur_rot_quat : Quaternion = Quaternion.from_euler(camera_rotation)
-	var rotated_up : Vector3 = cur_rot_quat * Vector3.UP
-	player_node.look_at(camera_look_target, rotated_up)
 	
 func do_placement():
 	if placing_name.is_empty():

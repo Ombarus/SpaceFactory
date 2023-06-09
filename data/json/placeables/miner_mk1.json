@@ -6,12 +6,16 @@
         "surfaces":["asteroid"]
     },
     "dialog_name":"HarvesterDialog",
-    "harvester": {"item_per_second":1.0},
+    "harvester": {
+		"item_per_second":1.0,
+		"energy_per_second":10.0
+	},
     "connections": [],
     "surface":"placeable",
     "inventory_slots": {
         "output1": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
         "output2": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
-        "output3": {"__ref__":"data/json/refs/inventory/solid_storage.json"}
+        "output3": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
+		"energy": {"__ref__":"data/json/refs/inventory/energy_storage.json"}
     }
 }

@@ -3,6 +3,7 @@ extends Node
 var LevelLoaderRef = null
 var unique_id = 0
 const _CHEAT_MODE = true
+const item_energy = "data/json/items/energy.json"
 
 enum COLLISION_LAYERS {
 	WORLD = 1,

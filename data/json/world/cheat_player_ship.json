@@ -55,9 +55,27 @@
         }
     ],
     "inventory_slots": {
-        "0": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
-        "1": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
-        "2": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
+        "0": {
+			"content":"data/json/items/iron_ingot.json", 
+			"allowed":{
+				"default": ["solid"]
+			},
+			"count":100
+		},
+        "1": {
+			"content":"data/json/items/glass.json", 
+			"allowed":{
+				"default": ["solid"]
+			},
+			"count":100
+		},
+        "2": {
+			"content":"data/json/items/silicon_wafer.json", 
+			"allowed":{
+				"default": ["solid"]
+			},
+			"count":100
+		},
         "3": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
         "4": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
         "5": {"__ref__":"data/json/refs/inventory/solid_storage.json"},
