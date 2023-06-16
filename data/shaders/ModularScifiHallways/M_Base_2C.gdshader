@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode cull_disabled;
 
 uniform sampler2D diffuse;
 uniform sampler2D mask;
@@ -14,8 +15,6 @@ uniform float mettalic_red = 0.0f;
 uniform float norm_detail_u = 18.0f;
 uniform float norm_detail_v = 18.0f;
 
-//uniform float r_detail_u = 3.4f;
-//uniform float r_detail_v = 3.4f;
 uniform float r_detail_u = 2.0f;
 uniform float r_detail_v = 2.0f;
 

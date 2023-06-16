@@ -296,7 +296,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SciFi_Example_A_Ext" parent="." instance=ExtResource("22_xgofd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7095, 0, 57.8683)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -84.3741, 7.62939e-06, 159.592)
 
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/miner" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/miner" method="_on_PlaceSmelterBtn_toggled"]
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/smelter" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/smelter" method="_on_PlaceSmelterBtn_toggled"]
