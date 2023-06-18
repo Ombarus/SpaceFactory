@@ -1,0 +1,7 @@
+{
+	"animation": {
+		"spawn": "land",
+		"working": "harvest",
+		"idle": "stopped"
+	}
+}

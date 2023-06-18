@@ -14,22 +14,42 @@ func OnObjectCreated_Callback(data : Dictionary) -> void:
 	if Globals.get_attrib(data, "harvester", null) != null:
 		harvester_objects[data["id"]] = data
 		
+func Stop(data):
+	Globals.set_attrib(data, "harvester.harvest_time", 0)
+	var stopped_anim : String = Globals.get_attrib(data, "animation.idle", "")
+	if not stopped_anim.is_empty():
+		var visual : Attributes = Globals.LevelLoaderRef.get_visual_from_data(data["id"])
+		var anim_player : AnimationPlayer = visual.find_child("AnimationPlayer", true, false)
+		anim_player.play(stopped_anim)
+		
 func _process(delta: float) -> void:
 	for id in harvester_objects:
 		var data = harvester_objects[id]
+		var is_offline : bool = Globals.get_attrib(data, "harvester.offline", false)
+		# is_offline is used while playing other animations so don't use Stop() that sets the stopped anim
+		if is_offline:
+			Globals.set_attrib(data, "harvester.harvest_time", 0)
+			continue
+			
 		var connections = Globals.get_attrib(data, "connections", [])
 		if connections.is_empty():
-			Globals.set_attrib(data, "harvester.harvest_time", 0)
+			Stop(data)
 			continue
 			
 		var inventory := InventoryUtil.new(data)
 		var energy : float = inventory.total(Globals.item_energy)
 		var energy_per_second : float = Globals.get_attrib(data, "harvester.energy_per_second", 0)
 		if energy <= 0 and energy_per_second > 0:
-			Globals.set_attrib(data, "harvester.harvest_time", 0)
+			Stop(data)
 			continue
 		
 		var seconds_per_item : float = 1.0 / Globals.get_attrib(data, "harvester.item_per_second")
+		
+		var working_anim : String = Globals.get_attrib(data, "animation.working", "")
+		if not working_anim.is_empty():
+			var visual : Attributes = Globals.LevelLoaderRef.get_visual_from_data(data["id"])
+			var anim_player : AnimationPlayer = visual.find_child("AnimationPlayer", true, false)
+			anim_player.play(working_anim)
 		
 		#NOTE: This will bork if there is more than one connection that's harvestable
 		for connected_id in connections:

@@ -11,8 +11,5 @@
             "output":[{"count":12, "name": "data/json/items/energy.json"}],
             "processing_time_sec":2.0
         }
-    ],
-    "snap_association": [
-        ["anchor", "base"]
     ]
 }

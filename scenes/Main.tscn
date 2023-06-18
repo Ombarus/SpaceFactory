@@ -205,9 +205,18 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Exemple" type="Label" parent="UI/SafeArea/HUD/VBoxContainer/Inventory"]
+[node name="Exemple" type="HBoxContainer" parent="UI/SafeArea/HUD/VBoxContainer/Inventory"]
+visible = false
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="UI/SafeArea/HUD/VBoxContainer/Inventory/Exemple"]
+layout_mode = 2
+expand_mode = 2
+
+[node name="Name" type="Label" parent="UI/SafeArea/HUD/VBoxContainer/Inventory/Exemple"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+text = "Test"
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/SafeArea/HUD/VBoxContainer"]
 layout_mode = 2

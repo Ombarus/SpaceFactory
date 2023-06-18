@@ -1,5 +1,6 @@
 {
     "name":"Iron Ingot",
+	"icon": "data/private/textures/iron_ingot.png",
     "inventory": {
         "__ref__":"data/json/refs/inventory/tier1_solid_properties.json"
     }

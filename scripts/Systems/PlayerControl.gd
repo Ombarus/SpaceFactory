@@ -11,7 +11,7 @@ var locked_controls : bool = false
 @export var InventoryLine : NodePath
 @onready var placing_root : Node = get_node(PlacingRoot)
 @onready var harvest_beam : Attributes = get_node(HarvestBeam)
-@onready var inventory_line : Label = get_node(InventoryLine)
+@onready var inventory_line : Control = get_node(InventoryLine)
 
 func _ready() -> void:
 	Events.connect("OnObjectCreated",Callable(self,"OnObjectCreated_Callback"))
@@ -44,6 +44,11 @@ func OnObjectCreated_Callback(data : Dictionary) -> void:
 func OnDoPlacement_Callback() -> void:
 	if placing_obj != null and validate_cost(placing_obj, true):
 		toggle_collider(placing_obj, false)
+		var land_anim : String = placing_obj.get_attrib("animation.spawn", "")
+		if not land_anim.is_empty():
+			var anim_player : AnimationPlayer = placing_obj.find_child("AnimationPlayer", true, false)
+			anim_player.play(land_anim)
+		
 		placing_obj = null
 		placing_name = ""
 			
@@ -114,7 +119,10 @@ func update_inventory_display():
 		line.visible = true
 		var item_count : int = player_node.get_attrib("inventory_slots.%s.count" % str(key))
 		var data : Dictionary = Globals.LevelLoaderRef.load_json(item_path)
-		line.text = Globals.get_attrib(data, "name") + " : " + str(item_count)
+		line.get_node("Name").text = Globals.get_attrib(data, "name") + " : " + str(item_count)
+		var icon_name : String = Globals.get_attrib(data, "icon", "")
+		if not icon_name.is_empty():
+			(line.get_node("Icon") as TextureRect).texture = load(icon_name)
 		line.add_to_group("inventory")
 
 func _physics_process(delta: float) -> void:
@@ -151,7 +159,7 @@ func do_placement():
 	if placing_name.is_empty():
 		return
 		
-	if placing_name in ["floor", "wall"]:
+	if placing_name in ["floor", "wall", "solar"]:
 		var target_pos = player_node.global_transform.origin - (player_node.global_transform.basis.z.normalized() * cur_placing_distance)
 		if placing_obj == null:
 			placing_obj = Preloader.BuildingList[placing_name].instantiate()
@@ -176,11 +184,12 @@ func do_placement():
 		var start_point : Vector3 = player_node.position - (player_node.global_transform.basis.z.normalized() * 2.0)
 		var end_point : Vector3 = start_point - (player_node.global_transform.basis.z.normalized() * 1000.0)
 		var query = PhysicsRayQueryParameters3D.create(start_point, end_point)
-		query.exclude.append(self)
+		query.exclude.append(player_node.get_rid())
 		var result : Dictionary = space_state.intersect_ray(query)
 		if not result.is_empty():
 			end_point = result.position
 			var norm : Vector3 = result.normal
+			print(result["collider"].name)
 			#norm.y = 0.0
 			if placing_obj == null:
 				placing_obj = Preloader.BuildingList[placing_name].instantiate()
@@ -193,11 +202,8 @@ func do_placement():
 				placing_obj.visible = false
 				return
 			
-			var connections = placing_obj.get_attrib("connections", [])
-			var placing_on_id = placing_on.get_attrib("id")
-			if not placing_on_id in connections:
-				connections.push_back(placing_on_id)
-				placing_obj.set_attrib("connections", connections)
+			update_connections(placing_on)
+			
 			placing_obj.visible = true
 			placing_obj.position = end_point
 			var a : float = placing_obj.transform.basis.y.angle_to(norm)
@@ -219,7 +225,12 @@ func do_placement():
 			else:
 				invalid_visual.visible = true
 		
-
+func update_connections(placing_on : Attributes):
+	var connections = placing_obj.get_attrib("connections", [])
+	var placing_on_id = placing_on.get_attrib("id")
+	if not placing_on_id in connections:
+		connections.push_back(placing_on_id)
+		placing_obj.set_attrib("connections", connections)
 
 func toggle_collider(obj : Node, disabled : bool) -> void:
 	for c in obj.get_children():
@@ -243,6 +254,8 @@ func handle_piece_snapping(col_res):
 	
 	if placing_snap_point == null:
 		return
+	
+	update_connections(fixed_piece)
 	
 	var fixed_pos : Vector3 = fixed_snap.global_transform.origin
 	var placing_pos : Vector3 = placing_snap_point.global_transform.origin
