@@ -9,7 +9,17 @@
         {
             "input":[],
             "output":[{"count":12, "name": "data/json/items/energy.json"}],
-            "processing_time_sec":2.0
+            "processing_time_sec":2.0,
+            "energy_use":0.0,
+            "automatic":true,
+            "hidden": true
         }
-    ]
+    ],
+    "inventory_slots": {
+        "energy": {"__ref__":"data/json/refs/inventory/energy_storage_generator.json"}
+    },
+	"distributor": {
+		"item_to_share":"data/json/items/energy.json",
+		"min_share_percent": 0.1
+	}
 }

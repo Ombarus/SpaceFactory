@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://do28hbwcrhxtb"]
+[gd_scene load_steps=41 format=3 uid="uid://c3ek5gqv7u2j8"]
 
 [ext_resource type="PackedScene" uid="uid://dnyth0m35mwyp" path="res://scenes/Asteroid.tscn" id="1"]
 [ext_resource type="Script" path="res://scripts/Systems/LevelLoader.gd" id="3"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/CameraData.gd" id="10"]
 [ext_resource type="PackedScene" path="res://scenes/MiningLaser.tscn" id="11"]
 [ext_resource type="Script" path="res://scripts/Systems/Harvester.gd" id="12"]
+[ext_resource type="Script" path="res://scripts/Systems/Distributor.gd" id="12_dd0ka"]
 [ext_resource type="Script" path="res://scripts/Systems/UIManager.gd" id="13"]
 [ext_resource type="PackedScene" uid="uid://d1fmxvecant73" path="res://scenes/UI/CraftDialog.tscn" id="14"]
 [ext_resource type="Texture2D" uid="uid://xml43hkygwcx" path="res://data/private/environment/skybox/panorama_image_hdr.exr" id="14_i2bxj"]
@@ -133,6 +134,9 @@ script = ExtResource("18")
 
 [node name="DirtyReset" type="Node" parent="Systems"]
 script = ExtResource("20")
+
+[node name="Distributor" type="Node" parent="Systems"]
+script = ExtResource("12_dd0ka")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.251817, -0.277508, -0.927134, 0.134222, 0.958762, -0.250519, 0.958422, -0.0613571, 0.278681, -28.3418, -0.819, 0.348471)

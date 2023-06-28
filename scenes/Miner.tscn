@@ -274,7 +274,7 @@ tracks/17/keys = {
 "times": PackedFloat32Array(6.9),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": ["harvester.online", true],
+"args": ["harvester.offline", false],
 "method": &"set_attrib"
 }]
 }
@@ -327,22 +327,22 @@ text = "R"
 [node name="miner01" parent="." instance=ExtResource("3_vpsbs")]
 
 [node name="Skeleton3D" parent="miner01/Armature" index="0"]
-bones/0/position = Vector3(0.0207561, -1.21342, 0.0973535)
-bones/2/rotation = Quaternion(0.00896302, 0.00974433, -0.0302946, 0.999453)
-bones/3/rotation = Quaternion(-0.616392, 0.00741572, -0.00939813, 0.787347)
-bones/4/rotation = Quaternion(0.00093891, -7.97548e-05, -0.0107478, 0.999942)
-bones/6/rotation = Quaternion(-0.032361, -0.011503, -0.00763882, 0.999381)
-bones/7/rotation = Quaternion(-0.625757, 0.00606303, -0.00739609, 0.779959)
-bones/8/rotation = Quaternion(-0.00229245, 0.000173358, 0.00715031, 0.999972)
-bones/10/rotation = Quaternion(0.0542307, -0.0275866, -0.0721669, 0.995535)
-bones/11/rotation = Quaternion(-0.566636, 0.000272809, -0.000412847, 0.823968)
-bones/12/rotation = Quaternion(-0.0184197, -1.87298e-05, 0.00176957, 0.999829)
-bones/15/rotation = Quaternion(0.743979, 0, -0.668203, 0)
-bones/16/position = Vector3(-0.23397, -7.83943, 6.95201)
+bones/0/position = Vector3(0, 4.00875, 0)
+bones/2/rotation = Quaternion(-0.00309539, -0.0190258, -0.0714597, 0.997257)
+bones/3/rotation = Quaternion(-0.816907, 0.00980668, -0.00686635, 0.576645)
+bones/4/rotation = Quaternion(0.95809, -0.0103179, -0.0030102, 0.286267)
+bones/6/rotation = Quaternion(-0.0145536, -0.0290539, -0.149627, 0.988208)
+bones/7/rotation = Quaternion(-0.782034, 0.0075418, -0.00588081, 0.623163)
+bones/8/rotation = Quaternion(0.968392, 0.00697138, 0.00159899, 0.249331)
+bones/10/rotation = Quaternion(0.0283029, -0.0185483, -0.0871654, 0.995619)
+bones/11/rotation = Quaternion(-0.821233, 0.000401063, -0.000289857, 0.570593)
+bones/12/rotation = Quaternion(0.946898, 0.00168012, 0.000555802, 0.321529)
+bones/15/rotation = Quaternion(1, 0, -4.37114e-08, 0)
+bones/16/position = Vector3(-1.3143, 3.38723, 6.29196)
 bones/16/scale = Vector3(1.66551, 1.66551, 1.66551)
-bones/17/position = Vector3(-7.0836, -6.84337, -5.33719)
+bones/17/position = Vector3(-5.50598, 3.1488, -4.05211)
 bones/17/scale = Vector3(1.66551, 1.66551, 1.66551)
-bones/18/position = Vector3(6.67958, -7.72995, -3.15517)
+bones/18/position = Vector3(6.02154, 3.01585, -2.51966)
 bones/18/scale = Vector3(1.66551, 1.66551, 1.66551)
 
 [node name="trusses_vert004" parent="miner01/Armature/Skeleton3D" index="0"]
@@ -366,6 +366,9 @@ snap_name = "base"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SnapYPos"]
 shape = SubResource("BoxShape3D_4s0s6")
+
+[node name="Node3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.06834, 3.58197, -2.82028)
 
 [connection signal="body_entered" from="UIInteraction" to="." method="_on_UIInteraction_body_entered"]
 [connection signal="body_exited" from="UIInteraction" to="." method="_on_UIInteraction_body_exited"]

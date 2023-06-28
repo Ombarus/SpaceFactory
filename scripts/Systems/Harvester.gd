@@ -15,6 +15,7 @@ func OnObjectCreated_Callback(data : Dictionary) -> void:
 		harvester_objects[data["id"]] = data
 		
 func Stop(data):
+	#TODO: when out of energy, don't reset harvest time so when we resume we continue from where we left off
 	Globals.set_attrib(data, "harvester.harvest_time", 0)
 	var stopped_anim : String = Globals.get_attrib(data, "animation.idle", "")
 	if not stopped_anim.is_empty():

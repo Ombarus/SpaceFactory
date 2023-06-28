@@ -1,5 +1,6 @@
 {
     "name":"Glass",
+	"icon": "data/private/textures/glass.png",
     "inventory": {
         "__ref__":"data/json/refs/inventory/tier1_solid_properties.json"
     }
