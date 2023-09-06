@@ -8,5 +8,12 @@
     "surface":"floor",
     "snap_association": [
         ["horizontal", "horizontal"]
-    ]
+    ],
+    "inventory_slots": {
+        "energy": {"__ref__":"data/json/refs/inventory/energy_storage.json"}
+    },
+	"distributor": {
+		"item_to_share":"data/json/items/energy.json",
+		"min_share_percent": 0.01
+	}
 }

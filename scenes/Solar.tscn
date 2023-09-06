@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://ctnjbtfkjh801"]
 
 [ext_resource type="Script" path="res://scripts/Attributes.gd" id="1"]
-[ext_resource type="Material" path="res://data/material/Invalid.tres" id="2"]
+[ext_resource type="Material" uid="uid://dq50a1suknn6o" path="res://data/material/Invalid.tres" id="2"]
 [ext_resource type="Script" path="res://scripts/Snapping.gd" id="3_qucd8"]
 
 [sub_resource type="BoxMesh" id="1"]
@@ -49,6 +49,16 @@ script = ExtResource("3_qucd8")
 snap_name = "anchor"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SnapYPos"]
+shape = SubResource("BoxShape3D_m3f62")
+
+[node name="SnapXPos" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.21211, 0.225172, 0)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("3_qucd8")
+snap_name = "sidemount"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnapXPos"]
 shape = SubResource("BoxShape3D_m3f62")
 
 [connection signal="body_entered" from="UIInteraction" to="." method="_on_UIInteraction_body_entered"]

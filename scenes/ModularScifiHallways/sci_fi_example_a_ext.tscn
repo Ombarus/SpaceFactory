@@ -242,13 +242,16 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5, 0
 
 [node name="SM_Hall_Door_L6" parent="." instance=ExtResource("6_h1fec")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 27.3, 0, -29.1)
+visible = false
+
+[node name="CollisionShape3D" parent="SM_Hall_Door_L6/Root/UCX_SM_Hall_Door_L" index="0"]
+disabled = true
 
 [node name="SM_Hall_Door_L7" parent="." instance=ExtResource("6_h1fec")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 28.6, 0, -17.4)
 
 [node name="SM_Hall_Door_L8" parent="." instance=ExtResource("6_h1fec")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 27.3, 0, 6)
-visible = false
 
 [node name="SM_Hall_DoorPipes" parent="." instance=ExtResource("7_0m0tm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1, 0, -9.25)
@@ -1811,3 +1814,6 @@ spot_angle = 69.27
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.982228, 0, -0.18769, 0, 1, 0, 0.18769, 0, -0.982228, 1.85567, 1.47129, -5.47545)
+
+[editable path="SM_Hall_Door_L6"]
+[editable path="SM_Hall_Door_L6/Root"]

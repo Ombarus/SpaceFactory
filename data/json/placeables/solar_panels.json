@@ -20,6 +20,6 @@
     },
 	"distributor": {
 		"item_to_share":"data/json/items/energy.json",
-		"min_share_percent": 0.1
+		"min_share_percent": 0.01
 	}
 }

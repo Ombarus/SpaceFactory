@@ -159,8 +159,24 @@ func do_placement():
 	if placing_name.is_empty():
 		return
 		
-	if placing_name in ["floor", "wall", "solar"]:
-		var target_pos = player_node.global_transform.origin - (player_node.global_transform.basis.z.normalized() * cur_placing_distance)
+	var placing_state := "valid"
+	var target_pos = player_node.global_transform.origin - (player_node.global_transform.basis.z.normalized() * cur_placing_distance)
+	if placing_name == "delete":
+		var space_state : PhysicsDirectSpaceState3D = player_node.get_world_3d().direct_space_state
+		var start_point : Vector3 = player_node.position - (player_node.global_transform.basis.z.normalized() * 2.0)
+		var end_point : Vector3 = start_point - (player_node.global_transform.basis.z.normalized() * 1000.0)
+		var query = PhysicsRayQueryParameters3D.create(start_point, end_point, Globals.COLLISION_LAYERS.WORLD)
+		var result : Dictionary = space_state.intersect_ray(query)
+		if not result.is_empty():
+			var root_object : Node = result["collider"]
+			while root_object != null:
+				if root_object is Attributes:
+					break
+				root_object = root_object.get_parent()
+			placing_obj = root_object
+			placing_state = "selected"
+			handle_delete(result)
+	elif placing_name in ["floor", "wall", "solar"]:
 		if placing_obj == null:
 			placing_obj = Preloader.BuildingList[placing_name].instantiate()
 			placing_root.add_child(placing_obj)
@@ -213,24 +229,48 @@ func do_placement():
 			placing_obj.position = end_point
 			
 		elif placing_obj != null:
-			placing_obj.visible = false
+			placing_obj.global_transform = player_node.global_transform
+			placing_obj.position = target_pos
+			placing_state = "invalid"
+			#placing_obj.visible = false
 			
 		var l = (end_point - start_point).length()
 		
 	if placing_obj != null:
-		var invalid_visual : Node3D = placing_obj.find_child("Invalid")
-		if invalid_visual != null:
-			if validate_cost(placing_obj):
-				invalid_visual.visible = false
-			else:
-				invalid_visual.visible = true
+		if not validate_cost(placing_obj):
+			placing_state = "invalid"
+		if placing_state == "invalid":
+			show_invalid(true)
+			show_selected(false)
+		elif placing_state == "selected":
+			show_selected(true)
+			show_invalid(false)
+		else:
+			show_selected(false)
+			show_invalid(false)
+
+func show_invalid(is_visible):
+	var invalid_visual : Node3D = placing_obj.find_child("Invalid")
+	if invalid_visual != null:
+		invalid_visual.visible = is_visible
+		
+func show_selected(is_visible):
+	var selected_visual : Node3D = placing_obj.find_child("Selected")
+	if selected_visual != null:
+		selected_visual.visible = is_visible
 		
 func update_connections(placing_on : Attributes):
 	var connections = placing_obj.get_attrib("connections", [])
+	var other_connections = placing_on.get_attrib("connections", [])
 	var placing_on_id = placing_on.get_attrib("id")
+	var placing_obj_id = placing_obj.get_attrib("id")
 	if not placing_on_id in connections:
 		connections.push_back(placing_on_id)
 		placing_obj.set_attrib("connections", connections)
+	if not placing_obj_id in other_connections:
+		other_connections.push_back(placing_obj_id)
+		placing_on.set_attrib("connections", other_connections)
+		
 
 func toggle_collider(obj : Node, disabled : bool) -> void:
 	for c in obj.get_children():
@@ -239,6 +279,10 @@ func toggle_collider(obj : Node, disabled : bool) -> void:
 		toggle_collider(c, disabled)
 
 
+func handle_delete(col_res):
+	pass
+	
+	
 func handle_piece_snapping(col_res):
 	var fixed_snap := col_res["collider"] as Snapping
 	var fixed_piece := fixed_snap.get_parent() as Attributes

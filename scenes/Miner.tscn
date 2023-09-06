@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://gqdrau03w1ug"]
 
 [ext_resource type="Script" path="res://scripts/Attributes.gd" id="1"]
-[ext_resource type="Material" path="res://data/material/Invalid.tres" id="2"]
+[ext_resource type="Material" uid="uid://dq50a1suknn6o" path="res://data/material/Invalid.tres" id="2"]
 [ext_resource type="PackedScene" uid="uid://c6afyhcxy06mx" path="res://data/private/models/miner/miner01.glb" id="3_vpsbs"]
 [ext_resource type="Material" uid="uid://coglehtps6rv5" path="res://data/material/ModularScifiHallways/MI_Trims_A_M.tres" id="4_o2swk"]
 [ext_resource type="Script" path="res://scripts/Snapping.gd" id="5_1qcym"]

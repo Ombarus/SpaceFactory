@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Snapping.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/Attributes.gd" id="2"]
-[ext_resource type="Material" path="res://data/material/Invalid.tres" id="3"]
+[ext_resource type="Material" uid="uid://dq50a1suknn6o" path="res://data/material/Invalid.tres" id="3"]
 [ext_resource type="PackedScene" uid="uid://88k7f2inigel" path="res://data/private/models/straight_wall/wall_straight.glb" id="4"]
 [ext_resource type="Texture2D" uid="uid://d5ppmsjrpfdp" path="res://data/private/models/straight_wall/wall_baked_rough.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://dwc1ix30cirhs" path="res://data/private/models/straight_wall/wall_baked_metal.png" id="6"]

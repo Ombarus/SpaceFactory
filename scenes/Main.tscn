@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://c3ek5gqv7u2j8"]
+[gd_scene load_steps=43 format=3 uid="uid://c3ek5gqv7u2j8"]
 
 [ext_resource type="PackedScene" uid="uid://dnyth0m35mwyp" path="res://scenes/Asteroid.tscn" id="1"]
 [ext_resource type="Script" path="res://scripts/Systems/LevelLoader.gd" id="3"]
@@ -93,6 +93,12 @@ action = &"quick_bar_5"
 
 [sub_resource type="Shortcut" id="Shortcut_3qx4q"]
 events = [SubResource("InputEventAction_ya4pf")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_nx854"]
+action = &"quick_bar_6"
+
+[sub_resource type="Shortcut" id="Shortcut_gnvr5"]
+events = [SubResource("InputEventAction_nx854")]
 
 [node name="Main" type="Node"]
 
@@ -285,6 +291,14 @@ shortcut = SubResource("Shortcut_3qx4q")
 text = "5. Solar Panel"
 script = ExtResource("9")
 
+[node name="delete" type="Button" parent="UI/SafeArea/HUD/VBoxContainer/Toolbar"]
+custom_minimum_size = Vector2(70, 40)
+layout_mode = 2
+toggle_mode = true
+shortcut = SubResource("Shortcut_gnvr5")
+text = "6. Delete"
+script = ExtResource("9")
+
 [node name="MarginContainer2" type="MarginContainer" parent="UI/SafeArea/HUD/VBoxContainer/Toolbar"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -316,3 +330,4 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -84.3741, 7.62939e-06, 159.59
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/floor" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/floor" method="_on_PlaceSmelterBtn_toggled"]
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/wall" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/wall" method="_on_PlaceSmelterBtn_toggled"]
 [connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/solar" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/solar" method="_on_PlaceSmelterBtn_toggled"]
+[connection signal="toggled" from="UI/SafeArea/HUD/VBoxContainer/Toolbar/delete" to="UI/SafeArea/HUD/VBoxContainer/Toolbar/delete" method="_on_PlaceSmelterBtn_toggled"]

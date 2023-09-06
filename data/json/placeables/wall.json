@@ -5,8 +5,17 @@
         "__ref__":"data/json/refs/costs/floor_cost.json",
         "surfaces":[]
     },
+	"surface":"placeable",
     "snap_association": [
         ["vertical", "vertical"],
-        ["horizontal", "horizontal"]
-    ]
+        ["horizontal", "horizontal"],
+		["vertical", "sidemount"]
+    ],
+    "inventory_slots": {
+        "energy": {"__ref__":"data/json/refs/inventory/energy_storage.json"}
+    },
+	"distributor": {
+		"item_to_share":"data/json/items/energy.json",
+		"min_share_percent": 0.01
+	}
 }

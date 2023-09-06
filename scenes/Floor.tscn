@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Snapping.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/Attributes.gd" id="2"]
-[ext_resource type="Material" path="res://data/material/Invalid.tres" id="3"]
+[ext_resource type="Material" uid="uid://dq50a1suknn6o" path="res://data/material/Invalid.tres" id="3"]
 [ext_resource type="Shader" path="res://data/private/models/ue/floor/Floor.gdshader" id="5_djjsk"]
 [ext_resource type="Material" uid="uid://dskburn3qyquv" path="res://data/material/SM_Hall_Floor_Sec_C2_Base.tres" id="5_k12k0"]
 [ext_resource type="PackedScene" uid="uid://vy12iiiys4w1" path="res://data/private/models/ue/floor2/SM_Hall_Floor_Sec_C.glb" id="6_2u12j"]
@@ -91,7 +91,7 @@ visible = false
 mesh = SubResource("2")
 
 [node name="SnapZPos" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.69526)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1")
@@ -101,7 +101,7 @@ snap_name = "horizontal"
 shape = SubResource("3")
 
 [node name="SnapZNeg" type="Area3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -4.54149)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1")
@@ -111,7 +111,7 @@ snap_name = "horizontal"
 shape = SubResource("3")
 
 [node name="SnapXNeg" type="Area3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.52597, 0, 0)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1")
@@ -121,7 +121,7 @@ snap_name = "horizontal"
 shape = SubResource("3")
 
 [node name="SnapXPos" type="Area3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.7478, 0, 0)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1")
