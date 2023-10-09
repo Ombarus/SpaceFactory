@@ -1,6 +1,9 @@
 {
     "name":"Solar Panels",
     "visual": "solar_panels",
+	"tooltip": {
+		"description": "This is a solar panel"
+	},
     "placeable": {
         "__ref__":"data/json/refs/costs/solar_cost.json",
         "surfaces":["placeable"]

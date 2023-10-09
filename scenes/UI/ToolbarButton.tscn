@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwy4hinurakbq"]
+
+[ext_resource type="Script" path="res://scripts/UI/ToolbarBtnLabel.gd" id="1_deqj4"]
+[ext_resource type="Script" path="res://scripts/UI/ToolbarButton.gd" id="1_f3o45"]
+
+[node name="Toolbar1" type="Button"]
+custom_minimum_size = Vector2(80, 80)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_f3o45")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "1 "
+horizontal_alignment = 2
+script = ExtResource("1_deqj4")
+
+[connection signal="renamed" from="." to="Label" method="_on_hotbar_renamed"]

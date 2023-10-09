@@ -1,6 +1,9 @@
 {
     "name":"Miner MK1",
     "visual": "miner",
+	"tooltip": {
+		"description": "This is a miner"
+	},
     "placeable": {
         "__ref__":"data/json/refs/costs/miner_cost.json",
         "surfaces":["asteroid"]

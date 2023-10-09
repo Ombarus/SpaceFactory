@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://c3ek5gqv7u2j8"]
+[gd_scene load_steps=45 format=3 uid="uid://c3ek5gqv7u2j8"]
 
 [ext_resource type="PackedScene" uid="uid://dnyth0m35mwyp" path="res://scenes/Asteroid.tscn" id="1"]
 [ext_resource type="Script" path="res://scripts/Systems/LevelLoader.gd" id="3"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scripts/Systems/Camera.gd" id="8"]
 [ext_resource type="Script" path="res://scripts/UI/PlaceItemBtn.gd" id="9"]
 [ext_resource type="Script" path="res://scripts/CameraData.gd" id="10"]
-[ext_resource type="PackedScene" path="res://scenes/MiningLaser.tscn" id="11"]
+[ext_resource type="PackedScene" uid="uid://b4h4cc1jrk3le" path="res://scenes/MiningLaser.tscn" id="11"]
 [ext_resource type="Script" path="res://scripts/Systems/Harvester.gd" id="12"]
 [ext_resource type="Script" path="res://scripts/Systems/Distributor.gd" id="12_dd0ka"]
 [ext_resource type="Script" path="res://scripts/Systems/UIManager.gd" id="13"]
@@ -19,6 +19,8 @@
 [ext_resource type="Script" path="res://scripts/Systems/Crafting.gd" id="16"]
 [ext_resource type="PackedScene" path="res://scenes/UI/SmelterDialog.tscn" id="17"]
 [ext_resource type="Script" path="res://scripts/Systems/ProductionBuilding.gd" id="18"]
+[ext_resource type="Theme" uid="uid://cic7mujqsgjb2" path="res://data/default_theme.tres" id="18_27l0m"]
+[ext_resource type="PackedScene" uid="uid://bfecpxyg3uq37" path="res://scenes/UI/HUDv2.tscn" id="18_scrnd"]
 [ext_resource type="PackedScene" path="res://scenes/UI/HarvesterDialog.tscn" id="19"]
 [ext_resource type="Script" path="res://scripts/Systems/DirtyReset.gd" id="20"]
 [ext_resource type="PackedScene" uid="uid://bglmmkdqhqmri" path="res://scenes/ModularScifiHallways/sci_fi_example_a_ext.tscn" id="22_xgofd"]
@@ -195,6 +197,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("18_27l0m")
+
+[node name="HUDv2" parent="UI/SafeArea" instance=ExtResource("18_scrnd")]
+layout_mode = 1
 
 [node name="HUD" type="Control" parent="UI/SafeArea"]
 anchors_preset = 0
@@ -243,6 +249,7 @@ visible = false
 layout_mode = 2
 
 [node name="Toolbar" type="HBoxContainer" parent="UI/SafeArea/HUD/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/SafeArea/HUD/VBoxContainer/Toolbar"]

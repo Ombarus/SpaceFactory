@@ -7,6 +7,9 @@
         "surfaces":["floor", "asteroid"]
     },
     "dialog_name":"SmelterDialog",
+	"tooltip": {
+		"description": "This is a smelter"
+	},
     "recipes":[
         {
             "input":[{"count":1, "name":"data/json/items/iron_ore.json"}, {"count":10, "name":"data/json/items/energy.json"}],

@@ -1,6 +1,9 @@
 {
     "name":"Wall",
     "visual": "wall",
+	"tooltip": {
+		"description": "This is a wall"
+	},
     "placeable": {
         "__ref__":"data/json/refs/costs/floor_cost.json",
         "surfaces":[]

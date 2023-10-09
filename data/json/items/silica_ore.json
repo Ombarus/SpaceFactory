@@ -1,5 +1,6 @@
 {
     "name":"Silica Ore",
+	"icon": "data/private/textures/silicon_ore.png",
     "inventory": {
         "__ref__":"data/json/refs/inventory/tier1_solid_properties.json"
     }

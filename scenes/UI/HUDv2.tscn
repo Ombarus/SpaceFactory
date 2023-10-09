@@ -1,0 +1,82 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfecpxyg3uq37"]
+
+[ext_resource type="PackedScene" uid="uid://dwy4hinurakbq" path="res://scenes/UI/ToolbarButton.tscn" id="1_37p1o"]
+
+[node name="HUDv2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="CraftingQueue" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Exemple" type="Label" parent="VBoxContainer/CraftingQueue"]
+visible = false
+layout_mode = 2
+
+[node name="Toolbar" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Toolbar1" parent="VBoxContainer/Toolbar" instance=ExtResource("1_37p1o")]
+layout_mode = 2
+ItemSrc = "res://data/json/placeables/smelter.json"
+
+[node name="Toolbar2" parent="VBoxContainer/Toolbar" instance=ExtResource("1_37p1o")]
+layout_mode = 2
+ItemSrc = "res://data/json/placeables/miner_mk1.json"
+
+[node name="Toolbar3" parent="VBoxContainer/Toolbar" instance=ExtResource("1_37p1o")]
+layout_mode = 2
+ItemSrc = "res://data/json/placeables/solar_panels.json"
+
+[node name="Toolbar4" parent="VBoxContainer/Toolbar" instance=ExtResource("1_37p1o")]
+layout_mode = 2
+
+[node name="Toolbar5" parent="VBoxContainer/Toolbar" instance=ExtResource("1_37p1o")]
+layout_mode = 2
+
+[node name="Toolbar6" parent="VBoxContainer/Toolbar" instance=ExtResource("1_37p1o")]
+layout_mode = 2
+
+[node name="Toolbar7" parent="VBoxContainer/Toolbar" instance=ExtResource("1_37p1o")]
+layout_mode = 2
+
+[node name="Toolbar8" parent="VBoxContainer/Toolbar" instance=ExtResource("1_37p1o")]
+layout_mode = 2
+
+[node name="Toolbar9" parent="VBoxContainer/Toolbar" instance=ExtResource("1_37p1o")]
+layout_mode = 2
+
+[node name="Toolbar0" parent="VBoxContainer/Toolbar" instance=ExtResource("1_37p1o")]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TooltipRoot" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

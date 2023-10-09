@@ -1,17 +1,15 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=3 uid="uid://b4h4cc1jrk3le"]
 
-[ext_resource path="res://scripts/Attributes.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://scripts/Attributes.gd" id="1"]
 
-[sub_resource type="ParticleProcessMaterial" id=3]
-flag_align_y = true
+[sub_resource type="ParticleProcessMaterial" id="3"]
 spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 2.51
+gravity = Vector3(0, 0, 0)
 
-[sub_resource type="PlaneMesh" id=4]
-size = Vector2( 0.1, 0.1 )
+[sub_resource type="PlaneMesh" id="4"]
+size = Vector2(0.1, 0.1)
 
-[sub_resource type="Shader" id=7]
+[sub_resource type="Shader" id="7"]
 code = "shader_type spatial;
 
 uniform sampler2D noise;
@@ -29,140 +27,122 @@ void fragment() {
 	ALPHA = smoothstep(0.3, 1.0, col.r);
 }"
 
-[sub_resource type="Gradient" id=11]
-offsets = PackedFloat32Array( 0, 0.568507 )
-colors = PackedColorArray( 6.98, 7.06, 0.7, 1, 0, 0.53, 5, 1 )
+[sub_resource type="Gradient" id="11"]
+offsets = PackedFloat32Array(0, 0.568507)
+colors = PackedColorArray(6.98, 7.06, 0.7, 1, 0, 0.53, 5, 1)
 
-[sub_resource type="GradientTexture2D" id=12]
-gradient = SubResource( 11 )
+[sub_resource type="GradientTexture2D" id="12"]
+gradient = SubResource("11")
 width = 128
 
-[sub_resource type="OpenSimplexNoise" id=9]
-period = 65.9
-persistence = 0.437
-lacunarity = 2.45
+[sub_resource type="FastNoiseLite" id="9"]
 
-[sub_resource type="NoiseTexture" id=10]
+[sub_resource type="NoiseTexture2D" id="10"]
 seamless = true
-noise = SubResource( 9 )
+noise = SubResource("9")
 
-[sub_resource type="ShaderMaterial" id=8]
-shader = SubResource( 7 )
-shader_param/noise = SubResource( 10 )
-shader_param/gradient = SubResource( 12 )
+[sub_resource type="ShaderMaterial" id="8"]
+render_priority = 0
+shader = SubResource("7")
+shader_parameter/noise = SubResource("10")
+shader_parameter/gradient = SubResource("12")
 
-[sub_resource type="CylinderMesh" id=1]
-material = SubResource( 8 )
-top_radius = 0.5
-bottom_radius = 0.5
+[sub_resource type="CylinderMesh" id="1"]
+material = SubResource("8")
 height = 1.0
 radial_segments = 8
 rings = 1
 
-[sub_resource type="ParticleProcessMaterial" id=13]
+[sub_resource type="ParticleProcessMaterial" id="13"]
 emission_shape = 2
-emission_box_extents = Vector3( 0.5, 0.5, 0.5 )
-direction = Vector3( 0, 1, 0 )
+emission_sphere_radius = 1.0
+direction = Vector3(0, 1, 0)
 spread = 69.08
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 1.23
+gravity = Vector3(0, 0, 0)
 
-[sub_resource type="StandardMaterial3D" id=15]
+[sub_resource type="StandardMaterial3D" id="15"]
 emission_enabled = true
-emission = Color( 2, 0.36, 0.36, 1 )
-emission_energy = 1.0
-emission_operator = 0
-emission_on_uv2 = false
+emission = Color(2, 0.36, 0.36, 1)
 
-[sub_resource type="PlaneMesh" id=14]
-material = SubResource( 15 )
-size = Vector2( 0.05, 0.05 )
+[sub_resource type="PlaneMesh" id="14"]
+material = SubResource("15")
+size = Vector2(0.05, 0.05)
 
-[sub_resource type="CylinderMesh" id=16]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ms4h"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(1, 0.0470588, 0, 1)
+emission_enabled = true
+emission = Color(0.847059, 0.0470588, 0.113725, 1)
+emission_energy_multiplier = 6.93
+
+[sub_resource type="CylinderMesh" id="16"]
+material = SubResource("StandardMaterial3D_3ms4h")
 top_radius = 0.1
 bottom_radius = 0.1
 height = 1.0
 radial_segments = 8
 rings = 1
 
-[sub_resource type="Shader" id=17]
-code = "shader_type spatial;
-
-void fragment() {
-	ALPHA = sin(UV.y*20.0+(TIME*20.0))-0.8;
-	//ALBEDO = vec3(1.0, 0.0, 0.0);
-	ALBEDO = vec3(1.0, 0.0, 0.0);
-	EMISSION = vec3(10.0, 0.0, 0.0);
-}"
-
-[sub_resource type="ShaderMaterial" id=18]
-shader = SubResource( 17 )
-
-[sub_resource type="ParticleProcessMaterial" id=19]
-direction = Vector3( 0, 1, 0 )
+[sub_resource type="ParticleProcessMaterial" id="19"]
+direction = Vector3(0, 1, 0)
 spread = 0.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 0.5
-linear_accel = 0.74
-linear_accel_random = 0.55
+gravity = Vector3(0, 0, 0)
 
-[sub_resource type="StandardMaterial3D" id=20]
-flags_unshaded = true
-flags_do_not_receive_shadows = true
-flags_disable_ambient_light = true
-params_blend_mode = 1
-albedo_color = Color( 10, 0, 0, 1 )
+[sub_resource type="StandardMaterial3D" id="20"]
+blend_mode = 1
+shading_mode = 0
+disable_ambient_light = true
+albedo_color = Color(10, 0, 0, 1)
+disable_receive_shadows = true
 
-[sub_resource type="SphereMesh" id=21]
-material = SubResource( 20 )
+[sub_resource type="SphereMesh" id="21"]
+material = SubResource("20")
 radius = 0.2
 height = 0.1
 
-[sub_resource type="ParticleProcessMaterial" id=5]
-flag_align_y = true
+[sub_resource type="ParticleProcessMaterial" id="5"]
 spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 2.51
+gravity = Vector3(0, 0, 0)
 
-[sub_resource type="PlaneMesh" id=6]
-size = Vector2( 0.1, 0.1 )
+[sub_resource type="PlaneMesh" id="6"]
+size = Vector2(0.1, 0.1)
 
 [node name="MiningLaser" type="Node3D"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 PreloadData = "res://data/json/tools/mining_laser.json"
 
-[node name="Start" type="Particles" parent="."]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.08162 )
+[node name="Start" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.08162)
 amount = 100
 lifetime = 0.2
-process_material = SubResource( 3 )
-draw_pass_1 = SubResource( 4 )
+process_material = SubResource("3")
+draw_pass_1 = SubResource("4")
 
 [node name="Beam" type="MeshInstance3D" parent="."]
-transform = Transform3D( 1, 0, 0, 0, -4.37114e-07, -1, 0, 10, -4.37114e-08, 0, 0, 0 )
-mesh = SubResource( 1 )
+transform = Transform3D(1, 0, 0, 0, -4.37114e-07, -1, 0, 10, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("1")
 
-[node name="flakes" type="Particles" parent="Beam"]
+[node name="flakes" type="GPUParticles3D" parent="Beam"]
 visible = false
 amount = 50
 lifetime = 0.2
-process_material = SubResource( 13 )
-draw_pass_1 = SubResource( 14 )
+process_material = SubResource("13")
+draw_pass_1 = SubResource("14")
 
 [node name="red_intermittent_beam" type="MeshInstance3D" parent="Beam"]
-mesh = SubResource( 16 )
-material/0 = SubResource( 18 )
+mesh = SubResource("16")
 
-[node name="RedBlob" type="Particles" parent="Beam"]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509466, 2.22695e-07 )
+[node name="RedBlob" type="GPUParticles3D" parent="Beam"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509466, 2.22695e-07)
 amount = 2
 lifetime = 1.5
-process_material = SubResource( 19 )
-draw_pass_1 = SubResource( 21 )
+process_material = SubResource("19")
+draw_pass_1 = SubResource("21")
 
-[node name="End" type="Particles" parent="."]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.09466 )
+[node name="End" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.09466)
 amount = 100
 lifetime = 0.2
-process_material = SubResource( 5 )
-draw_pass_1 = SubResource( 6 )
+process_material = SubResource("5")
+draw_pass_1 = SubResource("6")
