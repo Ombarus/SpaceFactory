@@ -1,5 +1,6 @@
 {
     "name":"Smelter",
+	"icon": "data/private/textures/smelter_icon.png",
     "visual": "smelter",
     "system": ["ProductionBuilding"],
     "placeable": {
@@ -11,18 +12,8 @@
 		"description": "This is a smelter"
 	},
     "recipes":[
-        {
-            "input":[{"count":1, "name":"data/json/items/iron_ore.json"}, {"count":10, "name":"data/json/items/energy.json"}],
-            "output":[{"count":1, "name": "data/json/items/iron_ingot.json"}],
-            "processing_time_sec":2.0
-        },
-        {
-            "input":[{"count":2, "name":"data/json/items/silica_ore.json"}, {"count":10, "name":"data/json/items/energy.json"}],
-            "output":[
-                {"count":3, "name": "data/json/items/glass.json"}
-            ],
-            "processing_time_sec":2.0
-        },
+        {"__ref__":"data/json/refs/recipes/iron_ingot.json"},
+        {"__ref__":"data/json/refs/recipes/glass.json"}
     ],
     "snap_association": [
         ["center", "base"],

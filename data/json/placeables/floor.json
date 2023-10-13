@@ -1,5 +1,6 @@
 {
     "name":"Floor",
+	"icon": "data/private/textures/floor_icon.png",
     "visual": "floor",
 	"tooltip": {
 		"description": "This is a floor"

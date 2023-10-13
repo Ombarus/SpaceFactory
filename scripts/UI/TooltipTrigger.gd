@@ -11,13 +11,14 @@ func _ready():
 	self.mouse_exited.connect(_on_mouse_exited)
 	
 func _on_mouse_entered():
-	if not active_tooltip:
+	if not active_tooltip and TooltipObj != null and TooltipObj != "":
 		var mouse_pos : Vector2 = self.get_global_mouse_position()
 		if root == null:
 			root = self.get_tree().root.find_child("TooltipRoot", true, false ) 
 		active_tooltip = TooltipScene.instantiate()
-		active_tooltip.size = Vector2(100.0, 100.0)
-		active_tooltip.position = mouse_pos - Vector2(0.0, 100.0)
+		var tooltip_size := Vector2(600.0, 600.0)
+		active_tooltip.size = tooltip_size
+		active_tooltip.position = mouse_pos - Vector2(0.0, tooltip_size.y)
 		root.add_child(active_tooltip)
 		(active_tooltip as Tooltip).Init(TooltipObj)
 	

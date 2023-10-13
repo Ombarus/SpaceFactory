@@ -9,42 +9,10 @@
 		"solar": "data/json/placeables/solar_panels.json"
     },
     "recipes":[
-        {
-            "input":[
-                {"count":1, "name":"data/json/items/iron_ore.json"},
-                {"count":25, "name":"data/json/items/energy.json"}
-            ],
-            "output":[{"count":1, "name":"data/json/items/iron_ingot.json"}],
-            "processing_time_sec":0.5,
-            "energy_use":5.0
-        },
-        {
-            "input":[
-                {"count":1, "name":"data/json/items/silica_ore.json"},
-                {"count":25, "name":"data/json/items/energy.json"}
-            ],
-            "output":[{"count":1, "name":"data/json/items/glass.json"}],
-            "processing_time_sec":0.5,
-            "energy_use":5.0
-        },
-        {
-            "input":[
-                {"count":1, "name":"data/json/items/silica_ore.json"},
-                {"count":25, "name":"data/json/items/energy.json"}
-            ],
-            "output":[{"count":1, "name":"data/json/items/silicon_wafer.json"}],
-            "processing_time_sec":0.5,
-            "energy_use":5.0
-        },
-        {
-            "input":[
-                {"count":1, "name":"data/json/items/graphite_ore.json"},
-                {"count":25, "name":"data/json/items/energy.json"}
-            ],
-            "output":[{"count":1, "name":"data/json/items/carbon_nanotube.json"}],
-            "processing_time_sec":0.5,
-            "energy_use":5.0
-        }
+        {"__ref__":"data/json/refs/recipes/iron_ingot.json"},
+        {"__ref__":"data/json/refs/recipes/glass.json"},
+        {"__ref__":"data/json/refs/recipes/silicon_wafer.json"},
+        {"__ref__":"data/json/refs/recipes/carbon_nanotube.json"}
     ],
     "inventory_slots": {
         "0": {

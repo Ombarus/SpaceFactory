@@ -1,5 +1,6 @@
 {
     "name":"Miner MK1",
+	"icon": "data/private/textures/miner_icon.png",
     "visual": "miner",
 	"tooltip": {
 		"description": "This is a miner"

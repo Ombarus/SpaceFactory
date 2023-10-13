@@ -7,3 +7,10 @@ extends TooltipTrigger
 func _ready():
 	super._ready()
 	TooltipObj = ItemSrc
+	if ItemSrc.is_empty():
+		return
+	var item : Dictionary = Globals.LevelLoaderRef.load_json(ItemSrc)
+	var icon : String = Globals.get_attrib(item, "icon", "")
+	if not icon.is_empty():
+		self.icon = load(icon)
+	
